@@ -9,6 +9,7 @@
 </div>
 
 <style lang="scss">
+	@import "../scss/reset";
 	@import "../scss/defaults";
 	
 	:global * {

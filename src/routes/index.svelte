@@ -1,10 +1,13 @@
 <script lang="ts">
 	import PersonalCard from "$components/personalCard.svelte";
-	import Skills from "$components/skills.svelte";
-	import type { IDirectusAboutMe, IDirectusSkill } from "$models/directus";
+import ProjectItem from "$components/projectItem.svelte";
+import ProjectsCollection from "$components/projectsCollection.svelte";
+	import Skills from "$components/skillsCollection.svelte";
+	import type { IDirectusAboutMe, IDirectusProject, IDirectusSkill } from "$models/directus";
 
 	export let aboutMe: IDirectusAboutMe;
 	export let skills: IDirectusSkill[];
+	export let projects: IDirectusProject[];
 
 	let personalCard = {
 		image: aboutMe.picture,
@@ -34,7 +37,9 @@
 		</section>
 	</section>
 
-	<section class="row">
+	<section>
+		<h2>Meine Projekte</h2>
+		<ProjectsCollection { projects } />
 	</section>
 </div>
 
@@ -79,15 +84,32 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		gap: 120px;
+		padding: 18px 18px 60px 18px;
+
+		h2 {
+			font-size: 1.6em;
+		}
 		
 		& > section {
 			max-width: 1200px;
-		}
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			gap: 30px;
 
-		.row {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 60px;
+			&.row {
+				flex-direction: row;
+				gap: 60px;
+				justify-content: center;
+
+				section {
+					display: flex;
+					flex-direction: column;
+					max-width: 570px;
+					gap: 24px;
+				}
+			}
 		}
 	}
 </style>
