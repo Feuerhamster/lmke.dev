@@ -1,26 +1,30 @@
 <script lang="ts">
-	import type { PersonalCardInformation } from "$models/personalCard.model";
-	
 	import GitHubIcon from "lucide-icons-svelte/github.svelte"
 	import MailIcon from "lucide-icons-svelte/mail.svelte"
 	
-	export let data: PersonalCardInformation = null;
+	export let image: string;
+	export let name: string;
+	export let subtitle: string;
+	export let github_link: string;
+	export let email: string;
+
+	$: github_name = new URL(github_link).pathname;
 </script>
 
 <div class="personal-card">
-	<img src={data.image} alt="myself" />
+	<img src={ image } alt="myself" />
 	<div>
 		<h1>
-			<span>{ data.textTop }</span>
-			<b>{ data.name }</b>
-			<span>{ data.textBottom }</span>
+			<span>Hey, ich bin</span>
+			<b>{ name }</b>
+			<span>{ subtitle }</span>
 		</h1>
 		
-		<a href={ data.githubLink } target="_blank">
-			<GitHubIcon /> { data.githubText }
+		<a href={ github_link} target="_blank">
+			<GitHubIcon /> { github_name }
 		</a>
-		<a href={ "mailto:" + data.email }>
-			<MailIcon /> { data.email }
+		<a href={ "mailto:" + email }>
+			<MailIcon /> { email }
 		</a>
 	</div>
 </div>

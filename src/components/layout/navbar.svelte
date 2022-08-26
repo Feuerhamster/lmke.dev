@@ -14,7 +14,7 @@
 </div>
 
 <style lang="scss">
-	@import "../scss/defaults";
+	@import "../../scss/defaults";
 	
 	.navbar {
 		background: $color-background-transparency;
@@ -29,7 +29,7 @@
 		display: flex;
 		justify-content: space-around;
 		
-		padding: 5px;
+		padding: 8px;
 		
 		h1 {
 			margin: 0;

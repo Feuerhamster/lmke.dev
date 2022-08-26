@@ -1,6 +1,6 @@
 <script lang="ts">
 	import "@fontsource/atkinson-hyperlegible";
-	import Navbar from "$components/navbar.svelte"
+	import Navbar from "$components/layout/navbar.svelte"
 </script>
 
 <div class="app">

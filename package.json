@@ -11,10 +11,12 @@
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "next",
+		"@sveltejs/adapter-auto": "^1.0.0-next.50",
+		"@sveltejs/kit": "^1.0.0-next.350",
+		"@sveltejs/vite-plugin-svelte": "^1.0.0-next.49",
 		"lucide-icons-svelte": "^0.1.0",
-		"mdsvex": "^0.10.5",
+		"mdsvex": "^0.10.6",
+		"rehype-external-links": "^2.0.1",
 		"sass": "^1.52.1",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.2.6",
@@ -24,7 +26,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@directus/sdk": "^10.1.4",
 		"@fontsource/atkinson-hyperlegible": "^4.5.7",
-		"rehype-external-links": "^1.0.1"
+		"dotenv": "^16.0.1"
 	}
 }

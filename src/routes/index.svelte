@@ -1,30 +1,46 @@
-<script>
+<script lang="ts">
 	import PersonalCard from "$components/personalCard.svelte";
-	import personalCardInformation from "$content/demo-personal-card.json";
-	
-	import AboutMe from "$content/about-me.md";
+	import Skills from "$components/skills.svelte";
+	import type { IDirectusAboutMe, IDirectusSkill } from "$models/directus";
+
+	export let aboutMe: IDirectusAboutMe;
+	export let skills: IDirectusSkill[];
+
+	let personalCard = {
+		image: aboutMe.picture,
+		name: aboutMe.name,
+		subtitle: aboutMe.subtitle,
+		github_link: aboutMe.github_link,
+		email: aboutMe.email
+	}
 </script>
 
 <div class="colored-hero">
-	<PersonalCard data={personalCardInformation} />
+	<PersonalCard {...personalCard} />
 </div>
 
-<div class="row">
-	<div>
-		<h2>Über mich</h2>
-		<p>
-			<AboutMe />
-		</p>
-	</div>
-	
-	<div>
-		<h2>Das kann ich</h2>
-	</div>
+<div class="limited-page">
+	<section class="row">
+		<section>
+			<h2>Über mich</h2>
+			<p>
+				{@html aboutMe.about_me}
+			</p>
+		</section>
+		
+		<section>
+			<h2>Meine Skills</h2>
+			<Skills { skills } />
+		</section>
+	</section>
+
+	<section class="row">
+	</section>
 </div>
 
 <style lang="scss">
 	.colored-hero {
-		padding: 15% 5% 20% 5%;
+		padding: 10% 5% 15% 5%;
 		background-color:hsla(0,100%,50%,1);
 		background-image:
 		radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
@@ -59,12 +75,19 @@
 		}
 	}
 	
-	.row {
+	.limited-page {
 		display: flex;
-		justify-content: space-around;
+		flex-direction: column;
+		align-items: center;
 		
-		* {
-			max-width: 480px;
+		& > section {
+			max-width: 1200px;
+		}
+
+		.row {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 60px;
 		}
 	}
 </style>
