@@ -1,13 +1,18 @@
 <script lang="ts">
+	import FriendsCollection from "$components/friendsCollection.svelte";
+	import Hero from "$components/layout/hero.svelte";
 	import PersonalCard from "$components/personalCard.svelte";
-import ProjectItem from "$components/projectItem.svelte";
-import ProjectsCollection from "$components/projectsCollection.svelte";
+	import ProjectsCollection from "$components/projectsCollection.svelte";
 	import Skills from "$components/skillsCollection.svelte";
-	import type { IDirectusAboutMe, IDirectusProject, IDirectusSkill } from "$models/directus";
+	import type { IDirectusAboutMe, IDirectusArticleTopics, IDirectusFriend, IDirectusProject, IDirectusSkill } from "$models/directus";
 
 	export let aboutMe: IDirectusAboutMe;
 	export let skills: IDirectusSkill[];
 	export let projects: IDirectusProject[];
+	export let friends: IDirectusFriend[];
+	export let articleTopics: IDirectusArticleTopics[];
+
+	$: formattedTopics = articleTopics.map((t) => t.name);
 
 	let personalCard = {
 		image: aboutMe.picture,
@@ -18,17 +23,17 @@ import ProjectsCollection from "$components/projectsCollection.svelte";
 	}
 </script>
 
-<div class="colored-hero">
+<Hero>
 	<PersonalCard {...personalCard} />
-</div>
+</Hero>
 
 <div class="limited-page">
 	<section class="row">
 		<section>
 			<h2>Über mich</h2>
-			<p>
+			<div class="about-me">
 				{@html aboutMe.about_me}
-			</p>
+			</div>
 		</section>
 		
 		<section>
@@ -41,44 +46,21 @@ import ProjectsCollection from "$components/projectsCollection.svelte";
 		<h2>Meine Projekte</h2>
 		<ProjectsCollection { projects } />
 	</section>
+
+	<section>
+		<h2>Meine Freunde</h2>
+		<FriendsCollection { friends } />
+	</section>
+
+	<section>
+		<h2>Mein persönlicher Blog</h2>
+		<p>
+			{@html formattedTopics.join(`<span class="spacer"> | </span>`) }
+		</p>
+	</section>
 </div>
 
 <style lang="scss">
-	.colored-hero {
-		padding: 10% 5% 15% 5%;
-		background-color:hsla(0,100%,50%,1);
-		background-image:
-		radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
-		radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
-		radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
-		radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
-		radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0px, transparent 50%),
-		radial-gradient(at 80% 100%, hsla(242,100%,70%,1) 0px, transparent 50%),
-		radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
-
-		position: relative;
-		z-index: 1;
-		
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		
-		&:after {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: 2;
-			width: 100%;
-			height: 100%;
-			background: rgb(0,0,0);
-			background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(26,24,49,1) 90%, rgba(26,24,49,1) 100%);
-		}
-		
-		:global(*) {
-			z-index: 3;
-		}
-	}
 	
 	.limited-page {
 		display: flex;
@@ -90,9 +72,26 @@ import ProjectsCollection from "$components/projectsCollection.svelte";
 		h2 {
 			font-size: 1.6em;
 		}
+
+		section {
+			& > :global(*:not(h2)) {
+				padding-left: 12px;
+			}
+		}
+
+		.about-me {
+			display: flex;
+			flex-direction: column;
+			gap: 24px;
+		}
+
+		:global(.spacer) {
+			opacity: 0.5;
+		}
 		
 		& > section {
 			max-width: 1200px;
+			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
 			flex-direction: column;

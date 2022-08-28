@@ -18,7 +18,8 @@
 
 	.projects-collection {
 		display: grid;
-		gap: 24px;
+		column-gap: 24px;
+		row-gap: 36px;
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 </style>

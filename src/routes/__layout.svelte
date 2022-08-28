@@ -1,11 +1,34 @@
+<script lang="ts" context="module">
+	import type { Load } from "@sveltejs/kit";
+	
+	export const load: Load = async ({ fetch }) => {
+		let res = await fetch("/wallpaper")
+		let data = await res.json();
+
+		return {
+			props: {
+				wallpaper: data.wallpaper
+			}
+		}
+	}
+</script>
+
 <script lang="ts">
 	import "@fontsource/atkinson-hyperlegible";
-	import Navbar from "$components/layout/navbar.svelte"
+	import Navbar from "$components/layout/navbar.svelte";
+	import type { IDirectusImage } from "$models/directus";
+	import { currentWallpaper } from "$lib/stores";
+import Footer from "$components/layout/footer.svelte";
+
+	export let wallpaper: IDirectusImage;
+
+	$currentWallpaper = wallpaper;
 </script>
 
 <div class="app">
 	<Navbar />
 	<slot></slot>
+	<Footer />
 </div>
 
 <style lang="scss">

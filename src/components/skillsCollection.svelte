@@ -13,11 +13,11 @@
 		{/each}
 	</div>
 
-	<div class="legend">
+	<!--<div class="legend">
 		<span class="level-1">Grundlagen</span>
 		<span class="level-2">Fortgeschritten</span>
 		<span class="level-3">Profi</span>
-	</div>
+	</div>-->
 
 </div>
 

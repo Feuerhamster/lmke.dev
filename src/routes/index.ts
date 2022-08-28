@@ -1,22 +1,31 @@
-import directus, { convertAssetURL } from "$lib/directus";
+import directus from "$lib/directus";
 import type { RequestHandler } from "@sveltejs/kit";
 
 export const get: RequestHandler = async () => {
-	let aboutMeRes = await directus.items("lmke_dev").readByQuery();
-	let skillsRes = await directus.items("skills").readByQuery();
-	let projectsRes = await directus.items("projects").readByQuery();
+	let aboutMeReq = directus.items("lmke_dev").readByQuery();
+	let skillsReq = directus.items("skills").readByQuery();
+	let projectsReq = directus.items("lmke_projects").readByQuery();
+	let friendsReq = directus.items("lmke_friends").readByQuery();
+	let articleTopicsReq = directus.items("lmke_article_topics").readByQuery({
+		fields: ["name"]
+	});
+	let newestArticleReq = directus.items("lmke_articles").readByQuery({
+		limit: 1,
+		sort: ["-date_updated"],
+		fields: ["*", "topics.topic.name", "preview_image.*"]
+	})
 
-	let aboutMe = aboutMeRes.data as any;
-	aboutMe.picture = convertAssetURL(aboutMe.picture);
-	aboutMe.about_me = aboutMe.about_me.replace(/\n/g, "<br />");
-
-	let projects = projectsRes.data.map((p: any) => ({...p, logo: convertAssetURL(p.logo)}));
+	let results = await Promise.all([aboutMeReq, skillsReq, projectsReq, friendsReq, articleTopicsReq, newestArticleReq]);
+	let [aboutMeRes, skillsRes, projectsRes, friendsRes, articleTopicsRes, newestArticleRes] = results;
 
 	return {
 		body: {
-			aboutMe,
+			aboutMe: aboutMeRes.data,
 			skills: skillsRes.data,
-			projects
+			projects: projectsRes.data,
+			friends: friendsRes.data,
+			articleTopics: articleTopicsRes.data,
+			newestArticle: newestArticleRes.data
 		}
 	}
 }

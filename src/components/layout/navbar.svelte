@@ -1,10 +1,23 @@
 <script lang="ts">
 	import NavLink from "$components/navLink.svelte";
+	import { page } from "$app/stores";
+
+	let pageMapping = {
+		blog: "Blog"
+	};
+
+	$: currentPath = $page.url.pathname.substring(1);
 </script>
 
 <div class="navbar">
 	<h1>
-		lmke<span>.dev</span>
+		<b>lmke</b>.dev
+		<span class="absolute">
+			{#if pageMapping[currentPath]}
+				<span class="slash">/</span>
+				{ pageMapping[currentPath] }
+			{/if}
+		</span>
 	</h1>
 	<nav>
 		<NavLink href="/">Über mich</NavLink>
@@ -18,9 +31,11 @@
 	
 	.navbar {
 		background: $color-background-transparency;
-		backdrop-filter: blur(10px);
+		backdrop-filter: blur(12px);
+		/* Force hardware acceleration */
+		transform: translate3d(0, 0, 0);
 		
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -36,9 +51,19 @@
 			font-size: 1.5em;
 			font-weight: bold;
 			letter-spacing: 2px;
-			
-			span {
-				font-weight: normal;
+			font-weight: normal;
+			position: relative;
+
+			.absolute {
+				position: absolute;
+				display: flex;
+				gap: 8px;
+				left: 145px;
+				top: 0;
+			}
+
+			.slash {
+				opacity: 0.5;
 			}
 		}
 		

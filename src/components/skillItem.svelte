@@ -16,7 +16,10 @@
 		border: 2px solid grey;
 		border-radius: 32px;
 
-		&.level-1 {
+		border-color: $color-pink;
+			color: $color-pink;
+
+		/*&.level-1 {
 			border-color: $color-blue;
 			color: $color-blue;
 		}
@@ -29,6 +32,6 @@
 		&.level-3 {
 			border-color: $color-green;
 			color: $color-green;
-		}
+		}*/
 	}
 </style>

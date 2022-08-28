@@ -1,11 +1,13 @@
 <script lang="ts">
+import { getDirectusImageUrl } from "$lib/utils";
+
 	import type { IDirectusProject } from "$models/directus";
 
 	export let project: IDirectusProject;
 </script>
 
 <div class="project-item">
-	<img src={ project.logo } alt="logo" />
+	<img src={ getDirectusImageUrl(project.logo, { quality: 90, height: 90, width: 90 }) } alt="logo" />
 
 	<div class="info">
 		<h3>
@@ -36,7 +38,6 @@
 
 <style lang="scss">
 	@import "../scss/defaults";
-	@import "../scss/mixins";
 
 	.project-item {
 		display: grid;
@@ -63,7 +64,6 @@
 			h3 {
 				display: flex;
 				font-size: 1.2em;
-				margin: 0;
 			}
 
 			p {
