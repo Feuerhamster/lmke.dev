@@ -12,7 +12,7 @@ export const get: RequestHandler = async () => {
 	let newestArticleReq = directus.items("lmke_articles").readByQuery({
 		limit: 1,
 		sort: ["-date_updated"],
-		fields: ["*", "topics.topic.name", "preview_image.*"]
+		fields: ["*", "topics.topic.name", "preview_image.id", "preview_image.title"]
 	})
 
 	let results = await Promise.all([aboutMeReq, skillsReq, projectsReq, friendsReq, articleTopicsReq, newestArticleReq]);
@@ -25,7 +25,7 @@ export const get: RequestHandler = async () => {
 			projects: projectsRes.data,
 			friends: friendsRes.data,
 			articleTopics: articleTopicsRes.data,
-			newestArticle: newestArticleRes.data
+			newestArticle: newestArticleRes.data[0]
 		}
 	}
 }

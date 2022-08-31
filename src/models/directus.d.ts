@@ -41,13 +41,15 @@ export interface IDirectusArticle {
 	date_updated: string;
 	user_created: string;
 	user_updated: string;
+	preview_image: IDirectusImage;
+	wallpaper_image?: IDirectusImage;
 	title: string;
-	topics: IDirectusArticleTopics[];
+	topics: {topic: IDirectusArticleTopic}[];
 	description: string;
 	content: string;
 }
 
-export interface IDirectusArticleTopics {
+export interface IDirectusArticleTopic {
 	id: ID;
 	name: string;
 }
