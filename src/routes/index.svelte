@@ -74,7 +74,9 @@
 		<p>
 			{@html formattedTopics.join(`<span class="spacer"> | </span>`) }
 		</p>
-		<ArticleItem article={ newestArticle } />
+		{#if newestArticle}
+			<ArticleItem article={ newestArticle } />
+		{/if}
 
 		<a href="/blog">Mehr Blogartikel ansehen</a>
 	</section>
@@ -82,16 +84,14 @@
 
 <style lang="scss">
 	@import "../scss/defaults.scss";
+	@import "../scss/mixins.scss";
 	
 	.limited-page {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+		@include limited-page;
 		gap: 120px;
-		padding: 18px 18px 60px 18px;
 
 		h2 {
-			font-size: 1.6em;
+			font-size: 2rem;
 
 			span {
 				&.orange {
@@ -111,7 +111,7 @@
 
 		section {
 			& > :global(*:not(h2):not(section)) {
-				padding-left: 34px;
+				padding-left: 1.9rem;
 			}
 		}
 
@@ -126,20 +126,12 @@
 		}
 
 		a {
-			color: $color-text;
 			&[href="/blog"] {
 				font-size: 0.85em;
 			}
 		}
 
 		& > section {
-			max-width: 1200px;
-			width: 100%;
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: column;
-			gap: 30px;
-
 			&.row {
 				flex-direction: row;
 				gap: 60px;

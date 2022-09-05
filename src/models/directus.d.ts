@@ -34,12 +34,21 @@ export interface IDirectusFriend {
 	link_gh: string;
 }
 
+export interface IDirectusPublicUser {
+	first_name: string;
+	last_name: string;
+	avatar: {
+		id: ID;
+	}
+}
+
 export interface IDirectusArticle {
 	id: ID;
+	slug: string;
 	status: string;
 	date_created: string;
 	date_updated: string;
-	user_created: string;
+	user_created: IDirectusPublicUser;
 	user_updated: string;
 	preview_image: IDirectusImage;
 	wallpaper_image?: IDirectusImage;

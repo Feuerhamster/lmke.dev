@@ -23,6 +23,7 @@
 		padding: 12px;
 		color: rgba($color-text, 0.4);
 		font-size: 0.85em;
+		margin-top: auto;
 
 		a {
 			color: inherit;

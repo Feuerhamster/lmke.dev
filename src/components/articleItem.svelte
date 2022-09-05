@@ -1,22 +1,23 @@
 <script lang="ts">
-import { getDirectusImageUrl } from "$lib/utils";
+	import { getDirectusImageUrl } from "$lib/utils";
 
 	import type { IDirectusArticle } from "$models/directus";
 
 	export let article: IDirectusArticle;
 
-	$: formattedDate = new Date(article.date_updated).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
+	$: formattedDate = new Date(article.date_updated ?? article.date_created).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
 	$: formattedTopics = article.topics.map((t) => t.topic.name).join(", ");
+	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
 </script>
 
-<a class="article-item" href="/blog/{ article.id }">
+<a class="article-item" href="/blog/{ article.id }/{ article.slug }">
 
 	<img src={ getDirectusImageUrl(article.preview_image.id, { quality: 80, width: 200, height: 140, fit: "cover" }) } alt="preview" />
 
 	<div class="info">
 		<h3> { article.title } </h3>
 		<p> { article.description } </p>
-		<p class="meta"> { formattedDate } - { formattedTopics } </p>
+		<p class="meta"> { formattedDate } von { formattedAuthor } - { formattedTopics }</p>
 	</div>
 
 </a>

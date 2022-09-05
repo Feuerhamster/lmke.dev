@@ -1,15 +1,19 @@
 <script lang="ts">
 	import { currentWallpaper } from "$lib/stores";
-import { getDirectusImageUrl } from "$lib/utils";
+	import { getDirectusImageUrl } from "$lib/utils";
+
+	export let wallpaper: string = undefined;
+
+	$: selectedWallpaper = wallpaper ?? getDirectusImageUrl($currentWallpaper.id, { quality: 70 })
 </script>
 
-<div class="hero" style="background-image: url({ getDirectusImageUrl($currentWallpaper.id, { quality: 70 }) })">
+<div class="hero" style="background-image: url({ selectedWallpaper })">
 	<slot></slot>
 </div>
 
 <style lang="scss">
 	.hero {
-		padding: 10% 5% 15% 5%;
+		padding: 10rem 2rem 10rem 2rem;
 		background-color:#403c62;
 		/*background-image:
 		radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
@@ -25,8 +29,11 @@ import { getDirectusImageUrl } from "$lib/utils";
 
 		position: relative;
 		z-index: 1;
+
+		gap: 0.8rem;
 		
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		

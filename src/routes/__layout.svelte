@@ -18,7 +18,7 @@
 	import Navbar from "$components/layout/navbar.svelte";
 	import type { IDirectusImage } from "$models/directus";
 	import { currentWallpaper } from "$lib/stores";
-import Footer from "$components/layout/footer.svelte";
+	import Footer from "$components/layout/footer.svelte";
 
 	export let wallpaper: IDirectusImage;
 
@@ -49,5 +49,15 @@ import Footer from "$components/layout/footer.svelte";
 		color: $color-text;
 		font-size: $default-font-size;
 		letter-spacing: 1px;
+	}
+
+	.app {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	:global(a) {
+		color: $color-blue;
 	}
 </style>
