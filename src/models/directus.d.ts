@@ -22,6 +22,7 @@ export interface IDirectusProject {
 	description: string;
 	link: string;
 	link_source: string;
+	full_description: string;
 	discontinued: boolean;
 }
 

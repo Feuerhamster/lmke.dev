@@ -57,11 +57,11 @@
 				display: flex;
 				flex-direction: column;
 				font-weight: normal;
-				font-size: 1em;
+				font-size: 1rem;
 				gap: 5px;
 				
 				b {
-					font-size: 1.5em;
+					font-size: 1.5rem;
 				}
 			}
 			
@@ -85,8 +85,8 @@
 				}
 				
 				:global(.lucide) {
-					max-height: 1.2em;
-					max-width: 1.2em;
+					max-height: 1.2rem;
+					max-width: 1.2rem;
 				}
 			}
 			

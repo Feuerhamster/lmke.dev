@@ -20,9 +20,29 @@
 	import { currentWallpaper } from "$lib/stores";
 	import Footer from "$components/layout/footer.svelte";
 
+	import NProgress from "nprogress";
+	import { navigating } from "$app/stores";
+
+	import "nprogress/nprogress.css";
+
 	export let wallpaper: IDirectusImage;
 
 	$currentWallpaper = wallpaper;
+
+	NProgress.configure({
+		minimum: 0.1,
+		trickleSpeed: 100,
+		showSpinner: false
+	});
+
+	$: {
+		if ($navigating) {
+			NProgress.start();
+		}
+		if (!$navigating) {
+			NProgress.done();
+		}
+	}
 </script>
 
 <div class="app">
@@ -37,6 +57,10 @@
 	
 	:global * {
 		box-sizing: border-box;
+	}
+
+	:global(html) {
+		font-size: $default-font-size;
 	}
 	
 	:global(body) {
@@ -59,5 +83,13 @@
 
 	:global(a) {
 		color: $color-blue;
+	}
+
+	:global(#nprogress .bar) {
+		background: $color-pink;
+		height: 3px;
+	}
+	:global(#nprogress .peg) {
+		box-shadow: 0 0 10px $color-pink, 0 0 5px $color-pink;
 	}
 </style>

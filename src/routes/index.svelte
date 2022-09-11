@@ -56,6 +56,7 @@
 			Meine Projekte
 		</h2>
 		<ProjectsCollection { projects } />
+		<a href="/projects" class="sublink">Mehr Projekte und Details ansehen</a>
 	</section>
 
 	<section>
@@ -78,7 +79,7 @@
 			<ArticleItem article={ newestArticle } />
 		{/if}
 
-		<a href="/blog">Mehr Blogartikel ansehen</a>
+		<a href="/blog" class="sublink">Mehr Blogartikel ansehen</a>
 	</section>
 </div>
 
@@ -91,7 +92,7 @@
 		gap: 120px;
 
 		h2 {
-			font-size: 2rem;
+			font-size: 1.7rem;
 
 			span {
 				&.orange {
@@ -125,10 +126,8 @@
 			opacity: 0.5;
 		}
 
-		a {
-			&[href="/blog"] {
-				font-size: 0.85em;
-			}
+		a.sublink {
+			font-size: 1rem;
 		}
 
 		& > section {

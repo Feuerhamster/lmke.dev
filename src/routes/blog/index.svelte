@@ -3,6 +3,7 @@
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
 	import type { IDirectusArticle, IDirectusArticleTopic } from "$models/directus";
+	import RSSIcon from "lucide-icons-svelte/rss.svelte"
 
 	export let articles: IDirectusArticle[] = [];
 	export let topics: IDirectusArticleTopic[];
@@ -35,7 +36,10 @@
 		</p>
 	</section>
 	<section>
-		<a href="/blog/rss.xml" target="_blank">RSS Feed</a>
+		<a href="/blog/rss.xml" target="_blank" class="rss">
+			<RSSIcon />
+			<span>RSS Feed</span>
+		</a>
 	</section>
 </div>
 
@@ -51,22 +55,28 @@
 		section {
 			width: initial;
 
-			h2 {
-				font-size: 2rem;
-			}
-
 			:global(.article-item) {
 				padding-left: 1.8rem;
 			}
 
 			a[data-disabled="true"] {
 				pointer-events: none;
-				color: rgba($color-text, 0.4);
+				color: $color-text;
+				opacity: 0.3;
 			}
-		}
 
-		.pink {
-			color: $color-pink;
+			a.rss {
+				color: $color-orange;
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				text-decoration: none;
+
+				:global(.lucide) {
+					height: 1rem;
+					width: 1rem;
+				}
+			}
 		}
 	}
 

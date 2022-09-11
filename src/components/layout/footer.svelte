@@ -22,7 +22,7 @@
 		background-color: rgba(0, 0, 0, 0.3);
 		padding: 12px;
 		color: rgba($color-text, 0.4);
-		font-size: 0.85em;
+		font-size: 0.85rem;
 		margin-top: auto;
 
 		a {

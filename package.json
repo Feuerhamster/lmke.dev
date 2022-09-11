@@ -16,6 +16,7 @@
 		"@sveltejs/vite-plugin-svelte": "^1.0.0-next.49",
 		"lucide-icons-svelte": "^0.1.0",
 		"mdsvex": "^0.10.6",
+		"nprogress": "^0.2.0",
 		"rehype-external-links": "^2.0.1",
 		"sass": "^1.52.1",
 		"svelte": "^3.44.0",

@@ -44,10 +44,10 @@
 			flex-direction: column;
 			gap: 12px;
 			grid-area: info;
-			font-size: 0.85em;
+			font-size: 0.85rem;
 
 			h3 {
-				font-size: 1.4em;
+				font-size: 1.2rem;
 			}
 
 			.meta {

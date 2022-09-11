@@ -48,7 +48,7 @@
 		
 		h1 {
 			margin: 0;
-			font-size: 1.5em;
+			font-size: 1.5rem;
 			font-weight: bold;
 			letter-spacing: 2px;
 			font-weight: normal;

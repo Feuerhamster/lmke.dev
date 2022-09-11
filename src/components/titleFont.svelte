@@ -7,7 +7,7 @@
 	
 	h1 {
 		letter-spacing: 5px;
-		font-size: 2.4em;
+		font-size: 2.4rem;
 		margin: 0;
 		text-shadow: $default-text-shadow;
 	}

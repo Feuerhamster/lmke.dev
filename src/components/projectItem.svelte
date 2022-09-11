@@ -63,11 +63,11 @@ import { getDirectusImageUrl } from "$lib/utils";
 
 			h3 {
 				display: flex;
-				font-size: 1.2em;
+				font-size: 1.2rem;
 			}
 
 			p {
-				font-size: 0.85em;
+				font-size: 0.85rem;
 			}
 		}
 
@@ -80,12 +80,12 @@ import { getDirectusImageUrl } from "$lib/utils";
 				display: flex;
 				gap: 10px;
 				color: $color-text;
-				font-size: 0.85em;
+				font-size: 0.85rem;
 			}
 
 			.discontinued {
 				color: $color-pink;
-				font-size: 0.85em;
+				font-size: 0.85rem;
 			}
 		}
 	}

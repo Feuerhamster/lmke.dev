@@ -3,7 +3,13 @@ import type { RequestHandler } from "@sveltejs/kit";
 
 export const get: RequestHandler = async () => {
 	let aboutMeReq = directus.items("lmke_dev").readByQuery();
-	let skillsReq = directus.items("skills").readByQuery();
+	let skillsReq = directus.items("lmke_skills").readByQuery({
+		filter: {
+			hidden: {
+				_neq: true
+			}
+		}
+	});
 	let projectsReq = directus.items("lmke_projects").readByQuery();
 	let friendsReq = directus.items("lmke_friends").readByQuery();
 	let articleTopicsReq = directus.items("lmke_article_topics").readByQuery({
