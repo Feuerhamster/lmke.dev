@@ -19,7 +19,7 @@ export const get: RequestHandler = async ({ url }) => {
 		limit,
 		page,
 		meta: "*",
-		sort: ["date_updated"],
+		sort: ["-date_updated"],
 		fields: [
 			"*",
 			"topics.topic.name",

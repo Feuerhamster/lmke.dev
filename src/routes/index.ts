@@ -10,14 +10,20 @@ export const get: RequestHandler = async () => {
 			}
 		}
 	});
-	let projectsReq = directus.items("lmke_projects").readByQuery();
+	let projectsReq = directus.items("lmke_projects").readByQuery({
+		filter: {
+			discontinued: {
+				_neq: true
+			}
+		}
+	});
 	let friendsReq = directus.items("lmke_friends").readByQuery();
 	let articleTopicsReq = directus.items("lmke_article_topics").readByQuery({
 		fields: ["name"]
 	});
 	let newestArticleReq = directus.items("lmke_articles").readByQuery({
 		limit: 1,
-		sort: ["date_updated"],
+		sort: ["-date_updated"],
 		fields: [
 			"*",
 			"topics.topic.name",

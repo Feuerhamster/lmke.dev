@@ -2,6 +2,7 @@
 	import { getDirectusImageUrl } from "$lib/utils";
 
 	import type { IDirectusProject } from "$models/directus";
+	import Label from "./label.svelte";
 
 	export let project: IDirectusProject;
 </script>
@@ -12,10 +13,17 @@
 
 	<div class="info">
 		<h3> { project.title } </h3>
-		<p> { project.description } </p>
+		<h4> { project.description } </h4>
+
+		<p>
+			{#each project.technologies as t}
+				<Label> { t.skill.name } </Label>
+			{/each}
+		</p>
+
 		{#if project.discontinued}
 			<p class="discontinued">
-				Projekt eingestellt
+				<b>Projekt eingestellt/beendet</b>
 			</p>
 		{/if}
 		
@@ -27,7 +35,7 @@
 
 		{#if project.link_source}
 			<p>
-				GitHub: <a href={ project.link_source }> { new URL(project.link_source).pathname } </a>
+				GitHub: <a href={ project.link_source }> { new URL(project.link_source).pathname.substring(1) } </a>
 			</p>
 		{/if}
 
@@ -68,6 +76,11 @@
 
 			h3 {
 				font-size: 1.4rem;
+			}
+
+			h4 {
+				font-size: 1.15rem;
+				font-weight: normal;
 			}
 
 			.meta {

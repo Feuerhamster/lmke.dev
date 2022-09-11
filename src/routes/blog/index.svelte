@@ -12,7 +12,7 @@
 
 	$: formattedTopics = topics.map((t) => t.name);
 </script>
-<Hero>
+<Hero size="small">
 	<TitleFont>Mein persönlicher Blog</TitleFont>
 	<p class="topics">
 		{@html formattedTopics.join(`<span class="spacer"> | </span>`) }

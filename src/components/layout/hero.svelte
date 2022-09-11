@@ -3,17 +3,27 @@
 	import { getDirectusImageUrl } from "$lib/utils";
 
 	export let wallpaper: string = undefined;
+	export let size: "big" | "small" | "" = "";
 
 	$: selectedWallpaper = wallpaper ?? getDirectusImageUrl($currentWallpaper.id, { quality: 70 })
 </script>
 
-<div class="hero" style="background-image: url({ selectedWallpaper })">
+<div class="hero {size}" style="background-image: url({ selectedWallpaper })">
 	<slot></slot>
 </div>
 
 <style lang="scss">
 	.hero {
-		padding: 10rem 2rem 10rem 2rem;
+		padding: 10rem 2rem 8rem 10rem;
+
+		&.big {
+			padding: 12rem 2rem 12rem 2rem;
+		}
+
+		&.small {
+			padding: 8rem 2rem 8rem 2rem;
+		}
+
 		background-color:#403c62;
 		/*background-image:
 		radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
@@ -25,6 +35,7 @@
 		radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);*/
 		background-size: cover;
 		background-repeat: no-repeat;
+		background-position: center;
 		/*background-image: url("https://source.unsplash.com/1600x900/?colorful,background,wallpaper,colors");*/
 
 		position: relative;
@@ -51,6 +62,11 @@
 		
 		:global(*) {
 			z-index: 3;
+		}
+
+		:global(p) {
+			max-width: 1200px;
+			text-align: center;
 		}
 	}
 </style>

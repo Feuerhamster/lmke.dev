@@ -1,0 +1,180 @@
+/*! MIT License
+ * Copyright (c) 2018 GitHub Inc.
+ * https://github.com/primer/primitives/blob/main/LICENSE
+ */
+
+html {
+	font-size: 18px;
+}
+
+main {
+	--color-prettylights-syntax-comment: #8b949e;
+	--color-prettylights-syntax-constant: #79c0ff;
+	--color-prettylights-syntax-entity: #d2a8ff;
+	--color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+	--color-prettylights-syntax-entity-tag: #7ee787;
+	--color-prettylights-syntax-keyword: #ff7b72;
+	--color-prettylights-syntax-string: #a5d6ff;
+	--color-prettylights-syntax-variable: #ffa657;
+	--color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+	--color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+	--color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+	--color-prettylights-syntax-carriage-return-text: #f0f6fc;
+	--color-prettylights-syntax-carriage-return-bg: #b62324;
+	--color-prettylights-syntax-string-regexp: #7ee787;
+	--color-prettylights-syntax-markup-list: #f2cc60;
+	--color-prettylights-syntax-markup-heading: #1f6feb;
+	--color-prettylights-syntax-markup-italic: #c9d1d9;
+	--color-prettylights-syntax-markup-bold: #c9d1d9;
+	--color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+	--color-prettylights-syntax-markup-deleted-bg: #67060c;
+	--color-prettylights-syntax-markup-inserted-text: #aff5b4;
+	--color-prettylights-syntax-markup-inserted-bg: #033a16;
+	--color-prettylights-syntax-markup-changed-text: #ffdfb6;
+	--color-prettylights-syntax-markup-changed-bg: #5a1e02;
+	--color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+	--color-prettylights-syntax-markup-ignored-bg: #1158c7;
+	--color-prettylights-syntax-meta-diff-range: #d2a8ff;
+	--color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+	--color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+
+	--color-btn-text: white;
+	--color-btn-bg: rgba(255, 255, 255, 0.1);
+	--color-btn-border: transparent;
+	--color-btn-shadow: 0 0 transparent;
+	--color-btn-inset-shadow: 0 0 transparent;
+	--color-btn-hover-bg: rgba(255, 255, 255, 0.15);
+	--color-btn-hover-border: transparent;
+	--color-btn-active-bg: rgba(255, 255, 255, 0.2);
+	--color-btn-active-border: transparent;
+	--color-btn-selected-bg: rgba(255, 255, 255, 0.2);;
+	--color-btn-primary-text: white;
+	--color-btn-primary-bg: #db4ca3;
+	--color-btn-primary-border: rgb(240 246 252 / 10%);
+	--color-btn-primary-shadow: 0 0 transparent;
+	--color-btn-primary-inset-shadow: 0 0 transparent;
+	--color-btn-primary-hover-bg: #e461ae;
+	--color-btn-primary-hover-border: transparent;
+	--color-btn-primary-selected-bg: #e461ae;
+	--color-btn-primary-selected-shadow: 0 0 transparent;
+	--color-btn-primary-disabled-text: rgb(255 255 255 / 70%);
+	--color-btn-primary-disabled-bg: #b2598b;
+	--color-btn-primary-disabled-border: transparent;
+
+	--color-fg-default: #c9d1d9;
+	--color-fg-muted: #8b949e;
+	--color-fg-subtle: #6e7681;
+
+	--color-canvas-default: rgba(0, 0, 0, 0.15);
+	--color-canvas-overlay: #16142a;
+	--color-canvas-inset: rgba(0, 0, 0, 0.15);
+	--color-canvas-subtle: transparent;
+
+	--color-border-default: rgba(255, 255, 255, 0.1);
+	--color-border-muted: #21262d;
+	--color-neutral-muted: rgb(110 118 129 / 40%);
+
+	--color-accent-fg: #E779B7;
+	--color-accent-emphasis: #E779B7;
+	--color-accent-muted: rgba(255, 255, 255, 0.1);;
+	--color-accent-subtle: #E779B722;
+	--color-success-fg: #3fb950;
+	--color-attention-fg: #d29922;
+	--color-danger-fg: #f85149;
+	--color-danger-muted: rgb(248 81 73 / 40%);
+	--color-danger-subtle: rgb(248 81 73 / 15%);
+	--color-primer-shadow-inset: 0 0 transparent;
+	--color-primer-shadow-focus: transparent;
+	--color-scale-gray-7: #21262d;
+	--color-scale-blue-8: #0c2d6b;
+  
+	/*! Extensions from @primer/css/alerts/flash.scss */
+	--color-social-reaction-bg-hover: #E779B744;
+	--color-social-reaction-bg-reacted-hover: #E779B744;
+
+	color-scheme: dark;
+
+	font-family: "Atkinson Hyperlegible", sans-serif;
+	font-size: 21px;
+}
+
+main .pagination-loader-container {
+	background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg");
+}
+
+main .gsc-loading-image {
+	background-image: url("https://github.githubassets.com/images/mona-loading-dark.gif");
+}
+
+#__next .border {
+	border-width: 2px;
+}
+
+.gsc-comment-box:not(.gsc-comment-box-is-reply) {
+	border-width: 2px;
+}
+
+.input-contrast:focus {
+	background-color: var(--color-canvas-inset);
+}
+
+#__next .rounded-md,
+.btn,
+.gsc-comment-box:not(.gsc-comment-box-is-reply),
+.gsc-comment-box-textarea {
+	border-radius: 5px;
+}
+
+#__next .py-2 {
+	border: none;
+	border-radius: 5px;
+	background-color: transparent;
+	padding: 0.25rem 0.5rem 0.2rem 0.5rem;
+	position: relative;
+	transition: 0.2s background-color;
+}
+
+#__next .py-2:hover {
+	background-color: var(--color-btn-bg);
+}
+
+.rounded-t:after {
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	background-color: var(--color-btn-primary-disabled-bg);
+	left: 0;
+	top: 2.04rem;
+	content: "";
+}
+
+#__next .mx-2 {
+	margin: 0.5rem;
+	margin-bottom: 0.3rem;
+	margin-top: 0.3rem;
+}
+
+.gsc-comment-box-tabs {
+	border-bottom-width: 2px;
+}
+
+.gsc-comment-box-textarea {
+	border-width: 2px;
+}
+
+#__next .ml-1 {
+	margin-left: 0.5rem;
+}
+
+.gsc-reactions-popover {
+	border-width: 2px;
+}
+
+#__next .border-t {
+	border-top-width: 2px;
+}
+
+.btn {
+	padding-bottom: 3px;
+}

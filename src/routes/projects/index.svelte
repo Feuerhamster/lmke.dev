@@ -6,7 +6,7 @@
 
 	export let projects: IDirectusProject[] = [];
 </script>
-<Hero>
+<Hero size="small">
 	<TitleFont>Meine Projekte</TitleFont>
 	<p>Websites, Apps, PWA's, Software und mehr</p>
 </Hero>

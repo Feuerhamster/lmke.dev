@@ -2,11 +2,11 @@
 	import { getDirectusImageUrl } from "$lib/utils";
 
 	import type { IDirectusArticle } from "$models/directus";
+	import Label from "./label.svelte";
 
 	export let article: IDirectusArticle;
 
 	$: formattedDate = new Date(article.date_updated ?? article.date_created).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
-	$: formattedTopics = article.topics.map((t) => t.topic.name).join(", ");
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
 </script>
 
@@ -17,7 +17,13 @@
 	<div class="info">
 		<h3> { article.title } </h3>
 		<p> { article.description } </p>
-		<p class="meta"> { formattedDate } von { formattedAuthor } - { formattedTopics }</p>
+		<p class="meta">
+			{#each article.topics as topic}
+				<Label> { topic.topic.name } </Label>
+			{/each}
+
+			{ formattedDate } von { formattedAuthor }
+		</p>
 	</div>
 
 </a>

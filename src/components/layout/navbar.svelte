@@ -3,10 +3,11 @@
 	import { page } from "$app/stores";
 
 	let pageMapping = {
-		blog: "Blog"
+		blog: "Blog",
+		projects: "Projekte"
 	};
 
-	$: currentPath = $page.url.pathname.substring(1);
+	$: currentPath = $page.url.pathname.substring(1).split("/")[0];
 </script>
 
 <div class="navbar">

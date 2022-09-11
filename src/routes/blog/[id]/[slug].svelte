@@ -1,33 +1,75 @@
 <script lang="ts">
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
+	import Giscus from "@giscus/svelte";
 
 	import type { IDirectusArticle } from "$models/directus";
 	import { getDirectusImageUrl } from "$lib/utils";
+	import { page } from "$app/stores";
+	import Label from "$components/label.svelte";
 
 	export let article: IDirectusArticle;
 
 	$: wallpaperId = article.wallpaper_image?.id ?? article.preview_image?.id;
 	$: formattedDate = new Date(article.date_updated ?? article.date_created).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
-	$: formattedTopics = article.topics.map((t) => t.topic.name).join(", ");
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
 </script>
 
-<Hero wallpaper={ getDirectusImageUrl(wallpaperId, { quality: 70 }) }>
+<Hero wallpaper={ getDirectusImageUrl(wallpaperId, { quality: 70 }) } size="big">
 	<TitleFont> { article.title } </TitleFont>
 	<p> { article.description } </p>
 </Hero>
+
+<svelte:head>
+	<title> { article.title } - lmke.dev/Blog</title>
+	<meta name="description" content={ article.description } />
+	<meta property="og:title" content={ article.title } />
+	<meta property="og:description" content={ article.description } />
+	<meta property="og:image" content={ getDirectusImageUrl(article.preview_image.id, { quality: 80, width: 200, height: 140, fit: "cover" }) }/>
+</svelte:head>
 
 <div class="limited-page">
 	<div class="user">
 		<img src={ getDirectusImageUrl(article.user_created.avatar.id, { quality: 70 }) } alt="user avatar" />
 		<p class="name"> { formattedAuthor } </p>
-		<p class="meta"> { formattedDate } - { formattedTopics } </p>
+		<p class="meta">
+			{ formattedDate }
+			{#each article.topics as topic}
+				<Label> { topic.topic.name } </Label>
+			{/each}
+		</p>
 	</div>
 
 	<article>
 		{@html article.content}
 	</article>
+
+	
+
+	<div class="comment-box">
+
+		{#if !article.disable_comments}
+			<Giscus
+				id="comments"
+				repo="Feuerhamster/lmke.dev"
+				repoId="R_kgDOHYL4Qg"
+				category="Comments"
+				categoryId="DIC_kwDOHYL4Qs4CRXzl"
+				mapping="og:title"
+				strict="0"
+				reactionsEnabled="1"
+				emitMetadata="0"
+				inputPosition="top"
+				theme="{$page.url.origin}/giscus.css"
+				lang="de"
+				loading="lazy"
+			/>
+		{:else}
+			<p class="comments-disabled">
+				[ Kommentare deaktiviert ]
+			</p>
+		{/if}
+	</div>
 </div>
 
 <style lang="scss">
@@ -61,6 +103,24 @@
 				color: rgba($color-text, 0.5);
 				grid-area: meta;
 			}
+		}
+
+		.comment-box {
+			display: flex;
+			align-items: center;
+
+			:global(#comments) {
+				max-width: 720px;
+			}
+		}
+
+		.comments-disabled {
+			color: $color-orange;
+			opacity: 0.6;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			user-select: none;
 		}
 	}
 </style>

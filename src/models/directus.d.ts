@@ -23,6 +23,7 @@ export interface IDirectusProject {
 	link: string;
 	link_source: string;
 	full_description: string;
+	technologies: {skill: IDirectusSkill}[];
 	discontinued: boolean;
 }
 
@@ -57,6 +58,7 @@ export interface IDirectusArticle {
 	topics: {topic: IDirectusArticleTopic}[];
 	description: string;
 	content: string;
+	disable_comments: boolean;
 }
 
 export interface IDirectusArticleTopic {
