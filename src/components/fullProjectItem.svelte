@@ -15,7 +15,7 @@
 		<h3> { project.title } </h3>
 		<h4> { project.description } </h4>
 
-		<p>
+		<p class="gap">
 			{#each project.technologies as t}
 				<Label> { t.skill.name } </Label>
 			{/each}
@@ -61,6 +61,7 @@
 		img {
 			grid-area: image;
 			border-radius: $default-image-border-radius;
+			margin-top: 0.4rem;
 		}
 
 		.info {
@@ -81,6 +82,11 @@
 			h4 {
 				font-size: 1.15rem;
 				font-weight: normal;
+			}
+
+			p.gap {
+				display: flex;
+				gap: 6px;
 			}
 
 			.meta {

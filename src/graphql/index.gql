@@ -1,0 +1,38 @@
+query {
+	lmke_dev
+	lmke_skills(filter: { "hidden": { "neq": true } })
+	lmke_projects(filter: { "discontinued": { "neq": true } })
+	lmke_friends
+	lmke_article_topics {
+		name
+	}
+	lmke_articles(limit: 1, sort: ["-date_published", "-date_created"]) {
+		id
+		slug
+		date_created
+		date_updated
+		date_published
+		user_created {
+			first_name
+			last_name
+			avatar {
+				id
+			}
+		}
+		user_updated
+		preview_image {
+			id
+			source
+		}
+		wallpaper_image {
+			id
+			source
+		}
+		title
+		topics
+		description
+		content
+		disable_comments
+	}
+
+}

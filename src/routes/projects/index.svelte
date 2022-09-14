@@ -25,11 +25,11 @@
 
 	.limited-page {
 		@include limited-page;
-		gap: 36px;
 		margin-top: -2rem;
 
 		section {
 			width: initial;
+			gap: 2.2rem;
 
 			:global(.article-item) {
 				padding-left: 1.8rem;

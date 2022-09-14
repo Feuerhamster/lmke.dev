@@ -11,7 +11,8 @@
 	export let article: IDirectusArticle;
 
 	$: wallpaperId = article.wallpaper_image?.id ?? article.preview_image?.id;
-	$: formattedDate = new Date(article.date_updated ?? article.date_created).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
+	$: formattedPublishedDate = new Date(article.date_published ?? article.date_created).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
+	$: formattedUpdatedDate = new Date(article.date_updated).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit" });
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
 </script>
 
@@ -33,7 +34,7 @@
 		<img src={ getDirectusImageUrl(article.user_created.avatar.id, { quality: 70 }) } alt="user avatar" />
 		<p class="name"> { formattedAuthor } </p>
 		<p class="meta">
-			{ formattedDate }
+			<span> { formattedPublishedDate } </span>
 			{#each article.topics as topic}
 				<Label> { topic.topic.name } </Label>
 			{/each}
@@ -44,7 +45,24 @@
 		{@html article.content}
 	</article>
 
-	
+	<div class="article-meta">
+		<p>
+			<b>Zuletzt bearbeitet:</b>
+			<span> { formattedUpdatedDate } </span>
+		</p>
+		{#if article.preview_image?.source}
+			<p>
+				<b>Vorschaubild Quelle:</b>
+				<a href={article.preview_image.source} target="_blank" rel="noopener"> { article.preview_image.source } </a>
+			</p>
+		{/if}
+		{#if article.wallpaper_image?.source}
+			<p>
+				<b>Hintergrundbild Quelle:</b>
+				<a href={article.wallpaper_image.source} target="_blank" rel="noopener"> { article.wallpaper_image.source } </a>
+			</p>
+		{/if}
+	</div>
 
 	<div class="comment-box">
 
@@ -102,6 +120,9 @@
 			.meta {
 				color: rgba($color-text, 0.5);
 				grid-area: meta;
+				display: flex;
+				align-items: flex-start;
+				gap: 6px;
 			}
 		}
 
@@ -111,6 +132,16 @@
 
 			:global(#comments) {
 				max-width: 720px;
+			}
+		}
+
+		.article-meta {
+			gap: 6px;
+			font-size: 0.85rem;
+			color: rgba($color-text, 0.5);
+
+			a {
+				opacity: 0.8;
 			}
 		}
 

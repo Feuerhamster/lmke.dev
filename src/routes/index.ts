@@ -1,7 +1,9 @@
-import directus from "$lib/directus";
+import directus, { graphql } from "$lib/directus";
 import type { RequestHandler } from "@sveltejs/kit";
 
-export const get: RequestHandler = async () => {
+import IndexGQLQuery from "../graphql/index.gql?raw";
+
+/*export const get: RequestHandler = async () => {
 	let aboutMeReq = directus.items("lmke_dev").readByQuery();
 	let skillsReq = directus.items("lmke_skills").readByQuery({
 		filter: {
@@ -23,7 +25,7 @@ export const get: RequestHandler = async () => {
 	});
 	let newestArticleReq = directus.items("lmke_articles").readByQuery({
 		limit: 1,
-		sort: ["-date_updated"],
+		sort: ["-date_published", "-date_created"],
 		fields: [
 			"*",
 			"topics.topic.name",
@@ -45,6 +47,21 @@ export const get: RequestHandler = async () => {
 			friends: friendsRes.data,
 			articleTopics: articleTopicsRes.data,
 			newestArticle: newestArticleRes.data[0]
+		}
+	}
+}*/
+
+export const get: RequestHandler = async () => {
+	const data = await graphql(IndexGQLQuery);
+
+	return {
+		body: {
+			aboutMe: data.lmke_dev,
+			skills: data.lmke_skills,
+			projects: data.lmke_projects,
+			friends: data.lmke_friends,
+			articleTopics: data.lmke_article_topics,
+			newestArticle: data.lmke_articles[0]
 		}
 	}
 }

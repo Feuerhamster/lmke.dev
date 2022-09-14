@@ -3,7 +3,7 @@ import type { RequestHandler } from "@sveltejs/kit";
 
 export const get: RequestHandler = async () => {
 	let wallpapersRes = await directus.items("directus_files").readByQuery({
-		fields: ["id", "title", "description"],
+		fields: ["id", "source"],
 		filter: {
 			folder: {
 				_eq: process.env.DIRECTUS_WALLPAPER_DIR

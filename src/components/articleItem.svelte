@@ -6,13 +6,13 @@
 
 	export let article: IDirectusArticle;
 
-	$: formattedDate = new Date(article.date_updated ?? article.date_created).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
+	$: formattedDate = new Date(article.date_published ?? article.date_created).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
 </script>
 
 <a class="article-item" href="/blog/{ article.id }/{ article.slug }">
 
-	<img src={ getDirectusImageUrl(article.preview_image.id, { quality: 80, width: 200, height: 140, fit: "cover" }) } alt="preview" />
+	<img src={ getDirectusImageUrl(article.preview_image.id, { quality: 80, width: 210, height: 150, fit: "cover" }) } alt="preview" />
 
 	<div class="info">
 		<h3> { article.title } </h3>
@@ -22,7 +22,9 @@
 				<Label> { topic.topic.name } </Label>
 			{/each}
 
-			{ formattedDate } von { formattedAuthor }
+			<span>
+				{ formattedDate } von { formattedAuthor }
+			</span>
 		</p>
 	</div>
 
@@ -34,7 +36,7 @@
 
 	.article-item {
 		display: grid;
-		grid-template-columns: 200px 1fr;
+		grid-template-columns: 210px 1fr;
 		grid-template-areas: "image info";
 		gap: 18px;
 		text-decoration: none;
@@ -58,6 +60,8 @@
 
 			.meta {
 				color: rgba($color-text, 0.5);
+				display: flex;
+				gap: 6px;
 			}
 		}
 	}

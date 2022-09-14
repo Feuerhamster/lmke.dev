@@ -1,9 +1,9 @@
-import adapter from '@sveltejs/adapter-auto';
-import preprocess from 'svelte-preprocess';
+import adapter from "@sveltejs/adapter-auto";
+import preprocess from "svelte-preprocess";
 import { mdsvex } from "mdsvex"
-import mdsvexConfig from "./mdsvex.config.js"
+import mdsvexConfig from "./mdsvex.config.js";
 
-/** @type {import('@sveltejs/kit').Config} */
+/** @type {import("@sveltejs/kit").Config} */
 const config = {
 	extensions: [".svelte", ...mdsvexConfig.extensions],
 	
@@ -16,9 +16,9 @@ const config = {
 		
 		alias: {
 			$assets: "./src/assets",
-			$content: './src/content',
-			$components: './src/components',
-			$models: './src/models',
+			$content: "./src/content",
+			$components: "./src/components",
+			$models: "./src/models",
 			$lib: "./src/lib"
 		}
 	}

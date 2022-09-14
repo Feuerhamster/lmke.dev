@@ -1,9 +1,12 @@
 <script lang="ts" context="module">
 	import type { Load } from "@sveltejs/kit";
+	import ackee from "$lib/ackee";
 	
-	export const load: Load = async ({ fetch }) => {
-		let res = await fetch("/wallpaper")
+	export const load: Load = async ({ url, fetch }) => {
+		let res = await fetch("/wallpaper");
 		let data = await res.json();
+
+		ackee(url.pathname);
 
 		return {
 			props: {

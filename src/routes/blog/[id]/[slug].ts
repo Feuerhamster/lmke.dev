@@ -8,9 +8,9 @@ export const get: RequestHandler = async ({ params }) => {
 			"*",
 			"topics.topic.name",
 			"wallpaper_image.id",
-			"wallpaper_image.title",
+			"wallpaper_image.source",
 			"preview_image.id",
-			"preview_image.title",
+			"preview_image.source",
 			"user_created.*",
 			"user_created.avatar.id"
 		]

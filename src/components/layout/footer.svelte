@@ -8,7 +8,7 @@
 	</p>
 
 	<p>
-		<a href="https://unsplash.com/photos/{$currentWallpaper.title}" rel="noopener" target="_blank">Wallpaper</a> from <a href="https://unsplash.com" rel="noopener" target="_blank">Unsplash</a>
+		<a href={$currentWallpaper.source} rel="noopener" target="_blank">Wallpaper</a> from <a href="https://unsplash.com" rel="noopener" target="_blank">Unsplash</a>
 	</p>
 </footer>
 

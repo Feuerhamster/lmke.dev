@@ -47,9 +47,9 @@ export interface IDirectusPublicUser {
 export interface IDirectusArticle {
 	id: ID;
 	slug: string;
-	status: string;
 	date_created: string;
 	date_updated: string;
+	date_published: string;
 	user_created: IDirectusPublicUser;
 	user_updated: string;
 	preview_image: IDirectusImage;
@@ -68,8 +68,9 @@ export interface IDirectusArticleTopic {
 
 export interface IDirectusImage {
 	id: ID;
-	title: string;
-	description: string;
+	title?: string;
+	description?: string;
+	source?: string;
 }
 
 export type DirectusCollections = {

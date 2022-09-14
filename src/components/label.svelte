@@ -10,7 +10,6 @@
 		padding: 0px 6px;
 		border-radius: 5px;
 		display: inline-block;
-		margin-right: 6px;
 
 		&:last-child {
 			margin: 0;
