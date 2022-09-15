@@ -8,6 +8,11 @@
 
 	$: formattedDate = new Date(article.date_published ?? article.date_created).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
+
+	const timeFormatter = new Intl.RelativeTimeFormat("de");
+	const dateDiff = Date.now() - (new Date(article.date_published ?? article.date_created)).getTime();
+	const relativeTime = timeFormatter.format(Math.floor(-dateDiff / (1000*60*60*24)), "days");
+
 </script>
 
 <a class="article-item" href="/blog/{ article.id }/{ article.slug }">
@@ -23,7 +28,7 @@
 			{/each}
 
 			<span>
-				{ formattedDate } von { formattedAuthor }
+				{ formattedDate } ({ relativeTime }) von { formattedAuthor }
 			</span>
 		</p>
 	</div>

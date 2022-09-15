@@ -1,0 +1,6 @@
+query GetWallpapers($dir: String!) {
+	files(filter: { folder: { _eq: $dir } }) {
+		id
+		source
+	}
+}

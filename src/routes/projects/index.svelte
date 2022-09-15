@@ -3,9 +3,27 @@
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
 	import type { IDirectusProject } from "$models/directus";
+	import pageMeta from "$content/pageMeta";
 
 	export let projects: IDirectusProject[] = [];
+
+	const pageMetaModified = {
+		description: "Lena's Projekte.&#x0A;Websites, Apps, PWA's, Software und mehr.",
+		title: pageMeta.title + " - " + "Projekte"
+	}
 </script>
+
+<svelte:head>
+	<title>{ pageMetaModified.title }</title>
+	<meta name="description" content={ pageMetaModified.description } />
+	<meta property="og:title" content={ pageMetaModified.title } />
+	<meta property="og:description" content={ pageMetaModified.description } />
+	<meta property="og:image" content={ pageMeta.og_image }/>
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" content="de_DE" />
+	<meta property="og:site_name" content={ pageMeta.title } />
+</svelte:head>
+
 <Hero size="small">
 	<TitleFont>Meine Projekte</TitleFont>
 	<p>Websites, Apps, PWA's, Software und mehr</p>

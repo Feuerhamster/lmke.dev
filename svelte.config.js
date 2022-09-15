@@ -19,7 +19,8 @@ const config = {
 			$content: "./src/content",
 			$components: "./src/components",
 			$models: "./src/models",
-			$lib: "./src/lib"
+			$lib: "./src/lib",
+			$graphql: "./src/graphql"
 		}
 	}
 };

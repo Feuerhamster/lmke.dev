@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { getDirectusImageUrl } from "$lib/utils";
-	import type { ID } from "@directus/sdk";
+	import type { IDirectusImage } from "$models/directus";
 
 	import GitHubIcon from "lucide-icons-svelte/github.svelte"
 	import MailIcon from "lucide-icons-svelte/mail.svelte"
 	
-	export let image: ID;
+	export let image: IDirectusImage;
 	export let name: string;
 	export let subtitle: string;
 	export let github_link: string;
@@ -15,7 +15,7 @@
 </script>
 
 <div class="personal-card">
-	<img src={ getDirectusImageUrl(image, { quality: 90, width: 280, height: 280 }) } alt="myself" />
+	<img src={ getDirectusImageUrl(image.id, { quality: 90, width: 280, height: 280 }) } alt="myself" />
 	<div>
 		<h1>
 			<span>Hey, ich bin</span>

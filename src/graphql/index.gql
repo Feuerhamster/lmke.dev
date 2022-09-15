@@ -1,12 +1,42 @@
-query {
-	lmke_dev
-	lmke_skills(filter: { "hidden": { "neq": true } })
-	lmke_projects(filter: { "discontinued": { "neq": true } })
-	lmke_friends
+query GetAllIndexPageData {
+	lmke_dev {
+		picture {
+			id
+		}
+		name
+		subtitle
+		github_link
+		email
+		about_me
+	}
+
+	lmke_skills(filter: { hidden: { _neq: true } }) {
+		name
+	}
+
+	lmke_projects(filter: { discontinued: { _neq: true } }) {
+		logo {
+			id
+		}
+		title
+		description
+		link
+		link_source
+	}
+
+	lmke_friends {
+		name
+		activity
+		image_url
+		link_web
+		link_gh
+	}
+
 	lmke_article_topics {
 		name
 	}
-	lmke_articles(limit: 1, sort: ["-date_published", "-date_created"]) {
+	
+	lmke_articles(limit: 1, sort: ["-date_published"]) {
 		id
 		slug
 		date_created
@@ -19,7 +49,6 @@ query {
 				id
 			}
 		}
-		user_updated
 		preview_image {
 			id
 			source
@@ -29,10 +58,9 @@ query {
 			source
 		}
 		title
-		topics
+		topics {
+			topic { name }
+		}
 		description
-		content
-		disable_comments
 	}
-
 }

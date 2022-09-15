@@ -7,7 +7,7 @@ import { getDirectusImageUrl } from "$lib/utils";
 </script>
 
 <div class="project-item">
-	<img src={ getDirectusImageUrl(project.logo, { quality: 90, height: 90, width: 90 }) } alt="logo" />
+	<img src={ getDirectusImageUrl(project.logo.id, { quality: 90, height: 90, width: 90 }) } alt="logo" />
 
 	<div class="info">
 		<h3>

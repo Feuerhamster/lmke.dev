@@ -3,15 +3,33 @@
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
 	import type { IDirectusArticle, IDirectusArticleTopic } from "$models/directus";
-	import RSSIcon from "lucide-icons-svelte/rss.svelte"
+	import RSSIcon from "lucide-icons-svelte/rss.svelte";
+	import pageMeta from "$content/pageMeta";
 
 	export let articles: IDirectusArticle[] = [];
 	export let topics: IDirectusArticleTopic[];
 	export let page: number;
 	export let totalPages: number;
 
-	$: formattedTopics = topics.map((t) => t.name);
+	const formattedTopics = topics.map((t) => t.name);
+
+	const pageMetaModified = {
+		description: "Lena's persönlicher Blog.&#x0A;&#x0A;Themen: " + formattedTopics.join(", "),
+		title: pageMeta.title + " - " + "Blog"
+	}
 </script>
+
+<svelte:head>
+	<title>{ pageMetaModified.title }</title>
+	<meta name="description" content={ pageMetaModified.description } />
+	<meta property="og:title" content={ pageMetaModified.title } />
+	<meta property="og:description" content={ pageMetaModified.description } />
+	<meta property="og:image" content={ pageMeta.og_image }/>
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" content="de_DE" />
+	<meta property="og:site_name" content={ pageMeta.title } />
+</svelte:head>
+
 <Hero size="small">
 	<TitleFont>Mein persönlicher Blog</TitleFont>
 	<p class="topics">

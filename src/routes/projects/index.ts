@@ -1,18 +1,14 @@
-import directus from "$lib/directus";
 import type { RequestHandler } from "@sveltejs/kit";
+import GQLProjectsQuery from "$graphql/projects.gql?raw";
+import { graphql } from "$lib/directus";
 
 export const get: RequestHandler = async () => {
 
-	let projects = await directus.items("lmke_projects").readByQuery({
-		fields: [
-			"*",
-			"technologies.skill.name"
-		]
-	});
+	let data = await graphql(GQLProjectsQuery);
 
 	return {
 		body: {
-			projects: projects.data
+			projects: data.lmke_projects
 		}
 	}
 }

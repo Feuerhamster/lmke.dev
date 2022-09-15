@@ -1,8 +1,10 @@
 import type { ID } from "@directus/sdk";
 
+export type ID = string | number;
+
 export interface IDirectusAboutMe {
 	id: ID
-	picture: ID;
+	picture: IDirectusImage;
 	name: string;
 	subtitle: string;
 	github_link: string;
@@ -17,7 +19,7 @@ export interface IDirectusSkill {
 
 export interface IDirectusProject {
 	id: ID
-	logo: ID;
+	logo: IDirectusImage;
 	title: string;
 	description: string;
 	link: string;

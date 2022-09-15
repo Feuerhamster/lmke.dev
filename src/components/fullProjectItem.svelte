@@ -9,7 +9,7 @@
 
 <article class="full-project-item">
 
-	<img src={ getDirectusImageUrl(project.logo, { quality: 80, width: 120, height: 120, fit: "cover" }) } alt="logo" />
+	<img src={ getDirectusImageUrl(project.logo.id, { quality: 80, width: 120, height: 120, fit: "cover" }) } alt="logo" />
 
 	<div class="info">
 		<h3> { project.title } </h3>

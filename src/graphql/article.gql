@@ -1,0 +1,33 @@
+query GetFullArticleById($id: ID!) {
+	lmke_articles_by_id(
+		id: $id
+	) {
+		id
+		slug
+		date_created
+		date_updated
+		date_published
+		user_created {
+			first_name
+			last_name
+			avatar {
+				id
+			}
+		}
+		preview_image {
+			id
+			source
+		}
+		wallpaper_image {
+			id
+			source
+		}
+		title
+		topics {
+			topic { name }
+		}
+		description
+		content
+		disable_comments
+	}
+}

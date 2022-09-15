@@ -1,7 +1,8 @@
-import directus from "$lib/directus";
+import { graphql } from "$lib/directus";
 import type { IDirectusArticle } from "$models/directus";
 import type { RequestHandler } from "@sveltejs/kit";
 import { getDirectusImageUrl } from "$lib/utils";
+import GQLBlogQuery from "$graphql/blog.gql?raw";
 
 function generateFeed(articles: IDirectusArticle[]) {
 	const imageSettings = { quality: 70, width: 480, height: 270, format: "jpg", fit: "outside" };
@@ -22,7 +23,7 @@ function generateFeed(articles: IDirectusArticle[]) {
 						<link>https://lmke.dev/blog/${ article.slug }-${ article.id }</link>
 						<guid isPermaLink="true">https://lmke.dev/blog/${ article.slug }-${ article.id }</guid>
 						<author>${ article.user_created.first_name } ${ article.user_created.last_name }</author>
-						<pubDate>${new Date(article.date_updated ?? article.date_created).toUTCString()}</pubDate>
+						<pubDate>${new Date(article.date_published ?? article.date_created).toUTCString()}</pubDate>
 						<description>${ article.description }</description>
 						${
 							article.topics.map((topic) => `<category>${ topic.topic.name }</category>`)
@@ -36,26 +37,13 @@ function generateFeed(articles: IDirectusArticle[]) {
 }
 
 export const get: RequestHandler = async () => {
-	let latestArticles = await directus.items("lmke_articles").readByQuery({
-		limit: 20,
-		sort: ["-date_updated"],
-		fields: [
-			"*",
-			"topics.topic.name",
-			"wallpaper_image.id",
-			"wallpaper_image.title",
-			"preview_image.id",
-			"preview_image.title",
-			"user_created.*",
-			"user_created.avatar.id"
-		]
-	});
+	let data = await graphql(GQLBlogQuery, { limit: 18, page: 1 });
 
 	return {
 		headers: {
 			"Cache-Control": "max-age=0, s-maxage=3600",
 			"Content-Type": "application/xml",
 		},
-		body: generateFeed(latestArticles.data),
+		body: generateFeed(data.lmke_articles),
 	}
 }

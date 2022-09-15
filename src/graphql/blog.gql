@@ -1,0 +1,43 @@
+query GetFullBlogArticles($limit: Int!, $page: Int!) {
+	lmke_articles(
+		limit: $limit,
+		page: $page,
+		sort: ["-date_published"]
+	) {
+		id
+		slug
+		date_created
+		date_updated
+		date_published
+		user_created {
+			first_name
+			last_name
+			avatar {
+				id
+			}
+		}
+		preview_image {
+			id
+			source
+		}
+		wallpaper_image {
+			id
+			source
+		}
+		title
+		topics {
+			topic { name }
+		}
+		description
+	}
+
+	lmke_articles_aggregated {
+		count {
+			id
+		}
+	}
+
+	lmke_article_topics {
+		name
+	}
+}

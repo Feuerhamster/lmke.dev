@@ -28,7 +28,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@directus/sdk": "^10.1.4",
 		"@fontsource/atkinson-hyperlegible": "^4.5.7",
 		"@giscus/svelte": "^2.2.0",
 		"ackee-tracker": "^5.1.0",

@@ -5,6 +5,8 @@
 	import PersonalCard from "$components/personalCard.svelte";
 	import ProjectsCollection from "$components/projectsCollection.svelte";
 	import Skills from "$components/skillsCollection.svelte";
+	import pageMeta from "$content/pageMeta";
+    import { stripHtml } from "$lib/utils";
 	import type { IDirectusAboutMe, IDirectusArticle, IDirectusArticleTopic, IDirectusFriend, IDirectusProject, IDirectusSkill } from "$models/directus";
 
 	export let aboutMe: IDirectusAboutMe;
@@ -23,7 +25,20 @@
 		github_link: aboutMe.github_link,
 		email: aboutMe.email
 	}
+
+	const metaDescription = stripHtml(aboutMe.about_me);
 </script>
+
+<svelte:head>
+	<title>{ pageMeta.title }</title>
+	<meta name="description" content={ metaDescription } />
+	<meta property="og:title" content={ pageMeta.title } />
+	<meta property="og:description" content={ metaDescription } />
+	<meta property="og:image" content={ pageMeta.og_image }/>
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" content="de_DE" />
+	<meta property="og:site_name" content={ pageMeta.title } />
+</svelte:head>
 
 <Hero>
 	<PersonalCard {...personalCard} />

@@ -1,5 +1,6 @@
-import directus from "$lib/directus";
+import { graphql } from "$lib/directus";
 import type { RequestHandler } from "@sveltejs/kit";
+import GQLBlogQuery from "$graphql/blog.gql?raw";
 
 const limit = 12;
 
@@ -15,36 +16,16 @@ export const get: RequestHandler = async ({ url }) => {
 
 	const page = pageFromQuery ? parseInt(pageFromQuery) : 1;
 
-	let articlesReq = directus.items("lmke_articles").readByQuery({
-		limit,
-		page,
-		meta: "*",
-		sort: ["-date_published", "-date_created"],
-		fields: [
-			"*",
-			"topics.topic.name",
-			"wallpaper_image.id",
-			"wallpaper_image.title",
-			"preview_image.id",
-			"preview_image.title",
-			"user_created.*",
-			"user_created.avatar.id"
-		]
-	});
+	let data = await graphql(GQLBlogQuery, { limit, page });
 
-	let articleTopicsReq = directus.items("lmke_article_topics").readByQuery({
-		fields: ["name"]
-	});
-
-	let results = await Promise.all([articlesReq, articleTopicsReq]);
-	let [articles, topics] = results;
+	const articleCount = data.lmke_articles_aggregated[0].count.id;
 
 	return {
 		body: {
-			articles: articles.data,
-			topics: topics.data,
+			articles: data.lmke_articles,
+			topics: data.lmke_article_topics,
 			page,
-			totalPages: Math.ceil(articles.meta.filter_count / limit)
+			totalPages: Math.ceil(articleCount / limit)
 		}
 	}
 }

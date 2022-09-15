@@ -4,7 +4,7 @@ import * as ackeeTracker from "ackee-tracker";
 let instance: ackeeTracker.AckeeInstance;
 
 async function onNavigate(path: string) {
-	if (browser) {
+	if (browser && import.meta.env.VITE_ACKEE_SERVER) {
 		const detailed: boolean = import.meta.env.VITE_ACKEE_DETAILED === "true" ?? false;
 
 		if (!instance) {

@@ -1,16 +1,10 @@
-import type { DirectusCollections } from "$models/directus";
-import { Directus, type ID } from "@directus/sdk";
-
 import "dotenv/config";
 
-const directus = new Directus<DirectusCollections>(process.env.DIRECTUS_URL);
-await directus.auth.static(process.env.DIRECTUS_TOKEN);
-
-export default directus;
-
-export async function graphql(query: string, variables?: object) {
+export async function graphql(query: string, variables?: object, system?: boolean) {
 	try {
-		let res = await fetch(process.env.DIRECTUS_URL + "/graphql", {
+		let path = `/graphql${ system ? "/system" : "" }`;
+
+		let res = await fetch(new URL(path, process.env.DIRECTUS_URL), {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -21,7 +15,13 @@ export async function graphql(query: string, variables?: object) {
 			})
 		});
 
-		return res.json();
+		let body = (await res.json());
+		
+		if(body.errors) {
+			throw body.errors;
+		}
+
+		return body.data;
 	} catch(e) {
 		throw e;
 	}

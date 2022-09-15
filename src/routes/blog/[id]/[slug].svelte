@@ -2,6 +2,7 @@
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
 	import Giscus from "@giscus/svelte";
+	import pageMeta from "$content/pageMeta";
 
 	import type { IDirectusArticle } from "$models/directus";
 	import { getDirectusImageUrl } from "$lib/utils";
@@ -22,11 +23,20 @@
 </Hero>
 
 <svelte:head>
-	<title> { article.title } - lmke.dev/Blog</title>
+	<title> { article.title } - { pageMeta.title }</title>
 	<meta name="description" content={ article.description } />
 	<meta property="og:title" content={ article.title } />
 	<meta property="og:description" content={ article.description } />
-	<meta property="og:image" content={ getDirectusImageUrl(article.preview_image.id, { quality: 80, width: 200, height: 140, fit: "cover" }) }/>
+	<meta property="og:image" content={ getDirectusImageUrl(article.preview_image.id, { quality: 80, width: 1280, height: 720, fit: "cover" }) }/>
+	<meta property="og:type" content="article" />
+	<meta property="og:locale" content="de_DE" />
+	<meta property="og:site_name" content={ pageMeta.title } />
+	<meta property="article:published_time" content={ new Date(article.date_published).toISOString() } />
+	<meta property="article:modified_time" content={ new Date(article.date_updated).toISOString() } />
+	<meta property="article:author" content={ $page.url.href } />
+	{#each article.topics as topic}
+		<meta property="article:tag" content={ topic.topic.name } />
+	{/each}
 </svelte:head>
 
 <div class="limited-page">
