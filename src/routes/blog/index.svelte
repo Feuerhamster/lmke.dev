@@ -73,10 +73,6 @@
 		section {
 			width: initial;
 
-			:global(.article-item) {
-				padding-left: 1.8rem;
-			}
-
 			a[data-disabled="true"] {
 				pointer-events: none;
 				color: $color-text;

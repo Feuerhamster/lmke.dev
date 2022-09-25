@@ -8,13 +8,16 @@
 	import { getDirectusImageUrl } from "$lib/utils";
 	import { page } from "$app/stores";
 	import Label from "$components/label.svelte";
+	import Duration from "duration-relativetimeformat";
 
 	export let article: IDirectusArticle;
 
 	$: wallpaperId = article.wallpaper_image?.id ?? article.preview_image?.id;
-	$: formattedPublishedDate = new Date(article.date_published ?? article.date_created).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
+	$: formattedPublishedDate = new Date(article.date_published).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
 	$: formattedUpdatedDate = new Date(article.date_updated).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit" });
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
+	const relativeTime = new Duration("de", { numeric: "always" }).format(new Date(article.date_published));
+	const relativeTimeUpdated = new Duration("de", { numeric: "always" }).format(new Date(article.date_updated));
 </script>
 
 <Hero wallpaper={ getDirectusImageUrl(wallpaperId, { quality: 70 }) } size="big">
@@ -44,7 +47,7 @@
 		<img src={ getDirectusImageUrl(article.user_created.avatar.id, { quality: 70 }) } alt="user avatar" />
 		<p class="name"> { formattedAuthor } </p>
 		<p class="meta">
-			<span> { formattedPublishedDate } </span>
+			<span> { formattedPublishedDate } ({ relativeTime }) </span>
 			{#each article.topics as topic}
 				<Label> { topic.topic.name } </Label>
 			{/each}
@@ -58,7 +61,7 @@
 	<div class="article-meta">
 		<p>
 			<b>Zuletzt bearbeitet:</b>
-			<span> { formattedUpdatedDate } </span>
+			<span> { formattedUpdatedDate } ({ relativeTimeUpdated }) </span>
 		</p>
 		{#if article.preview_image?.source}
 			<p>
@@ -131,6 +134,7 @@
 				color: rgba($color-text, 0.5);
 				grid-area: meta;
 				display: flex;
+				flex-wrap: wrap;
 				align-items: flex-start;
 				gap: 6px;
 			}

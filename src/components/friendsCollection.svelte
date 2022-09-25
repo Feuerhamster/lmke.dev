@@ -21,5 +21,6 @@
 		justify-content: space-between;
 		gap: 24px;
 		grid-template-columns: 1fr 1fr 1fr;
+		flex-wrap: wrap;
 	}
 </style>

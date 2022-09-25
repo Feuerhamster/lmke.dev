@@ -14,10 +14,12 @@
 
 <style lang="scss">
 	@import "../../scss/defaults";
+	@import "../../scss/mixins";
 
 	footer {
 		display: flex;
 		justify-content: space-around;
+		gap: 12px;
 
 		background-color: rgba(0, 0, 0, 0.3);
 		padding: 12px;
@@ -27,6 +29,11 @@
 
 		a {
 			color: inherit;
+		}
+
+		@include media-mobile() {
+			flex-wrap: wrap;
+			justify-content: center;
 		}
 	}
 </style>

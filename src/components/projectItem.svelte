@@ -49,6 +49,7 @@ import { getDirectusImageUrl } from "$lib/utils";
 			"image info"
 			"links links";
 		justify-items: stretch;
+		max-width: 370px;
 
 		img {
 			border-radius: $default-image-border-radius;

@@ -109,6 +109,10 @@
 		h2 {
 			font-size: 1.7rem;
 
+			@include media-mobile() {
+				font-size: 1.5rem;
+			}
+
 			span {
 				&.orange {
 					color: $color-orange;
@@ -128,6 +132,10 @@
 		section {
 			& > :global(*:not(h2):not(section)) {
 				padding-left: 1.9rem;
+
+				@include media-mobile() {
+					padding-left: 0.2rem;
+				}
 			}
 		}
 

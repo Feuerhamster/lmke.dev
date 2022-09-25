@@ -48,7 +48,8 @@
 
 
 <style lang="scss">
-	@import "../scss/defaults.scss";
+	@import "../scss/defaults";
+	@import "../scss/mixins";
 
 	.full-project-item {
 		display: grid;
@@ -57,6 +58,13 @@
 		gap: 24px;
 		text-decoration: none;
 		color: $color-text;
+
+		@include media-mobile() {
+			grid-template-columns: 1fr;
+			grid-template-areas: 
+			"image"
+			"info";
+		}
 
 		img {
 			grid-area: image;
@@ -86,6 +94,7 @@
 
 			p.gap {
 				display: flex;
+				flex-wrap: wrap;
 				gap: 6px;
 			}
 

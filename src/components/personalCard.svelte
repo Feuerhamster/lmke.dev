@@ -44,6 +44,7 @@
 		img {
 			border-radius: $default-image-border-radius;
 			height: 280px;
+			width: 280px;
 			box-shadow: $default-image-box-shadow;
 		}
 		
@@ -52,13 +53,22 @@
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 20px;
+
+			@include media-mobile() {
+				align-items: center;
+			}
 			
 			h1 {
 				display: flex;
 				flex-direction: column;
 				font-weight: normal;
 				font-size: 1rem;
+				text-align: left;
 				gap: 5px;
+
+				@include media-mobile() {
+					text-align: center;
+				}
 				
 				b {
 					font-size: 1.5rem;
@@ -90,6 +100,11 @@
 				}
 			}
 			
+		}
+
+		@include media-mobile() {
+			flex-direction: column;
+			align-items: center;
 		}
 	}
 </style>

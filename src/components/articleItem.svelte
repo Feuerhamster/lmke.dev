@@ -1,23 +1,21 @@
 <script lang="ts">
 	import { getDirectusImageUrl } from "$lib/utils";
+	import Duration from "duration-relativetimeformat";
 
 	import type { IDirectusArticle } from "$models/directus";
 	import Label from "./label.svelte";
 
 	export let article: IDirectusArticle;
 
-	$: formattedDate = new Date(article.date_published ?? article.date_created).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
+	$: formattedDate = new Date(article.date_published).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
 
-	const timeFormatter = new Intl.RelativeTimeFormat("de");
-	const dateDiff = Date.now() - (new Date(article.date_published ?? article.date_created)).getTime();
-	const relativeTime = timeFormatter.format(Math.floor(-dateDiff / (1000*60*60*24)), "days");
-
+	const relativeTime = new Duration("de", { numeric: "always" }).format(new Date(article.date_published));
 </script>
 
 <a class="article-item" href="/blog/{ article.id }/{ article.slug }">
 
-	<img src={ getDirectusImageUrl(article.preview_image.id, { quality: 80, width: 210, height: 150, fit: "cover" }) } alt="preview" />
+	<img src={ getDirectusImageUrl(article.preview_image.id, { quality: 80, width: 420, height: 300, fit: "cover" }) } alt="preview" />
 
 	<div class="info">
 		<h3> { article.title } </h3>
@@ -37,7 +35,8 @@
 
 
 <style lang="scss">
-	@import "../scss/defaults.scss";
+	@import "../scss/defaults";
+	@import "../scss/mixins";
 
 	.article-item {
 		display: grid;
@@ -66,8 +65,16 @@
 			.meta {
 				color: rgba($color-text, 0.5);
 				display: flex;
+				flex-wrap: wrap;
 				gap: 6px;
 			}
+		}
+
+		@include media-mobile() {
+			grid-template-columns: 1fr;
+			grid-template-areas:
+			"image"
+			"info";
 		}
 	}
 </style>

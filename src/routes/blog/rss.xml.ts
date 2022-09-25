@@ -23,7 +23,7 @@ function generateFeed(articles: IDirectusArticle[]) {
 						<link>https://lmke.dev/blog/${ article.slug }-${ article.id }</link>
 						<guid isPermaLink="true">https://lmke.dev/blog/${ article.slug }-${ article.id }</guid>
 						<author>${ article.user_created.first_name } ${ article.user_created.last_name }</author>
-						<pubDate>${new Date(article.date_published ?? article.date_created).toUTCString()}</pubDate>
+						<pubDate>${new Date(article.date_published).toUTCString()}</pubDate>
 						<description>${ article.description }</description>
 						${
 							article.topics.map((topic) => `<category>${ topic.topic.name }</category>`)

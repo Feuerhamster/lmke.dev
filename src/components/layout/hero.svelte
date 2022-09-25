@@ -13,6 +13,8 @@
 </div>
 
 <style lang="scss">
+	@import "../../scss/mixins.scss";
+
 	.hero {
 		padding: 10rem 2rem 8rem 10rem;
 
@@ -67,6 +69,22 @@
 		:global(p) {
 			max-width: 1200px;
 			text-align: center;
+		}
+
+		:global(h1) {
+			text-align: center;
+		}
+
+		@include media-mobile() {
+			padding: 6rem 1rem 6rem 1rem;
+
+			&.big {
+				padding: 8rem 1rem 8rem 1rem;
+			}
+
+			&.small {
+				padding: 6rem 1rem 6rem 1rem;
+			}
 		}
 	}
 </style>

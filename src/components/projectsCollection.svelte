@@ -17,9 +17,9 @@
 	@import "../scss/defaults";
 
 	.projects-collection {
-		display: grid;
+		display: flex;
 		column-gap: 24px;
 		row-gap: 36px;
-		grid-template-columns: 1fr 1fr 1fr;
+		flex-wrap: wrap;
 	}
 </style>

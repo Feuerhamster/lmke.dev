@@ -5,6 +5,6 @@ export function getDirectusImageUrl(id: ID, options: {[key: string]: number|stri
 	return new URL(`/assets/${id}.jpg${params.length > 0 ? "?" : ""}${params}`, import.meta.env.VITE_DIRECTUS_URL_PUBLIC).href;
 }
 
-export function stripHtml(html: string) {
+export function stripHtml(html: string): string {
 	return html.replace(/(<([^>]+)>)/gi, "");
 }

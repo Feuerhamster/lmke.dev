@@ -99,6 +99,12 @@ main {
 	font-size: 21px;
 }
 
+@media only screen and (max-width: 720px) {
+	main {
+		font-size: 18px;
+	}
+}
+
 main .pagination-loader-container {
 	background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg");
 }

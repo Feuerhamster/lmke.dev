@@ -57,13 +57,14 @@
 <style lang="scss">
 	@import "../scss/reset";
 	@import "../scss/defaults";
-	
-	:global * {
-		box-sizing: border-box;
-	}
+	@import "../scss/mixins";
 
 	:global(html) {
 		font-size: $default-font-size;
+
+		@include media-mobile() {
+			font-size: $default-font-size-mobile;
+		}
 	}
 	
 	:global(body) {
@@ -76,6 +77,10 @@
 		color: $color-text;
 		font-size: $default-font-size;
 		letter-spacing: 1px;
+
+		@include media-mobile() {
+			font-size: $default-font-size-mobile;
+		}
 	}
 
 	.app {
