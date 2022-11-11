@@ -4,7 +4,7 @@
 	export let skill: IDirectusSkill;
 </script>
 
-<span class="skill level-{skill.level}">
+<span class="skill">
 	{ skill.name }
 </span>
 

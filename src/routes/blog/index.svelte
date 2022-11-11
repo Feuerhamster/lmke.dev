@@ -28,6 +28,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="de_DE" />
 	<meta property="og:site_name" content={ pageMeta.title } />
+	<meta name="robots" content="noindex">
 </svelte:head>
 
 <Hero size="small">
@@ -39,6 +40,11 @@
 
 <div class="limited-page">
 	<section>
+
+		{#if articles.length < 1}
+			<h3>Keine Artikel vorhanden</h3>
+		{/if}
+
 		{#each articles as article}
 			<ArticleItem {article} />
 		{/each}

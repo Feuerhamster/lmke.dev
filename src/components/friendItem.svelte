@@ -30,35 +30,44 @@
 
 <style lang="scss">
 	@import "../scss/defaults";
+	@import "../scss/mixins";
 
 	.friend-item {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 12px;
+		display: grid;
+		row-gap: 6px;
+		column-gap: 18px;
+
+		grid-template-columns: 1fr;
+		grid-template-rows: 180px;
+		justify-items: center;
+
+
+		grid-template-areas:
+				"image"
+				"name"
+				"activity"
+				"links";
 
 		img {
 			border-radius: $default-image-border-radius;
 			max-height: 180px;
+			grid-area: image;
 		}
 
 		h3 {
 			display: flex;
 			font-size: 1.2rem;
+			grid-area: name;
 		}
 
 		p {
 			font-size: 0.85rem;
-		}
-
-		.info {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
+			grid-area: activity;
 		}
 
 		.links {
 			display: flex;
+			grid-area: links;
 			gap: 8px;
 			
 			a {
@@ -67,6 +76,16 @@
 				color: $color-text;
 				font-size: 0.85rem;
 			}
+		}
+
+		@include media-mobile() {
+			grid-template-rows: auto;
+			grid-template-columns: 120px 1fr;
+			justify-items: start;
+			grid-template-areas:
+			"image name"
+			"image activity"
+			"image links";
 		}
 	}
 </style>

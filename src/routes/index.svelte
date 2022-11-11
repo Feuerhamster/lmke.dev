@@ -82,20 +82,21 @@
 		<FriendsCollection { friends } />
 	</section>
 
-	<section>
-		<h2>
-			<span class="pink">»</span>
-			Mein persönlicher Blog
-		</h2>
-		<p>
-			{@html formattedTopics.join(`<span class="spacer"> | </span>`) }
-		</p>
-		{#if newestArticle}
+	{#if newestArticle}
+		<section>
+			<h2>
+				<span class="pink">»</span>
+				Mein persönlicher Blog
+			</h2>
+			<p>
+				{@html formattedTopics.join(`<span class="spacer"> | </span>`) }
+			</p>
+				
 			<ArticleItem article={ newestArticle } />
-		{/if}
-
-		<a href="/blog" class="sublink">Mehr Blogartikel ansehen</a>
-	</section>
+			
+			<a href="/blog" class="sublink">Mehr Blogartikel ansehen</a>
+		</section>
+	{/if}
 </div>
 
 <style lang="scss">
@@ -105,6 +106,10 @@
 	.limited-page {
 		@include limited-page;
 		gap: 120px;
+
+		@include media-mobile() {
+			gap: 60px;
+		}
 
 		h2 {
 			font-size: 1.7rem;

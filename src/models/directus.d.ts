@@ -61,6 +61,7 @@ export interface IDirectusArticle {
 	description: string;
 	content: string;
 	disable_comments: boolean;
+	noindex?: boolean;
 }
 
 export interface IDirectusArticleTopic {
@@ -73,12 +74,4 @@ export interface IDirectusImage {
 	title?: string;
 	description?: string;
 	source?: string;
-}
-
-export type DirectusCollections = {
-	lmke_dev: IDirectusAboutMe;
-	skills: IDirectusSkill;
-	lmke_projects: IDirectusProject;
-	friends: IDirectusFriend;
-	lmke_articles: IDirectusArticle;
 }

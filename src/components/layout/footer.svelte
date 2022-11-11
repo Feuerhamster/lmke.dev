@@ -5,6 +5,7 @@
 <footer>
 	<p>
 		© { new Date().getFullYear() } Lena Emme
+		<a href="/legal">Rechtliches</a>
 	</p>
 
 	<p>

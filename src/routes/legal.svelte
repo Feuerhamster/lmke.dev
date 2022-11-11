@@ -1,15 +1,13 @@
 <script lang="ts">
-	import FullProjectItem from "$components/fullProjectItem.svelte";
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
-	import type { IDirectusProject } from "$models/directus";
 	import pageMeta from "$content/pageMeta";
 
-	export let projects: IDirectusProject[] = [];
+	export let legal: string;
 
 	const pageMetaModified = {
-		description: "Lena's Projekte.&#x0A;Websites, Apps, PWA's, Software und mehr.",
-		title: pageMeta.title + " - " + "Projekte"
+		description: "Impressum und Datenschutz",
+		title: pageMeta.title + " - " + "Rechtliches"
 	}
 </script>
 
@@ -18,7 +16,6 @@
 	<meta name="description" content={ pageMetaModified.description } />
 	<meta property="og:title" content={ pageMetaModified.title } />
 	<meta property="og:description" content={ pageMetaModified.description } />
-	<meta property="og:image" content={ pageMeta.og_image }/>
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="de_DE" />
 	<meta property="og:site_name" content={ pageMeta.title } />
@@ -26,32 +23,35 @@
 </svelte:head>
 
 <Hero size="small">
-	<TitleFont>Meine Projekte</TitleFont>
-	<p>Websites, Apps, PWA's, Software und mehr</p>
+	<TitleFont>Rechtliches</TitleFont>
+	<p class="topics">
+		Impressum und Datenschutz
+	</p>
 </Hero>
 
 <div class="limited-page">
 	<section>
-		{#each projects as project}
-			<FullProjectItem {project} />
-		{/each}
+		{@html legal}
 	</section>
 </div>
 
 <style lang="scss">
-	@import "../../scss/defaults.scss";
-	@import "../../scss/mixins.scss";
+	@import "../scss/defaults.scss";
+	@import "../scss/mixins.scss";
 
 	.limited-page {
 		@include limited-page;
+		gap: 24px;
 		margin-top: -2rem;
 
 		section {
-			gap: 2.2rem;
-
-			:global(.article-item) {
-				padding-left: 1.8rem;
+			:global {
+				@include formatted-content;
 			}
+
+			width: 100%;
+			max-width: 800px;
+			gap: 24px;
 		}
 	}
 </style>

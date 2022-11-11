@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $color-background: #1A1831;
 $color-text: white;
 
@@ -9,6 +11,8 @@ $color-orange: #E48553;
 $color-background-transparency: rgba(0, 0, 0, .15);
 
 $default-text-shadow: 1px 1px 6px rgba(0, 0, 0, .25);
+
+$color-text-accent: color.change($color-text, $alpha: 0.6);
 
 $default-font-size: 21px;
 $default-font-size-mobile: 18px;

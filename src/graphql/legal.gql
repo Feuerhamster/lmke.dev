@@ -1,0 +1,5 @@
+query GetLegalPageData {
+	lmke_dev {
+		legal
+	}
+}

@@ -5,7 +5,8 @@
 
 	let pageMapping = {
 		blog: "Blog",
-		projects: "Projekte"
+		projects: "Projekte",
+		legal: "Rechtliches"
 	};
 
 	$: currentPath = $page.url.pathname.substring(1).split("/")[0];
@@ -17,7 +18,10 @@
 
 <div class="navbar">
 	<h1>
-		<b>lmke</b>.dev
+		<a href="/">
+			<b>lmke</b>.dev
+		</a>
+		
 		<span class="absolute">
 			{#if pageMapping[currentPath]}
 				<span class="slash">/</span>
@@ -25,6 +29,10 @@
 			{/if}
 		</span>
 	</h1>
+	<!--
+		Div.navbar muss in mobile expanden wenn das menü aufgeklappt ist. Nav kein pos absolute und kein filter.
+		Wenn mobile: Von flex auf grid
+	-->
 	<nav on:click={ toggleNav } class:expand>
 		<NavLink href="/">Über mich</NavLink>
 		<NavLink href="/projects">Projekte</NavLink>
@@ -42,6 +50,7 @@
 	.navbar {
 		background: $color-background-transparency;
 		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
 		/* Force hardware acceleration */
 		transform: translate3d(0, 0, 0);
 		
@@ -63,6 +72,11 @@
 			letter-spacing: 2px;
 			font-weight: normal;
 			position: relative;
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
 
 			.absolute {
 				position: absolute;
@@ -98,20 +112,25 @@
 		}
 
 		@include media-mobile() {
-			justify-content: space-between;
+			display: grid;
+			grid-template-columns: 1fr;
+
+			grid-template-areas:
+				"title toggle"
+				"nav nav";
+
+			h1 {
+				grid-area: title;
+			}
 
 			nav {
-				background: $color-background-transparency;
-				backdrop-filter: blur(12px);
-				/* Force hardware acceleration */
-				transform: translate3d(0, 0, 0);
 				display: none;
-				flex-direction: column;
-				position: absolute;
+				justify-content: center;
 				top: 56.5px;
 				left: 0;
 				width: 100%;
 				padding: 18px 0;
+				grid-area: nav;
 
 				&.expand {
 					display: flex;
@@ -120,7 +139,14 @@
 
 			button {
 				display: flex;
+				grid-area: toggle;
 			}
+		}
+	}
+
+	@supports not (backdrop-filter: blur(12px)) {
+		.navbar {
+			background: $color-background;
 		}
 	}
 </style>

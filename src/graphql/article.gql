@@ -29,5 +29,6 @@ query GetFullArticleById($id: ID!) {
 		description
 		content
 		disable_comments
+		noindex
 	}
 }

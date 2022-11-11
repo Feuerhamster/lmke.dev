@@ -5,6 +5,13 @@
 declare namespace App {
 	// interface Locals {}
 	// interface Platform {}
-	// interface Session {}
+	interface Session {
+		directus_url_public: string;
+		og_image: string;
+
+		ackee_server: string;
+		ackee_domainId: string;
+		ackee_detailed: boolean;
+	}
 	// interface Stuff {}
 }

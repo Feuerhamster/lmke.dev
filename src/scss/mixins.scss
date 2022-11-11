@@ -32,6 +32,69 @@
 		flex-wrap: wrap;
 		flex-direction: column;
 		gap: 36px;
+		word-break: break-word;
+	}
+}
+
+@mixin formatted-content {
+	display: flex;
+	gap: 0;
+
+	h1, h2 {
+		margin-bottom: 1rem;
+	}
+
+	h2 {
+		border-bottom: 2px solid rgba($color-text, 0.08);
+		padding-bottom: 0.2rem;
+	}
+
+	h3 {
+		margin-bottom: 0.6rem;
+	}
+
+	h2, h3 {
+		margin-top: 0.4rem;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	p {
+		margin-bottom: 1rem;
+		padding-left: 0.4rem;
+	}
+
+	ul, ol {
+		margin: 0;
+		margin-bottom: 1rem;
+	}
+
+	blockquote {
+		color: $color-text-accent;
+		background-color: $color-background-transparency;
+		padding: 0.6rem 1.6rem;
+		margin-bottom: 1rem;
+		margin-left: 0.4rem;
+		position: relative;
+		border-radius: 6px;
+
+		p {
+			margin: 0;
+		}
+
+		&:before {
+			content: "“";
+			position: absolute;
+			left: 8px;
+			top: 1.2rem;
+			color: $color-orange;
+			font-size: 4rem;
+			font-family: sans-serif;
+			line-height: 1.6rem;
+		}
+		
 	}
 }
 

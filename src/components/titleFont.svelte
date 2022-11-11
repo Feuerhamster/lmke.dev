@@ -13,7 +13,8 @@
 		text-shadow: $default-text-shadow;
 
 		@include media-mobile() {
-			font-size: 2rem;
+			letter-spacing: 2px;
+			font-size: 1.6rem;
 		}
 	}
 </style>

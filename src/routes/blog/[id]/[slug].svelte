@@ -13,6 +13,7 @@
 	export let article: IDirectusArticle;
 
 	$: wallpaperId = article.wallpaper_image?.id ?? article.preview_image?.id;
+	$: hasWallpaperImage = !!article.wallpaper_image?.id
 	$: formattedPublishedDate = new Date(article.date_published).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
 	$: formattedUpdatedDate = new Date(article.date_updated).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit" });
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
@@ -20,13 +21,13 @@
 	const relativeTimeUpdated = new Duration("de", { numeric: "always" }).format(new Date(article.date_updated));
 </script>
 
-<Hero wallpaper={ getDirectusImageUrl(wallpaperId, { quality: 70 }) } size="big">
+<Hero wallpaper={ hasWallpaperImage ? getDirectusImageUrl(wallpaperId, { quality: 70 }) : null } size={ hasWallpaperImage ? "big" : null }>
 	<TitleFont> { article.title } </TitleFont>
 	<p> { article.description } </p>
 </Hero>
 
 <svelte:head>
-	<title> { article.title } - { pageMeta.title }</title>
+	<title>{ article.title } - { pageMeta.title }</title>
 	<meta name="description" content={ article.description } />
 	<meta property="og:title" content={ article.title } />
 	<meta property="og:description" content={ article.description } />
@@ -40,6 +41,10 @@
 	{#each article.topics as topic}
 		<meta property="article:tag" content={ topic.topic.name } />
 	{/each}
+
+	{#if article.noindex}
+		<meta name="robots" content="noindex">
+	{/if}
 </svelte:head>
 
 <div class="limited-page">
@@ -140,6 +145,12 @@
 			}
 		}
 
+		article {
+			:global {
+				@include formatted-content;
+			}
+		}
+
 		.comment-box {
 			display: flex;
 			align-items: center;
@@ -152,7 +163,7 @@
 		.article-meta {
 			gap: 6px;
 			font-size: 0.85rem;
-			color: rgba($color-text, 0.5);
+			color: $color-text-accent;
 
 			a {
 				opacity: 0.8;
@@ -167,5 +178,9 @@
 			gap: 6px;
 			user-select: none;
 		}
+	}
+
+	:global(.hero h1) {
+		font-size: 2rem;
 	}
 </style>

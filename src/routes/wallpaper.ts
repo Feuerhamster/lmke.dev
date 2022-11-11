@@ -2,9 +2,11 @@ import { graphql } from "$lib/directus";
 import type { RequestHandler } from "@sveltejs/kit";
 import GQLWallpaperQuery from "$graphql/wallpaper.gql?raw";
 
+import "dotenv/config";
+
 export const get: RequestHandler = async () => {
 
-	let data = await graphql(GQLWallpaperQuery, { dir: process.env.DIRECTUS_WALLPAPER_DIR }, true);
+	let data = await graphql(GQLWallpaperQuery, { dir: process.env["DIRECTUS_WALLPAPER_DIR"] }, true);
 
 	let wallpapers = data.files;
 

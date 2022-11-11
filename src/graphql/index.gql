@@ -14,7 +14,7 @@ query GetAllIndexPageData {
 		name
 	}
 
-	lmke_projects(filter: { discontinued: { _neq: true } }) {
+	lmke_projects(filter: { discontinued: { _neq: true } }, limit: 3) {
 		logo {
 			id
 		}
