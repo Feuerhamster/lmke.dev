@@ -14,6 +14,9 @@ export const get: RequestHandler = async () => {
 	let index = Math.floor(Math.random() * wallpapers.length);
 
 	return {
+		headers: {
+			"Cache-Control": "no-cache"
+		},
 		body: {
 			wallpaper: wallpapers[index]
 		}
