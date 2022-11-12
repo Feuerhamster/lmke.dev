@@ -29,13 +29,13 @@
 		
 		{#if project.link}
 			<p>
-				Link: <a href={ project.link }> { new URL(project.link).hostname } </a>
+				Link: <a href={ project.link } target="_blank" rel="noopener"> { new URL(project.link).hostname } </a>
 			</p>
 		{/if}
 
 		{#if project.link_source}
 			<p>
-				GitHub: <a href={ project.link_source }> { new URL(project.link_source).pathname.substring(1) } </a>
+				GitHub: <a href={ project.link_source } target="_blank" rel="noopener"> { new URL(project.link_source).pathname.substring(1) } </a>
 			</p>
 		{/if}
 

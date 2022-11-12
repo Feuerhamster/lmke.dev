@@ -23,7 +23,7 @@
 			<span>{ subtitle }</span>
 		</h1>
 		
-		<a href={ github_link} target="_blank">
+		<a href={ github_link} target="_blank" rel="noopener">
 			<GitHubIcon /> { github_name }
 		</a>
 		<a href={ "mailto:" + email }>

@@ -20,12 +20,14 @@ export const get: RequestHandler = async ({ url }) => {
 
 	const articleCount = data.lmke_articles_aggregated[0].count.id;
 
+	let totalPages = Math.ceil(articleCount / limit);
+
 	return {
 		body: {
 			articles: data.lmke_articles,
 			topics: data.lmke_article_topics,
 			page,
-			totalPages: Math.ceil(articleCount / limit)
+			totalPages: totalPages < 1 ? 1 : totalPages
 		}
 	}
 }

@@ -21,13 +21,13 @@ import { getDirectusImageUrl } from "$lib/utils";
 
 	<div class="links">
 		{#if project.link}
-			<a href={ project.link } target="_blank">
+			<a href={ project.link } target="_blank" rel="noopener">
 				{ new URL(project.link).hostname }
 			</a>
 		{/if}
 
 		{#if project.link_source}
-			<a href={ project.link_source } target="_blank">Quellcode</a>
+			<a href={ project.link_source } target="_blank" rel="noopener">Quellcode</a>
 		{/if}
 
 		{#if project.discontinued}

@@ -17,13 +17,13 @@
 
 	<div class="links">
 		{#if friend.link_web}
-			<a href={ friend.link_web } target="_blank">
+			<a href={ friend.link_web } target="_blank" rel="noopener">
 				{ new URL(friend.link_web).hostname }
 			</a>
 		{/if}
 
 		{#if friend.link_gh}
-			<a href={ friend.link_gh } target="_blank">GitHub</a>
+			<a href={ friend.link_gh } target="_blank" rel="noopener">GitHub</a>
 		{/if}
 	</div>
 </div>
