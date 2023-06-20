@@ -28,7 +28,7 @@ function generateFeed(articles: IDirectusArticle[]) {
 						${
 							article.topics.map((topic) => `<category>${ topic.topic.name }</category>`)
 						}
-						<enclosure type="image/jpeg" url="${ getDirectusImageUrl(article.preview_image.id, imageSettings) }"></enclosure>
+						<enclosure type="image/jpeg" url="${ getDirectusImageUrl(article.preview_image.id, imageSettings).replace(/\&/g, "&amp;") }"></enclosure>
 					</item>
 				`)
 			}
