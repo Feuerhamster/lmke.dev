@@ -24,7 +24,7 @@
 
 		background-color: rgba(0, 0, 0, 0.3);
 		padding: 12px;
-		color: rgba($color-text, 0.4);
+		color: $color-text-accent;
 		font-size: 0.85rem;
 		margin-top: auto;
 

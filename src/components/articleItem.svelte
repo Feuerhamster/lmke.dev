@@ -46,6 +46,12 @@
 		text-decoration: none;
 		color: $color-text;
 
+		&:hover {
+			h3 {
+				text-decoration: underline;
+			}
+		}
+
 		img {
 			grid-area: image;
 			border-radius: $default-image-border-radius;
