@@ -3,7 +3,7 @@ import type { ID } from "@directus/sdk";
 export type ID = string | number;
 
 export interface IDirectusAboutMe {
-	id: ID
+	id: ID;
 	picture: IDirectusImage;
 	name: string;
 	subtitle: string;
@@ -13,24 +13,24 @@ export interface IDirectusAboutMe {
 }
 
 export interface IDirectusSkill {
-	id: ID
+	id: ID;
 	name: string;
 }
 
 export interface IDirectusProject {
-	id: ID
+	id: ID;
 	logo: IDirectusImage;
 	title: string;
 	description: string;
 	link: string;
 	link_source: string;
 	full_description: string;
-	technologies: {skill: IDirectusSkill}[];
+	technologies: { skill: IDirectusSkill }[];
 	discontinued: boolean;
 }
 
 export interface IDirectusFriend {
-	id: ID
+	id: ID;
 	name: string;
 	image_url: string;
 	activity: string;
@@ -43,7 +43,7 @@ export interface IDirectusPublicUser {
 	last_name: string;
 	avatar: {
 		id: ID;
-	}
+	};
 }
 
 export interface IDirectusArticle {
@@ -57,7 +57,7 @@ export interface IDirectusArticle {
 	preview_image: IDirectusImage;
 	wallpaper_image?: IDirectusImage;
 	title: string;
-	topics: {topic: IDirectusArticleTopic}[];
+	topics: { topic: IDirectusArticleTopic }[];
 	description: string;
 	content: string;
 	disable_comments: boolean;

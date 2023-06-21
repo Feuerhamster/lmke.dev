@@ -1,6 +1,13 @@
 import { graphql } from "$lib/directus";
 import type { PageServerLoad } from "./$types";
-import type { IDirectusAboutMe, IDirectusArticle, IDirectusArticleTopic, IDirectusFriend, IDirectusProject, IDirectusSkill } from "$models/directus";
+import type {
+	IDirectusAboutMe,
+	IDirectusArticle,
+	IDirectusArticleTopic,
+	IDirectusFriend,
+	IDirectusProject,
+	IDirectusSkill
+} from "$models/directus";
 
 import IndexGQLQuery from "$graphql/index.gql?raw";
 
@@ -14,5 +21,5 @@ export const load: PageServerLoad = async () => {
 		friends: data.lmke_friends as IDirectusFriend[],
 		articleTopics: data.lmke_article_topics as IDirectusArticleTopic[],
 		newestArticle: data.lmke_articles[0] as IDirectusArticle
-	}
-}
+	};
+};

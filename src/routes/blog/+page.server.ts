@@ -6,13 +6,12 @@ import GQLBlogQuery from "$graphql/blog.gql?raw";
 const limit = 12;
 
 export const load: PageServerLoad = async ({ url }) => {
-
 	let pageFromQuery = url.searchParams.get("page");
 
 	if (pageFromQuery && !/\d+/.test(pageFromQuery)) {
 		return {
 			status: 400
-		}
+		};
 	}
 
 	const page = pageFromQuery ? parseInt(pageFromQuery) : 1;
@@ -28,5 +27,5 @@ export const load: PageServerLoad = async ({ url }) => {
 		topics: data.lmke_article_topics as IDirectusArticleTopic[],
 		page,
 		totalPages: totalPages < 1 ? 1 : totalPages
-	}
-}
+	};
+};

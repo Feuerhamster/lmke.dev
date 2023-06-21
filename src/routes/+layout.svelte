@@ -34,7 +34,7 @@
 
 <div class="app">
 	<Navbar />
-	<slot></slot>
+	<slot />
 	<Footer />
 </div>
 
@@ -50,7 +50,7 @@
 			font-size: $default-font-size-mobile;
 		}
 	}
-	
+
 	:global(body) {
 		margin: 0;
 		background-color: $color-background;

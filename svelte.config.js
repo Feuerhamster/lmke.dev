@@ -1,5 +1,5 @@
-import adapter from '@sveltejs/adapter-node';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import adapter from "@sveltejs/adapter-node";
+import { vitePreprocess } from "@sveltejs/kit/vite";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -15,9 +15,9 @@ const config = {
 			out: "./build"
 		}),
 		alias: {
-			"$components": "./src/components",
-			"$models": "./src/models",
-			"$graphql": "./src/graphql"
+			$components: "./src/components",
+			$models: "./src/models",
+			$graphql: "./src/graphql"
 		}
 	}
 };

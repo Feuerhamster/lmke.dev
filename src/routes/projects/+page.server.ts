@@ -8,5 +8,5 @@ export const load: PageServerLoad = async () => {
 
 	return {
 		projects: data.lmke_projects as IDirectusProject[]
-	}
-}
+	};
+};

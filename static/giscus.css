@@ -49,7 +49,7 @@ main {
 	--color-btn-hover-border: transparent;
 	--color-btn-active-bg: rgba(255, 255, 255, 0.2);
 	--color-btn-active-border: transparent;
-	--color-btn-selected-bg: rgba(255, 255, 255, 0.2);;
+	--color-btn-selected-bg: rgba(255, 255, 255, 0.2);
 	--color-btn-primary-text: white;
 	--color-btn-primary-bg: #db4ca3;
 	--color-btn-primary-border: rgb(240 246 252 / 10%);
@@ -76,10 +76,10 @@ main {
 	--color-border-muted: #21262d;
 	--color-neutral-muted: rgb(110 118 129 / 40%);
 
-	--color-accent-fg: #E779B7;
-	--color-accent-emphasis: #E779B7;
-	--color-accent-muted: rgba(255, 255, 255, 0.1);;
-	--color-accent-subtle: #E779B722;
+	--color-accent-fg: #e779b7;
+	--color-accent-emphasis: #e779b7;
+	--color-accent-muted: rgba(255, 255, 255, 0.1);
+	--color-accent-subtle: #e779b722;
 	--color-success-fg: #3fb950;
 	--color-attention-fg: #d29922;
 	--color-danger-fg: #f85149;
@@ -89,10 +89,10 @@ main {
 	--color-primer-shadow-focus: transparent;
 	--color-scale-gray-7: #21262d;
 	--color-scale-blue-8: #0c2d6b;
-  
+
 	/*! Extensions from @primer/css/alerts/flash.scss */
-	--color-social-reaction-bg-hover: #E779B744;
-	--color-social-reaction-bg-reacted-hover: #E779B744;
+	--color-social-reaction-bg-hover: #e779b744;
+	--color-social-reaction-bg-reacted-hover: #e779b744;
 
 	color-scheme: dark;
 

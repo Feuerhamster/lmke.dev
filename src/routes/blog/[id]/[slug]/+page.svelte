@@ -15,48 +15,79 @@
 	const { article } = data;
 
 	$: wallpaperId = article.wallpaper_image?.id ?? article.preview_image?.id;
-	$: hasWallpaperImage = !!article.wallpaper_image?.id
-	$: formattedPublishedDate = new Date(article.date_published).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
-	$: formattedUpdatedDate = new Date(article.date_updated).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit" });
+	$: hasWallpaperImage = !!article.wallpaper_image?.id;
+	$: formattedPublishedDate = new Date(article.date_published).toLocaleDateString("de-DE", {
+		year: "numeric",
+		month: "long",
+		day: "2-digit"
+	});
+	$: formattedUpdatedDate = new Date(article.date_updated).toLocaleDateString("de-DE", {
+		year: "numeric",
+		month: "long",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit"
+	});
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
-	const relativeTime = new Duration("de", { numeric: "always" }).format(new Date(article.date_published));
-	const relativeTimeUpdated = new Duration("de", { numeric: "always" }).format(new Date(article.date_updated));
+	const relativeTime = new Duration("de", { numeric: "always" }).format(
+		new Date(article.date_published)
+	);
+	const relativeTimeUpdated = new Duration("de", { numeric: "always" }).format(
+		new Date(article.date_updated)
+	);
 </script>
 
-<Hero wallpaper={ hasWallpaperImage ? getDirectusImageUrl(wallpaperId, { quality: 70 }) : undefined } size={ hasWallpaperImage ? "big" : undefined }>
-	<TitleFont> { article.title } </TitleFont>
-	<p> { article.description } </p>
+<Hero
+	wallpaper={hasWallpaperImage ? getDirectusImageUrl(wallpaperId, { quality: 70 }) : undefined}
+	size={hasWallpaperImage ? "big" : undefined}
+>
+	<TitleFont>{article.title}</TitleFont>
+	<p>{article.description}</p>
 </Hero>
 
 <svelte:head>
-	<title>{ article.title } - { pageMeta.title }</title>
-	<meta name="description" content={ article.description } />
-	<meta property="og:title" content={ article.title } />
-	<meta property="og:description" content={ article.description } />
-	<meta property="og:image" content={ getDirectusImageUrl(article.preview_image.id, { quality: 80, width: 1280, height: 720, fit: "cover" }) }/>
+	<title>{article.title} - {pageMeta.title}</title>
+	<meta name="description" content={article.description} />
+	<meta property="og:title" content={article.title} />
+	<meta property="og:description" content={article.description} />
+	<meta
+		property="og:image"
+		content={getDirectusImageUrl(article.preview_image.id, {
+			quality: 80,
+			width: 1280,
+			height: 720,
+			fit: "cover"
+		})}
+	/>
 	<meta property="og:type" content="article" />
 	<meta property="og:locale" content="de_DE" />
-	<meta property="og:site_name" content={ pageMeta.title } />
-	<meta property="article:published_time" content={ new Date(article.date_published).toISOString() } />
-	<meta property="article:modified_time" content={ new Date(article.date_updated).toISOString() } />
-	<meta property="article:author" content={ $page.url.href } />
+	<meta property="og:site_name" content={pageMeta.title} />
+	<meta
+		property="article:published_time"
+		content={new Date(article.date_published).toISOString()}
+	/>
+	<meta property="article:modified_time" content={new Date(article.date_updated).toISOString()} />
+	<meta property="article:author" content={$page.url.href} />
 	{#each article.topics as topic}
-		<meta property="article:tag" content={ topic.topic.name } />
+		<meta property="article:tag" content={topic.topic.name} />
 	{/each}
 
 	{#if article.noindex}
-		<meta name="robots" content="noindex">
+		<meta name="robots" content="noindex" />
 	{/if}
 </svelte:head>
 
 <div class="limited-page">
 	<div class="user">
-		<img src={ getDirectusImageUrl(article.user_created.avatar.id, { quality: 70 }) } alt="user avatar" />
-		<p class="name"> { formattedAuthor } </p>
+		<img
+			src={getDirectusImageUrl(article.user_created.avatar.id, { quality: 70 })}
+			alt="user avatar"
+		/>
+		<p class="name">{formattedAuthor}</p>
 		<p class="meta">
-			<span> { formattedPublishedDate } ({ relativeTime }) </span>
+			<span> {formattedPublishedDate} ({relativeTime}) </span>
 			{#each article.topics as topic}
-				<Label> { topic.topic.name } </Label>
+				<Label>{topic.topic.name}</Label>
 			{/each}
 		</p>
 	</div>
@@ -68,24 +99,27 @@
 	<div class="article-meta">
 		<p>
 			<b>Zuletzt bearbeitet:</b>
-			<span> { formattedUpdatedDate } ({ relativeTimeUpdated }) </span>
+			<span> {formattedUpdatedDate} ({relativeTimeUpdated}) </span>
 		</p>
 		{#if article.preview_image?.source}
 			<p>
 				<b>Vorschaubild Quelle:</b>
-				<a href={article.preview_image.source} target="_blank" rel="noopener"> { article.preview_image.source } </a>
+				<a href={article.preview_image.source} target="_blank" rel="noopener">
+					{article.preview_image.source}
+				</a>
 			</p>
 		{/if}
 		{#if article.wallpaper_image?.source}
 			<p>
 				<b>Hintergrundbild Quelle:</b>
-				<a href={article.wallpaper_image.source} target="_blank" rel="noopener"> { article.wallpaper_image.source } </a>
+				<a href={article.wallpaper_image.source} target="_blank" rel="noopener">
+					{article.wallpaper_image.source}
+				</a>
 			</p>
 		{/if}
 	</div>
 
 	<div class="comment-box">
-
 		{#if !article.disable_comments}
 			<Giscus
 				id="comments"
@@ -103,9 +137,7 @@
 				loading="lazy"
 			/>
 		{:else}
-			<p class="comments-disabled">
-				[ Kommentare deaktiviert ]
-			</p>
+			<p class="comments-disabled">[ Kommentare deaktiviert ]</p>
 		{/if}
 	</div>
 </div>
@@ -121,8 +153,8 @@
 		.user {
 			display: grid;
 			grid-template-areas:
-			"image name"
-			"image meta";
+				"image name"
+				"image meta";
 			grid-template-columns: 70px 1fr;
 			column-gap: 18px;
 			row-gap: 0;
@@ -132,7 +164,7 @@
 				border-radius: 50%;
 				grid-area: image;
 			}
-			
+
 			.name {
 				grid-area: name;
 			}

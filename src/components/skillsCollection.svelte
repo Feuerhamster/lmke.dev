@@ -6,10 +6,9 @@
 </script>
 
 <div class="skills-wrapper">
-
 	<div class="skills">
 		{#each skills as skill}
-			<SkillItem { skill } />
+			<SkillItem {skill} />
 		{/each}
 	</div>
 
@@ -18,7 +17,6 @@
 		<span class="level-2">Fortgeschritten</span>
 		<span class="level-3">Profi</span>
 	</div>-->
-
 </div>
 
 <style lang="scss">

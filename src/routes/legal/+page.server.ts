@@ -8,5 +8,5 @@ export const load: PageServerLoad = async () => {
 
 	return {
 		legal: data.lmke_dev.legal as string
-	}
-}
+	};
+};

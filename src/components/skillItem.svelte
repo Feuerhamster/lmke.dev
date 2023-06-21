@@ -5,7 +5,7 @@
 </script>
 
 <span class="skill">
-	{ skill.name }
+	{skill.name}
 </span>
 
 <style lang="scss">
@@ -17,7 +17,7 @@
 		border-radius: 32px;
 
 		border-color: $color-pink;
-			color: $color-pink;
+		color: $color-pink;
 
 		/*&.level-1 {
 			border-color: $color-blue;

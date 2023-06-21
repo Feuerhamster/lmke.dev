@@ -1,9 +1,5 @@
 query GetFullBlogArticles($limit: Int!, $page: Int!) {
-	lmke_articles(
-		limit: $limit,
-		page: $page,
-		sort: ["-date_published"]
-	) {
+	lmke_articles(limit: $limit, page: $page, sort: ["-date_published"]) {
 		id
 		slug
 		date_created
@@ -26,7 +22,9 @@ query GetFullBlogArticles($limit: Int!, $page: Int!) {
 		}
 		title
 		topics {
-			topic { name }
+			topic {
+				name
+			}
 		}
 		description
 	}

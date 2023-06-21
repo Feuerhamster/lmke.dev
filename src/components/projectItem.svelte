@@ -1,5 +1,5 @@
 <script lang="ts">
-import { getDirectusImageUrl } from "$lib/utils";
+	import { getDirectusImageUrl } from "$lib/utils";
 
 	import type { IDirectusProject } from "$models/directus";
 
@@ -7,11 +7,14 @@ import { getDirectusImageUrl } from "$lib/utils";
 </script>
 
 <div class="project-item">
-	<img src={ getDirectusImageUrl(project.logo.id, { quality: 90, height: 90, width: 90 }) } alt="logo" />
+	<img
+		src={getDirectusImageUrl(project.logo.id, { quality: 90, height: 90, width: 90 })}
+		alt="logo"
+	/>
 
 	<div class="info">
 		<h3>
-			{ project.title }
+			{project.title}
 		</h3>
 
 		<p>
@@ -21,17 +24,19 @@ import { getDirectusImageUrl } from "$lib/utils";
 
 	<div class="links">
 		{#if project.link}
-			<a href={ project.link } target="_blank" rel="noopener">
-				{ new URL(project.link).hostname }
+			<a href={project.link} target="_blank" rel="noopener">
+				{new URL(project.link).hostname}
 			</a>
 		{/if}
 
 		{#if project.link_source}
-			<a href={ project.link_source } target="_blank" rel="noopener">Quellcode</a>
+			<a href={project.link_source} target="_blank" rel="noopener">Quellcode</a>
 		{/if}
 
 		{#if project.discontinued}
-			<span class="discontinued" title="Dieses Projekt wird nicht mehr weitergeführt">[Stillgelegt]</span>
+			<span class="discontinued" title="Dieses Projekt wird nicht mehr weitergeführt"
+				>[Stillgelegt]</span
+			>
 		{/if}
 	</div>
 </div>
@@ -45,7 +50,7 @@ import { getDirectusImageUrl } from "$lib/utils";
 		column-gap: 18px;
 		grid-template-rows: auto;
 		grid-template-columns: 90px 1fr;
-		grid-template-areas: 
+		grid-template-areas:
 			"image info"
 			"links links";
 		justify-items: stretch;
@@ -76,7 +81,7 @@ import { getDirectusImageUrl } from "$lib/utils";
 			display: flex;
 			gap: 8px;
 			grid-area: links;
-			
+
 			a {
 				display: flex;
 				gap: 10px;

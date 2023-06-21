@@ -16,25 +16,25 @@
 	const pageMetaModified = {
 		description: "Lena's persönlicher Blog.&#x0A;&#x0A;Themen: " + formattedTopics?.join(", "),
 		title: pageMeta.title + " - " + "Blog"
-	}
+	};
 </script>
 
 <svelte:head>
-	<title>{ pageMetaModified.title }</title>
-	<meta name="description" content={ pageMetaModified.description } />
-	<meta property="og:title" content={ pageMetaModified.title } />
-	<meta property="og:description" content={ pageMetaModified.description } />
-	<meta property="og:image" content={ pageMeta.og_image }/>
+	<title>{pageMetaModified.title}</title>
+	<meta name="description" content={pageMetaModified.description} />
+	<meta property="og:title" content={pageMetaModified.title} />
+	<meta property="og:description" content={pageMetaModified.description} />
+	<meta property="og:image" content={pageMeta.og_image} />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="de_DE" />
-	<meta property="og:site_name" content={ pageMeta.title } />
-	<meta name="robots" content="noindex">
+	<meta property="og:site_name" content={pageMeta.title} />
+	<meta name="robots" content="noindex" />
 </svelte:head>
 
 <Hero size="small">
 	<TitleFont>Mein persönlicher Blog</TitleFont>
 	<p class="topics">
-		{@html formattedTopics?.join(`<span class="spacer"> | </span>`) }
+		{@html formattedTopics?.join(`<span class="spacer"> | </span>`)}
 	</p>
 </Hero>
 
@@ -52,11 +52,11 @@
 	{#if page !== undefined && totalPages !== undefined}
 		<section>
 			<p>
-				<a href="?page={ page-1 }" data-disabled={!(page > 1)}>Zurück</a>
-				
-				<span>Seite <b> { page } </b> von <b> { totalPages } </b></span>
+				<a href="?page={page - 1}" data-disabled={!(page > 1)}>Zurück</a>
 
-				<a href="?page={ page+1 }" data-disabled={!(page < totalPages)}>Weiter</a>
+				<span>Seite <b> {page} </b> von <b> {totalPages} </b></span>
+
+				<a href="?page={page + 1}" data-disabled={!(page < totalPages)}>Weiter</a>
 			</p>
 		</section>
 	{/if}

@@ -2,36 +2,18 @@
 /* modified to work globally in svelte */
 
 /* Box sizing rules */
-:global(
-	*,
-	*::before,
-	*::after
-) {
+:global(*, *::before, *::after) {
 	box-sizing: border-box;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 /* Remove default margin */
-:global(
-	body,
-	h1,
-	h2,
-	h3,
-	h4,
-	p,
-	figure,
-	blockquote,
-	dl,
-	dd
-) {
+:global(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
 	margin: 0;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-:global(
-	ul[role='list'],
-	ol[role='list']
-) {
+:global(ul[role="list"], ol[role="list"]) {
 	list-style: none;
 }
 
@@ -53,21 +35,13 @@
 }
 
 /* Make images easier to work with */
-:global(
-	img,
-	picture
-) {
+:global(img, picture) {
 	max-width: 100%;
 	display: block;
 }
 
 /* Inherit fonts for inputs and buttons */
-:global(
-	input,
-	button,
-	textarea,
-	select
-) {
+:global(input, button, textarea, select) {
 	font: inherit;
 }
 

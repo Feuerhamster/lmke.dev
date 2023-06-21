@@ -35,7 +35,7 @@ query GetAllIndexPageData {
 	lmke_article_topics {
 		name
 	}
-	
+
 	lmke_articles(limit: 1, sort: ["-date_published"]) {
 		id
 		slug
@@ -59,7 +59,9 @@ query GetAllIndexPageData {
 		}
 		title
 		topics {
-			topic { name }
+			topic {
+				name
+			}
 		}
 		description
 	}

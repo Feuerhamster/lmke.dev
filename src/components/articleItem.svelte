@@ -7,32 +7,43 @@
 
 	export let article: IDirectusArticle;
 
-	$: formattedDate = new Date(article.date_published).toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "2-digit" });
+	$: formattedDate = new Date(article.date_published).toLocaleDateString("de-DE", {
+		year: "numeric",
+		month: "long",
+		day: "2-digit"
+	});
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
 
-	const relativeTime = new Duration("de", { numeric: "always" }).format(new Date(article.date_published));
+	const relativeTime = new Duration("de", { numeric: "always" }).format(
+		new Date(article.date_published)
+	);
 </script>
 
-<a class="article-item" href="/blog/{ article.id }/{ article.slug }">
-
-	<img src={ getDirectusImageUrl(article.preview_image.id, { quality: 80, width: 420, height: 300, fit: "cover" }) } alt="preview" />
+<a class="article-item" href="/blog/{article.id}/{article.slug}">
+	<img
+		src={getDirectusImageUrl(article.preview_image.id, {
+			quality: 80,
+			width: 420,
+			height: 300,
+			fit: "cover"
+		})}
+		alt="preview"
+	/>
 
 	<div class="info">
-		<h3> { article.title } </h3>
-		<p> { article.description } </p>
+		<h3>{article.title}</h3>
+		<p>{article.description}</p>
 		<p class="meta">
 			{#each article.topics as topic}
-				<Label> { topic.topic.name } </Label>
+				<Label>{topic.topic.name}</Label>
 			{/each}
 
 			<span>
-				{ formattedDate } ({ relativeTime }) von { formattedAuthor }
+				{formattedDate} ({relativeTime}) von {formattedAuthor}
 			</span>
 		</p>
 	</div>
-
 </a>
-
 
 <style lang="scss">
 	@import "../scss/defaults";
@@ -79,8 +90,8 @@
 		@include media-mobile() {
 			grid-template-columns: 1fr;
 			grid-template-areas:
-			"image"
-			"info";
+				"image"
+				"info";
 		}
 	}
 </style>

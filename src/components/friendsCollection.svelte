@@ -11,11 +11,9 @@
 -->
 
 <div class="friends-collection">
-
 	{#each friends as friend}
 		<FriendItem {friend} />
 	{/each}
-
 </div>
 
 <style lang="scss">
@@ -28,8 +26,6 @@
 		gap: 24px;
 		grid-template-columns: 1fr 1fr 1fr;
 		flex-wrap: wrap;
-
-
 	}
 
 	/*@include media-mobile() {

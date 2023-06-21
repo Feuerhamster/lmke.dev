@@ -10,25 +10,23 @@
 	const pageMetaModified = {
 		description: "Impressum und Datenschutz",
 		title: pageMeta.title + " - " + "Rechtliches"
-	}
+	};
 </script>
 
 <svelte:head>
-	<title>{ pageMetaModified.title }</title>
-	<meta name="description" content={ pageMetaModified.description } />
-	<meta property="og:title" content={ pageMetaModified.title } />
-	<meta property="og:description" content={ pageMetaModified.description } />
+	<title>{pageMetaModified.title}</title>
+	<meta name="description" content={pageMetaModified.description} />
+	<meta property="og:title" content={pageMetaModified.title} />
+	<meta property="og:description" content={pageMetaModified.description} />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="de_DE" />
-	<meta property="og:site_name" content={ pageMeta.title } />
-	<meta name="robots" content="noindex">
+	<meta property="og:site_name" content={pageMeta.title} />
+	<meta name="robots" content="noindex" />
 </svelte:head>
 
 <Hero size="small">
 	<TitleFont>Rechtliches</TitleFont>
-	<p class="topics">
-		Impressum und Datenschutz
-	</p>
+	<p class="topics">Impressum und Datenschutz</p>
 </Hero>
 
 <div class="limited-page">
