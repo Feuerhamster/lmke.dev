@@ -1,11 +1,11 @@
 <h1>
-	<slot></slot>
+	<slot />
 </h1>
 
 <style lang="scss">
 	@import "../scss/defaults";
 	@import "../scss/mixins";
-	
+
 	h1 {
 		letter-spacing: 5px;
 		font-size: 2.4rem;

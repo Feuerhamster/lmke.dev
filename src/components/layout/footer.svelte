@@ -4,12 +4,13 @@
 
 <footer>
 	<p>
-		© { new Date().getFullYear() } Lena Emme
+		© {new Date().getFullYear()} Lena Emme
 		<a href="/legal">Rechtliches</a>
 	</p>
 
 	<p>
-		<a href={$currentWallpaper.source} rel="noopener" target="_blank">Wallpaper</a> from <a href="https://unsplash.com" rel="noopener" target="_blank">Unsplash</a>
+		<a href={$currentWallpaper.source} rel="noopener" target="_blank">Wallpaper</a> from
+		<a href="https://unsplash.com" rel="noopener" target="_blank">Unsplash</a>
 	</p>
 </footer>
 

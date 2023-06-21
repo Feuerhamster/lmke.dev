@@ -5,16 +5,21 @@
 	import PersonalCard from "$components/personalCard.svelte";
 	import ProjectsCollection from "$components/projectsCollection.svelte";
 	import Skills from "$components/skillsCollection.svelte";
-	import pageMeta from "$content/pageMeta";
-    import { stripHtml } from "$lib/utils";
-	import type { IDirectusAboutMe, IDirectusArticle, IDirectusArticleTopic, IDirectusFriend, IDirectusProject, IDirectusSkill } from "$models/directus";
+	import pageMeta from "$lib/pageMeta";
+	import { stripHtml } from "$lib/utils";
+	import type {
+		IDirectusAboutMe,
+		IDirectusArticle,
+		IDirectusArticleTopic,
+		IDirectusFriend,
+		IDirectusProject,
+		IDirectusSkill
+	} from "$models/directus";
+	import type { PageServerData } from "./$types";
 
-	export let aboutMe: IDirectusAboutMe;
-	export let skills: IDirectusSkill[];
-	export let projects: IDirectusProject[];
-	export let friends: IDirectusFriend[];
-	export let articleTopics: IDirectusArticleTopic[];
-	export let newestArticle: IDirectusArticle;
+	export let data: PageServerData;
+
+	const { aboutMe, skills, projects, friends, articleTopics, newestArticle } = data;
 
 	$: formattedTopics = articleTopics.map((t) => t.name);
 
@@ -24,20 +29,20 @@
 		subtitle: aboutMe.subtitle,
 		github_link: aboutMe.github_link,
 		email: aboutMe.email
-	}
+	};
 
 	const metaDescription = stripHtml(aboutMe.about_me);
 </script>
 
 <svelte:head>
-	<title>{ pageMeta.title }</title>
-	<meta name="description" content={ metaDescription } />
-	<meta property="og:title" content={ pageMeta.title } />
-	<meta property="og:description" content={ metaDescription } />
-	<meta property="og:image" content={ pageMeta.og_image }/>
+	<title>{pageMeta.title}</title>
+	<meta name="description" content={metaDescription} />
+	<meta property="og:title" content={pageMeta.title} />
+	<meta property="og:description" content={metaDescription} />
+	<meta property="og:image" content={pageMeta.og_image} />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="de_DE" />
-	<meta property="og:site_name" content={ pageMeta.title } />
+	<meta property="og:site_name" content={pageMeta.title} />
 </svelte:head>
 
 <Hero>
@@ -55,13 +60,13 @@
 				{@html aboutMe.about_me}
 			</div>
 		</section>
-		
+
 		<section>
 			<h2>
 				<span class="orange">»</span>
 				Meine Skills
 			</h2>
-			<Skills { skills } />
+			<Skills {skills} />
 		</section>
 	</section>
 
@@ -70,7 +75,7 @@
 			<span class="blue">»</span>
 			Meine Projekte
 		</h2>
-		<ProjectsCollection { projects } />
+		<ProjectsCollection {projects} />
 		<a href="/projects" class="sublink">Mehr Projekte und Details ansehen</a>
 	</section>
 
@@ -79,7 +84,7 @@
 			<span class="green">»</span>
 			Meine Freunde
 		</h2>
-		<FriendsCollection { friends } />
+		<FriendsCollection {friends} />
 	</section>
 
 	{#if newestArticle}
@@ -89,11 +94,11 @@
 				Mein persönlicher Blog
 			</h2>
 			<p>
-				{@html formattedTopics.join(`<span class="spacer"> | </span>`) }
+				{@html formattedTopics.join(`<span class="spacer"> | </span>`)}
 			</p>
-				
-			<ArticleItem article={ newestArticle } />
-			
+
+			<ArticleItem article={newestArticle} />
+
 			<a href="/blog" class="sublink">Mehr Blogartikel ansehen</a>
 		</section>
 	{/if}
@@ -102,7 +107,7 @@
 <style lang="scss">
 	@import "../scss/defaults.scss";
 	@import "../scss/mixins.scss";
-	
+
 	.limited-page {
 		@include limited-page;
 		gap: 120px;

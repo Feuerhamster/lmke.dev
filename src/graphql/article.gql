@@ -1,7 +1,5 @@
 query GetFullArticleById($id: ID!) {
-	lmke_articles_by_id(
-		id: $id
-	) {
+	lmke_articles_by_id(id: $id) {
 		id
 		slug
 		date_created
@@ -24,7 +22,9 @@ query GetFullArticleById($id: ID!) {
 		}
 		title
 		topics {
-			topic { name }
+			topic {
+				name
+			}
 		}
 		description
 		content

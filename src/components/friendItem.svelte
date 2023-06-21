@@ -5,25 +5,25 @@
 </script>
 
 <div class="friend-item">
-	<img src={ friend.image_url } alt="friend" />
+	<img src={friend.image_url} alt="friend" />
 
 	<h3>
-		{ friend.name }
+		{friend.name}
 	</h3>
 
 	<p>
-		{ friend.activity }
+		{friend.activity}
 	</p>
 
 	<div class="links">
 		{#if friend.link_web}
-			<a href={ friend.link_web } target="_blank" rel="noopener">
-				{ new URL(friend.link_web).hostname }
+			<a href={friend.link_web} target="_blank" rel="noopener">
+				{new URL(friend.link_web).hostname}
 			</a>
 		{/if}
 
 		{#if friend.link_gh}
-			<a href={ friend.link_gh } target="_blank" rel="noopener">GitHub</a>
+			<a href={friend.link_gh} target="_blank" rel="noopener">GitHub</a>
 		{/if}
 	</div>
 </div>
@@ -41,12 +41,11 @@
 		grid-template-rows: 180px;
 		justify-items: center;
 
-
 		grid-template-areas:
-				"image"
-				"name"
-				"activity"
-				"links";
+			"image"
+			"name"
+			"activity"
+			"links";
 
 		img {
 			border-radius: $default-image-border-radius;
@@ -69,7 +68,7 @@
 			display: flex;
 			grid-area: links;
 			gap: 8px;
-			
+
 			a {
 				display: flex;
 				gap: 10px;
@@ -83,9 +82,9 @@
 			grid-template-columns: 120px 1fr;
 			justify-items: start;
 			grid-template-areas:
-			"image name"
-			"image activity"
-			"image links";
+				"image name"
+				"image activity"
+				"image links";
 		}
 	}
 </style>

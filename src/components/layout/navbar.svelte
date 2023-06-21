@@ -9,11 +9,13 @@
 		legal: "Rechtliches"
 	};
 
-	$: currentPath = $page.url.pathname.substring(1).split("/")[0];
+	$: currentPath = $page.url.pathname.substring(1).split("/")[0] as keyof typeof pageMapping;
 
 	// toggles toe mobile nav menu
 	let expand = false;
-	function toggleNav() { expand = !expand }
+	function toggleNav() {
+		expand = !expand;
+	}
 </script>
 
 <div class="navbar">
@@ -21,11 +23,11 @@
 		<a href="/">
 			<b>lmke</b>.dev
 		</a>
-		
+
 		<span class="absolute">
 			{#if pageMapping[currentPath]}
 				<span class="slash">/</span>
-				{ pageMapping[currentPath] }
+				{pageMapping[currentPath]}
 			{/if}
 		</span>
 	</h1>
@@ -33,12 +35,12 @@
 		Div.navbar muss in mobile expanden wenn das menü aufgeklappt ist. Nav kein pos absolute und kein filter.
 		Wenn mobile: Von flex auf grid
 	-->
-	<nav on:click={ toggleNav } class:expand>
+	<nav on:click={toggleNav} class:expand on:keypress>
 		<NavLink href="/">Über mich</NavLink>
 		<NavLink href="/projects">Projekte</NavLink>
 		<NavLink href="/blog">Blog</NavLink>
 	</nav>
-	<button on:click={ toggleNav }>
+	<button on:click={toggleNav}>
 		<MenuIcon />
 	</button>
 </div>
@@ -46,25 +48,25 @@
 <style lang="scss">
 	@import "../../scss/defaults";
 	@import "../../scss/mixins";
-	
+
 	.navbar {
 		background: $color-background-transparency;
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
 		/* Force hardware acceleration */
 		transform: translate3d(0, 0, 0);
-		
+
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
 		z-index: 10;
-		
+
 		display: flex;
 		justify-content: space-around;
-		
+
 		padding: 8px;
-		
+
 		h1 {
 			margin: 0;
 			font-size: 1.5rem;
@@ -90,7 +92,7 @@
 				opacity: 0.5;
 			}
 		}
-		
+
 		nav {
 			display: flex;
 			gap: 20px;

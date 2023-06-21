@@ -8,16 +8,23 @@
 </script>
 
 <article class="full-project-item">
-
-	<img src={ getDirectusImageUrl(project.logo.id, { quality: 80, width: 120, height: 120, fit: "cover" }) } alt="logo" />
+	<img
+		src={getDirectusImageUrl(project.logo.id, {
+			quality: 80,
+			width: 120,
+			height: 120,
+			fit: "cover"
+		})}
+		alt="logo"
+	/>
 
 	<div class="info">
-		<h3> { project.title } </h3>
-		<h4> { project.description } </h4>
+		<h3>{project.title}</h3>
+		<h4>{project.description}</h4>
 
 		<p class="gap">
 			{#each project.technologies as t}
-				<Label> { t.skill.name } </Label>
+				<Label>{t.skill.name}</Label>
 			{/each}
 		</p>
 
@@ -26,26 +33,28 @@
 				<b>Projekt eingestellt/beendet</b>
 			</p>
 		{/if}
-		
+
 		{#if project.link}
 			<p>
-				Link: <a href={ project.link } target="_blank" rel="noopener"> { new URL(project.link).hostname } </a>
+				Link: <a href={project.link} target="_blank" rel="noopener">
+					{new URL(project.link).hostname}
+				</a>
 			</p>
 		{/if}
 
 		{#if project.link_source}
 			<p>
-				GitHub: <a href={ project.link_source } target="_blank" rel="noopener"> { new URL(project.link_source).pathname.substring(1) } </a>
+				GitHub: <a href={project.link_source} target="_blank" rel="noopener">
+					{new URL(project.link_source).pathname.substring(1)}
+				</a>
 			</p>
 		{/if}
 
 		<p>
-			{ project.full_description }
+			{project.full_description}
 		</p>
 	</div>
-
 </article>
-
 
 <style lang="scss">
 	@import "../scss/defaults";
@@ -61,9 +70,9 @@
 
 		@include media-mobile() {
 			grid-template-columns: 1fr;
-			grid-template-areas: 
-			"image"
-			"info";
+			grid-template-areas:
+				"image"
+				"info";
 		}
 
 		img {
@@ -96,10 +105,6 @@
 				display: flex;
 				flex-wrap: wrap;
 				gap: 6px;
-			}
-
-			.meta {
-				color: rgba($color-text, 0.5);
 			}
 		}
 	}

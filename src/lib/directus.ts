@@ -1,28 +1,29 @@
-import "dotenv/config";
+import { env } from "$env/dynamic/private";
 
 export async function graphql(query: string, variables?: object, system?: boolean) {
 	try {
-		let path = `/graphql${ system ? "/system" : "" }`;
+		let path = `/graphql${system ? "/system" : ""}`;
 
-		let res = await fetch(new URL(path, process.env["DIRECTUS_URL"]), {
+		let res = await fetch(new URL(path, env.DIRECTUS_URL), {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				"Authorization": "Bearer " + process.env["DIRECTUS_TOKEN"]
+				Authorization: "Bearer " + env.DIRECTUS_TOKEN
 			},
 			body: JSON.stringify({
-				query, variables
+				query,
+				variables
 			})
 		});
 
-		let body = (await res.json());
-		
-		if(body.errors) {
+		let body = await res.json();
+
+		if (body.errors) {
 			throw body.errors;
 		}
 
 		return body.data;
-	} catch(e) {
+	} catch (e) {
 		throw e;
 	}
 }

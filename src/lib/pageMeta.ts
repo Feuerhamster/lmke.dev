@@ -8,6 +8,7 @@ export function setOGImage(id: string) {
 
 export default {
 	title: "lmke.dev",
-	description: "Lena's persönliche Webseite. Hier präsentiere ich Projekte, einen Blog, Freunde und mich selbst.",
+	description:
+		"Lena's persönliche Webseite. Hier präsentiere ich Projekte, einen Blog, Freunde und mich selbst.",
 	og_image
-}
+};

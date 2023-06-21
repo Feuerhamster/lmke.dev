@@ -6,11 +6,9 @@
 </script>
 
 <div class="projects-collection">
-
 	{#each projects as project}
 		<ProjectItem {project} />
 	{/each}
-
 </div>
 
 <style lang="scss">

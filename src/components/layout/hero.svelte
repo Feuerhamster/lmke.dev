@@ -2,21 +2,21 @@
 	import { currentWallpaper } from "$lib/stores";
 	import { getDirectusImageUrl } from "$lib/utils";
 
-	export let wallpaper: string = undefined;
-	export let size: "big" | "small" | "" = "";
+	export let wallpaper: string | undefined = undefined;
+	export let size: "big" | "small" | "" | undefined = undefined;
 
-	$: selectedWallpaper = wallpaper ?? getDirectusImageUrl($currentWallpaper.id, { quality: 70 })
+	$: selectedWallpaper = wallpaper ?? getDirectusImageUrl($currentWallpaper.id, { quality: 70 });
 </script>
 
-<div class="hero {size}" style="background-image: url({ selectedWallpaper })">
-	<slot></slot>
+<div class="hero {size}" style="background-image: url({selectedWallpaper})">
+	<slot />
 </div>
 
 <style lang="scss">
 	@import "../../scss/mixins.scss";
 
 	.hero {
-		padding: 10rem 2rem 8rem 10rem;
+		padding: 10rem 2rem 8rem 2rem;
 
 		&.big {
 			padding: 12rem 2rem 12rem 2rem;
@@ -26,7 +26,7 @@
 			padding: 8rem 2rem 8rem 2rem;
 		}
 
-		background-color:#403c62;
+		background-color: #403c62;
 		/*background-image:
 		radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
 		radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
@@ -44,12 +44,12 @@
 		z-index: 1;
 
 		gap: 0.8rem;
-		
+
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		
+
 		&:after {
 			content: "";
 			position: absolute;
@@ -58,10 +58,15 @@
 			z-index: 2;
 			width: 100%;
 			height: 100%;
-			background: rgb(0,0,0);
-			background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(26,24,49,1) 90%, rgba(26,24,49,1) 100%);
+			background: rgb(0, 0, 0);
+			background: linear-gradient(
+				180deg,
+				rgba(0, 0, 0, 0) 0%,
+				rgba(26, 24, 49, 1) 90%,
+				rgba(26, 24, 49, 1) 100%
+			);
 		}
-		
+
 		:global(*) {
 			z-index: 3;
 		}
