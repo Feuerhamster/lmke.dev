@@ -34,23 +34,5 @@
 			flex-wrap: wrap;
 			gap: 12px;
 		}
-
-		.legend {
-			display: flex;
-			gap: 12px;
-			font-style: italic;
-			opacity: 0.7;
-			user-select: none;
-
-			.level-1 {
-				color: $color-blue;
-			}
-			.level-2 {
-				color: $color-orange;
-			}
-			.level-3 {
-				color: $color-green;
-			}
-		}
 	}
 </style>

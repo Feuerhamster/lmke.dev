@@ -1,4 +1,4 @@
-import { browser } from "$app/env";
+import { browser } from "$app/environment";
 import * as ackeeTracker from "ackee-tracker";
 
 let instance: ackeeTracker.AckeeInstance;

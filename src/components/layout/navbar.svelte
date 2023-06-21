@@ -9,7 +9,7 @@
 		legal: "Rechtliches"
 	};
 
-	$: currentPath = $page.url.pathname.substring(1).split("/")[0];
+	$: currentPath = $page.url.pathname.substring(1).split("/")[0] as keyof typeof pageMapping;
 
 	// toggles toe mobile nav menu
 	let expand = false;
@@ -33,7 +33,7 @@
 		Div.navbar muss in mobile expanden wenn das menü aufgeklappt ist. Nav kein pos absolute und kein filter.
 		Wenn mobile: Von flex auf grid
 	-->
-	<nav on:click={ toggleNav } class:expand>
+	<nav on:click={ toggleNav } class:expand on:keypress>
 		<NavLink href="/">Über mich</NavLink>
 		<NavLink href="/projects">Projekte</NavLink>
 		<NavLink href="/blog">Blog</NavLink>

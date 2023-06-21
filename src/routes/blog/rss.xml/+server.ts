@@ -1,6 +1,6 @@
 import { graphql } from "$lib/directus";
 import type { IDirectusArticle } from "$models/directus";
-import type { RequestHandler } from "@sveltejs/kit";
+import type { RequestHandler } from "./$types";
 import { getDirectusImageUrl } from "$lib/utils";
 import GQLBlogQuery from "$graphql/blog.gql?raw";
 
@@ -36,14 +36,13 @@ function generateFeed(articles: IDirectusArticle[]) {
 	</rss>`
 }
 
-export const get: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
 	let data = await graphql(GQLBlogQuery, { limit: 18, page: 1 });
 
-	return {
+	return new Response(generateFeed(data.lmke_articles), {
 		headers: {
 			"Cache-Control": "max-age=0, s-maxage=3600",
 			"Content-Type": "application/xml",
-		},
-		body: generateFeed(data.lmke_articles),
-	}
+		}
+	})
 }

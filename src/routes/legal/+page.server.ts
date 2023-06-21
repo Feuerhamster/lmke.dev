@@ -1,14 +1,12 @@
 import { graphql } from "$lib/directus";
-import type { RequestHandler } from "@sveltejs/kit";
 
 import LegalGQLQuery from "$graphql/legal.gql?raw";
+import type { PageServerLoad } from "../$types";
 
-export const get: RequestHandler = async () => {
+export const load: PageServerLoad = async () => {
 	const data = await graphql(LegalGQLQuery);
 
 	return {
-		body: {
-			legal: data.lmke_dev.legal
-		}
+		legal: data.lmke_dev.legal as string
 	}
 }

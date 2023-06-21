@@ -1,10 +1,11 @@
 import { graphql } from "$lib/directus";
-import type { RequestHandler } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types";
+import type { IDirectusArticle, IDirectusArticleTopic } from "$models/directus";
 import GQLBlogQuery from "$graphql/blog.gql?raw";
 
 const limit = 12;
 
-export const get: RequestHandler = async ({ url }) => {
+export const load: PageServerLoad = async ({ url }) => {
 
 	let pageFromQuery = url.searchParams.get("page");
 
@@ -23,11 +24,9 @@ export const get: RequestHandler = async ({ url }) => {
 	let totalPages = Math.ceil(articleCount / limit);
 
 	return {
-		body: {
-			articles: data.lmke_articles,
-			topics: data.lmke_article_topics,
-			page,
-			totalPages: totalPages < 1 ? 1 : totalPages
-		}
+		articles: data.lmke_articles as IDirectusArticle[],
+		topics: data.lmke_article_topics as IDirectusArticleTopic[],
+		page,
+		totalPages: totalPages < 1 ? 1 : totalPages
 	}
 }

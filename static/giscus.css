@@ -142,17 +142,17 @@ main .gsc-loading-image {
 	transition: 0.2s background-color;
 }
 
-#__next .py-2:hover {
+#__next button.py-2:hover {
 	background-color: var(--color-btn-bg);
 }
 
-.rounded-t:after {
+button.color-text-primary:after {
 	position: absolute;
 	width: 100%;
 	height: 2px;
 	background-color: var(--color-btn-primary-disabled-bg);
 	left: 0;
-	top: 2.04rem;
+	top: 2rem;
 	content: "";
 }
 

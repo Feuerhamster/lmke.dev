@@ -97,10 +97,6 @@
 				flex-wrap: wrap;
 				gap: 6px;
 			}
-
-			.meta {
-				color: rgba($color-text, 0.5);
-			}
 		}
 	}
 </style>

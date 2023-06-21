@@ -5,16 +5,14 @@
 	import PersonalCard from "$components/personalCard.svelte";
 	import ProjectsCollection from "$components/projectsCollection.svelte";
 	import Skills from "$components/skillsCollection.svelte";
-	import pageMeta from "$content/pageMeta";
+	import pageMeta from "$lib/pageMeta";
     import { stripHtml } from "$lib/utils";
 	import type { IDirectusAboutMe, IDirectusArticle, IDirectusArticleTopic, IDirectusFriend, IDirectusProject, IDirectusSkill } from "$models/directus";
+	import type { PageServerData } from "./$types";
 
-	export let aboutMe: IDirectusAboutMe;
-	export let skills: IDirectusSkill[];
-	export let projects: IDirectusProject[];
-	export let friends: IDirectusFriend[];
-	export let articleTopics: IDirectusArticleTopic[];
-	export let newestArticle: IDirectusArticle;
+	export let data: PageServerData;
+
+	const { aboutMe, skills, projects, friends, articleTopics, newestArticle } = data;
 
 	$: formattedTopics = articleTopics.map((t) => t.name);
 

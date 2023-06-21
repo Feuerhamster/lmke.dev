@@ -1,16 +1,18 @@
 <script lang="ts">
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
+	// @ts-ignore
 	import Giscus from "@giscus/svelte";
-	import pageMeta from "$content/pageMeta";
+	import pageMeta from "$lib/pageMeta";
 
-	import type { IDirectusArticle } from "$models/directus";
 	import { getDirectusImageUrl } from "$lib/utils";
 	import { page } from "$app/stores";
 	import Label from "$components/label.svelte";
 	import Duration from "duration-relativetimeformat";
+	import type { PageServerData } from "./$types";
 
-	export let article: IDirectusArticle;
+	export let data: PageServerData;
+	const { article } = data;
 
 	$: wallpaperId = article.wallpaper_image?.id ?? article.preview_image?.id;
 	$: hasWallpaperImage = !!article.wallpaper_image?.id
@@ -21,7 +23,7 @@
 	const relativeTimeUpdated = new Duration("de", { numeric: "always" }).format(new Date(article.date_updated));
 </script>
 
-<Hero wallpaper={ hasWallpaperImage ? getDirectusImageUrl(wallpaperId, { quality: 70 }) : null } size={ hasWallpaperImage ? "big" : null }>
+<Hero wallpaper={ hasWallpaperImage ? getDirectusImageUrl(wallpaperId, { quality: 70 }) : undefined } size={ hasWallpaperImage ? "big" : undefined }>
 	<TitleFont> { article.title } </TitleFont>
 	<p> { article.description } </p>
 </Hero>
@@ -109,8 +111,8 @@
 </div>
 
 <style lang="scss">
-	@import "../../../scss/mixins.scss";
-	@import "../../../scss/defaults.scss";
+	@import "../../../../scss/mixins.scss";
+	@import "../../../../scss/defaults.scss";
 
 	.limited-page {
 		@include limited-page;
@@ -145,12 +147,6 @@
 			}
 		}
 
-		article {
-			:global {
-				@include formatted-content;
-			}
-		}
-
 		.comment-box {
 			display: flex;
 			align-items: center;
@@ -178,6 +174,10 @@
 			gap: 6px;
 			user-select: none;
 		}
+	}
+
+	:global(.limited-page > article) {
+		@include formatted-content;
 	}
 
 	:global(.hero h1) {

@@ -3,9 +3,11 @@
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
 	import type { IDirectusProject } from "$models/directus";
-	import pageMeta from "$content/pageMeta";
+	import pageMeta from "$lib/pageMeta";
+	import type { PageServerData } from "./$types";
 
-	export let projects: IDirectusProject[] = [];
+	export let data: PageServerData;
+	const { projects } = data;
 
 	const pageMetaModified = {
 		description: "Lena's Projekte.&#x0A;Websites, Apps, PWA's, Software und mehr.",

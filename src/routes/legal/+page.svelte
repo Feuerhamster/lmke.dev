@@ -1,9 +1,11 @@
 <script lang="ts">
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
-	import pageMeta from "$content/pageMeta";
+	import pageMeta from "$lib/pageMeta";
+	import type { PageServerData } from "./$types";
 
-	export let legal: string;
+	export let data: PageServerData;
+	const { legal } = data;
 
 	const pageMetaModified = {
 		description: "Impressum und Datenschutz",
@@ -36,8 +38,8 @@
 </div>
 
 <style lang="scss">
-	@import "../scss/defaults.scss";
-	@import "../scss/mixins.scss";
+	@import "../../scss/defaults.scss";
+	@import "../../scss/mixins.scss";
 
 	.limited-page {
 		@include limited-page;
@@ -45,13 +47,13 @@
 		margin-top: -2rem;
 
 		section {
-			:global {
-				@include formatted-content;
-			}
-
 			width: 100%;
 			max-width: 800px;
 			gap: 24px;
 		}
+	}
+
+	:global(.limited-page > section) {
+		@include formatted-content;
 	}
 </style>

@@ -1,35 +1,6 @@
-<script lang="ts" context="module">
-	import type { Load } from "@sveltejs/kit";
-	import ackee from "$lib/ackee";
-	import { populateConfig } from "$lib/config";
-	import { setOGImage } from "$content/pageMeta";
-	
-	let configLoaded = false;
-
-	export const load: Load = async ({ url, fetch, session }) => {
-		if (!configLoaded) {
-			populateConfig(session);
-			configLoaded = true;
-		}
-		
-		let res = await fetch("/wallpaper");
-		let data = await res.json();
-
-		ackee(url.pathname, session.ackee_server, session.ackee_domainId, session.ackee_detailed);
-		setOGImage(session.og_image);
-
-		return {
-			props: {
-				wallpaper: data.wallpaper
-			}
-		}
-	}
-</script>
-
 <script lang="ts">
 	import "@fontsource/atkinson-hyperlegible";
 	import Navbar from "$components/layout/navbar.svelte";
-	import type { IDirectusImage } from "$models/directus";
 	import { currentWallpaper } from "$lib/stores";
 	import Footer from "$components/layout/footer.svelte";
 
@@ -37,8 +8,11 @@
 	import { navigating } from "$app/stores";
 
 	import "nprogress/nprogress.css";
+	import type { LayoutData } from "./$types";
 
-	export let wallpaper: IDirectusImage;
+	export let data: LayoutData;
+
+	const { wallpaper } = data;
 
 	$currentWallpaper = wallpaper;
 

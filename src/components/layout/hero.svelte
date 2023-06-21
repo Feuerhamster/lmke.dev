@@ -2,8 +2,8 @@
 	import { currentWallpaper } from "$lib/stores";
 	import { getDirectusImageUrl } from "$lib/utils";
 
-	export let wallpaper: string = undefined;
-	export let size: "big" | "small" | "" = "";
+	export let wallpaper: string | undefined = undefined;
+	export let size: "big" | "small" | "" | undefined = undefined;
 
 	$: selectedWallpaper = wallpaper ?? getDirectusImageUrl($currentWallpaper.id, { quality: 70 })
 </script>
@@ -16,7 +16,7 @@
 	@import "../../scss/mixins.scss";
 
 	.hero {
-		padding: 10rem 2rem 8rem 10rem;
+		padding: 10rem 2rem 8rem 2rem;
 
 		&.big {
 			padding: 12rem 2rem 12rem 2rem;
