@@ -4,6 +4,7 @@
 
 	export let wallpaper: string | undefined = undefined;
 	export let size: "big" | "small" | "" | undefined = undefined;
+	export let textSize: string = "";
 
 	$: selectedWallpaper = wallpaper ?? getDirectusImageUrl($currentWallpaper.id, { quality: 70 });
 </script>

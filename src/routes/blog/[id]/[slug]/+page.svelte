@@ -41,7 +41,7 @@
 	wallpaper={hasWallpaperImage ? getDirectusImageUrl(wallpaperId, { quality: 70 }) : undefined}
 	size={hasWallpaperImage ? "big" : undefined}
 >
-	<TitleFont>{article.title}</TitleFont>
+	<TitleFont style="font-size: 2rem">{article.title}</TitleFont>
 	<p>{article.description}</p>
 </Hero>
 
@@ -210,9 +210,5 @@
 
 	:global(.limited-page > article) {
 		@include formatted-content;
-	}
-
-	:global(.hero h1) {
-		font-size: 2rem;
 	}
 </style>
