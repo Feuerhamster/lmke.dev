@@ -1,0 +1,26 @@
+name: Deploy Images to GHCR
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+      push-store-image:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: 'Checkout GitHub Action'
+            uses: actions/checkout@v4
+
+          - name: 'Login to GitHub Container Registry'
+            uses: docker/login-action@v3
+            with:
+              registry: ghcr.io
+              username: ${{github.actor}}
+              password: ${{secrets.PAC}}
+
+          - name: 'Build Inventory Image'
+            run: |
+              docker build . --tag ghcr.io/${{ github.repository }}:latest
+              docker push ghcr.io/${{ github.repository }}:latest
