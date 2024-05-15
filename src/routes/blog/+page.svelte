@@ -29,6 +29,12 @@
 	<meta property="og:locale" content="de_DE" />
 	<meta property="og:site_name" content={pageMeta.title} />
 	<meta name="robots" content="noindex" />
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="lmke.dev Blog RSS Feed"
+		href="/blog/rss.xml"
+	/>
 </svelte:head>
 
 <Hero size="small">
