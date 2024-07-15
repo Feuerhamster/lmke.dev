@@ -9,6 +9,8 @@
 
 	import "nprogress/nprogress.css";
 	import type { LayoutData } from "./$types";
+	import { browser, dev } from "$app/environment";
+	import { env } from "$env/dynamic/public";
 
 	export let data: LayoutData;
 
@@ -30,7 +32,18 @@
 			NProgress.done();
 		}
 	}
+
+	if (dev && browser) {
+		localStorage.setItem("umami.disabled", "1");
+	}
 </script>
+
+<svelte:head>
+	{#if env.PUBLIC_UMAMI_SRC}
+		<script defer src={env.PUBLIC_UMAMI_SRC} data-website-id={env.PUBLIC_UMAMI_WEBSITE_ID}>
+		</script>
+	{/if}
+</svelte:head>
 
 <div class="app">
 	<Navbar />
