@@ -43,6 +43,7 @@
 		<script defer src={env.PUBLIC_UMAMI_SRC} data-website-id={env.PUBLIC_UMAMI_WEBSITE_ID}>
 		</script>
 	{/if}
+	<link rel="me" href="https://chaos.social/@lmke" />
 </svelte:head>
 
 <div class="app">
