@@ -3,8 +3,8 @@
 </h1>
 
 <style lang="scss">
-	@import "../scss/defaults";
-	@import "../scss/mixins";
+	@use "../scss/defaults" as *;
+	@use "../scss/mixins" as *;
 
 	h1 {
 		letter-spacing: 5px;

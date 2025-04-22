@@ -7,14 +7,7 @@
 	import Skills from "$components/skillsCollection.svelte";
 	import pageMeta from "$lib/pageMeta";
 	import { stripHtml } from "$lib/utils";
-	import type {
-		IDirectusAboutMe,
-		IDirectusArticle,
-		IDirectusArticleTopic,
-		IDirectusFriend,
-		IDirectusProject,
-		IDirectusSkill
-	} from "$models/directus";
+
 	import type { PageServerData } from "./$types";
 
 	export let data: PageServerData;
@@ -105,12 +98,12 @@
 </div>
 
 <style lang="scss">
-	@import "../scss/defaults.scss";
-	@import "../scss/mixins.scss";
+	@use "../scss/defaults.scss" as *;
+	@use "../scss/mixins.scss" as *;
 
 	.limited-page {
-		@include limited-page;
 		gap: 120px;
+		@include limited-page;
 
 		@include media-mobile() {
 			gap: 60px;

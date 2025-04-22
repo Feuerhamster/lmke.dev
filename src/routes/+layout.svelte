@@ -53,9 +53,9 @@
 </div>
 
 <style lang="scss">
-	@import "../scss/reset";
-	@import "../scss/defaults";
-	@import "../scss/mixins";
+	@use "../scss/reset" as *;
+	@use "../scss/defaults" as *;
+	@use "../scss/mixins" as *;
 
 	:global(html) {
 		font-size: $default-font-size;

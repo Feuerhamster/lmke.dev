@@ -3,7 +3,7 @@
 </span>
 
 <style lang="scss">
-	@import "../scss/defaults.scss";
+	@use "../scss/defaults.scss" as *;
 
 	.label {
 		background-color: rgba($color-text, 0.1);

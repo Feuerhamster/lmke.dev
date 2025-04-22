@@ -20,7 +20,7 @@
 </div>
 
 <style lang="scss">
-	@import "../scss/defaults";
+	@use "../scss/defaults" as *;
 
 	.skills-wrapper {
 		display: flex;

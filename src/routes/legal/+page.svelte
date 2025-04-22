@@ -36,13 +36,13 @@
 </div>
 
 <style lang="scss">
-	@import "../../scss/defaults.scss";
-	@import "../../scss/mixins.scss";
+	@use "../../scss/defaults.scss" as *;
+	@use "../../scss/mixins.scss" as *;
 
 	.limited-page {
-		@include limited-page;
 		gap: 24px;
 		margin-top: -2rem;
+		@include limited-page;
 
 		section {
 			width: 100%;

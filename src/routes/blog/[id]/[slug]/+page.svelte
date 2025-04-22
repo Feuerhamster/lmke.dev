@@ -6,7 +6,7 @@
 	import pageMeta from "$lib/pageMeta";
 
 	import { getDirectusImageUrl } from "$lib/utils";
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import Label from "$components/label.svelte";
 	import Duration from "duration-relativetimeformat";
 	import type { PageServerData } from "./$types";
@@ -67,7 +67,7 @@
 		content={new Date(article.date_published).toISOString()}
 	/>
 	<meta property="article:modified_time" content={new Date(article.date_updated).toISOString()} />
-	<meta property="article:author" content={$page.url.href} />
+	<meta property="article:author" content={page.url.href} />
 	{#each article.topics as topic}
 		<meta property="article:tag" content={topic.topic.name} />
 	{/each}
@@ -132,7 +132,7 @@
 				reactionsEnabled="1"
 				emitMetadata="0"
 				inputPosition="top"
-				theme="{$page.url.origin}/giscus.css"
+				theme="{page.url.origin}/giscus.css"
 				lang="de"
 				loading="lazy"
 			/>
@@ -143,12 +143,12 @@
 </div>
 
 <style lang="scss">
-	@import "../../../../scss/mixins.scss";
-	@import "../../../../scss/defaults.scss";
+	@use "../../../../scss/mixins.scss" as *;
+	@use "../../../../scss/defaults.scss" as *;
 
 	.limited-page {
-		@include limited-page;
 		gap: 30px;
+		@include limited-page;
 
 		.user {
 			display: grid;

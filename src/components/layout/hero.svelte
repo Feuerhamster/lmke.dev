@@ -14,7 +14,7 @@
 </div>
 
 <style lang="scss">
-	@import "../../scss/mixins.scss";
+	@use "../../scss/mixins.scss" as *;
 
 	.hero {
 		padding: 10rem 2rem 8rem 2rem;

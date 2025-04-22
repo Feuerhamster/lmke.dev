@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	export let href: string;
 </script>
 
-<a {href} class:active={$page.url.pathname == href}>
+<a {href} class:active={page.url.pathname == href}>
 	<slot />
 </a>
 
 <style lang="scss">
-	@import "../scss/defaults";
-	@import "../scss/mixins";
+	@use "../scss/defaults" as *;
+	@use "../scss/mixins" as *;
 
 	a {
 		text-decoration: none;

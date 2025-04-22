@@ -2,8 +2,7 @@
 	import { getDirectusImageUrl } from "$lib/utils";
 	import type { IDirectusImage } from "$models/directus";
 
-	import GitHubIcon from "lucide-icons-svelte/github.svelte";
-	import MailIcon from "lucide-icons-svelte/mail.svelte";
+	import { Github, Mail } from "lucide-svelte";
 
 	export let image: IDirectusImage;
 	export let name: string;
@@ -24,19 +23,19 @@
 		</h1>
 
 		<a href={github_link} target="_blank" rel="noopener">
-			<GitHubIcon />
+			<Github />
 			{github_name}
 		</a>
 		<a href={"mailto:" + email}>
-			<MailIcon />
+			<Mail />
 			{email}
 		</a>
 	</div>
 </div>
 
 <style lang="scss">
-	@import "../scss/defaults";
-	@import "../scss/mixins";
+	@use "../scss/defaults" as *;
+	@use "../scss/mixins" as *;
 
 	.personal-card {
 		display: flex;

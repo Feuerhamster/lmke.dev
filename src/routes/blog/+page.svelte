@@ -3,7 +3,7 @@
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
 
-	import RSSIcon from "lucide-icons-svelte/rss.svelte";
+	import { Rss } from "lucide-svelte";
 	import pageMeta from "$lib/pageMeta";
 	import type { PageServerData } from "./$types";
 
@@ -69,20 +69,21 @@
 
 	<section>
 		<a href="/blog/rss.xml" target="_blank" class="rss">
-			<RSSIcon />
+			<Rss />
 			<span>RSS Feed</span>
 		</a>
 	</section>
 </div>
 
 <style lang="scss">
-	@import "../../scss/defaults.scss";
-	@import "../../scss/mixins.scss";
+	@use "../../scss/defaults.scss" as *;
+	@use "../../scss/mixins.scss" as *;
 
 	.limited-page {
-		@include limited-page;
 		gap: 24px;
 		margin-top: -2rem;
+
+		@include limited-page;
 
 		section {
 			width: initial;

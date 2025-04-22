@@ -57,8 +57,8 @@
 </article>
 
 <style lang="scss">
-	@import "../scss/defaults";
-	@import "../scss/mixins";
+	@use "../scss/defaults" as *;
+	@use "../scss/mixins" as *;
 
 	.full-project-item {
 		display: grid;

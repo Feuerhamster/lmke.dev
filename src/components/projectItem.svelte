@@ -42,7 +42,7 @@
 </div>
 
 <style lang="scss">
-	@import "../scss/defaults";
+	@use "../scss/defaults" as *;
 
 	.project-item {
 		display: grid;

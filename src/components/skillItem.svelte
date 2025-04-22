@@ -9,7 +9,7 @@
 </span>
 
 <style lang="scss">
-	@import "../scss/defaults";
+	@use "../scss/defaults" as *;
 
 	.skill {
 		padding: 3px 18px;

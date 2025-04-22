@@ -1,7 +1,7 @@
 <script lang="ts">
 	import NavLink from "$components/navLink.svelte";
-	import { page } from "$app/stores";
-	import MenuIcon from "lucide-icons-svelte/menu.svelte";
+	import { page } from "$app/state";
+	import { MenuIcon } from "lucide-svelte";
 
 	let pageMapping = {
 		blog: "Blog",
@@ -9,7 +9,7 @@
 		legal: "Rechtliches"
 	};
 
-	$: currentPath = $page.url.pathname.substring(1).split("/")[0] as keyof typeof pageMapping;
+	$: currentPath = page.url.pathname.substring(1).split("/")[0] as keyof typeof pageMapping;
 
 	// toggles toe mobile nav menu
 	let expand = false;
@@ -46,8 +46,8 @@
 </div>
 
 <style lang="scss">
-	@import "../../scss/defaults";
-	@import "../../scss/mixins";
+	@use "../../scss/defaults" as *;
+	@use "../../scss/mixins" as *;
 
 	.navbar {
 		background: $color-background-transparency;
