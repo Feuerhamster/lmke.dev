@@ -22,9 +22,8 @@
 
 	.friends-collection {
 		display: flex;
-		justify-content: space-between;
-		gap: 24px;
-		grid-template-columns: 1fr 1fr 1fr;
+		justify-content: flex-start;
+		gap: 4rem;
 		flex-wrap: wrap;
 	}
 
