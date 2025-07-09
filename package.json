@@ -31,6 +31,7 @@
 		"@giscus/svelte": "^2.2.8",
 		"ackee-tracker": "^5.1.0",
 		"dayjs": "^1.11.13",
+		"liquidjs": "^10.21.1",
 		"lucide-svelte": "^0.503.0",
 		"nprogress": "^0.2.0",
 		"sass": "^1.63.5"
