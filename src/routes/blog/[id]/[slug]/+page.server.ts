@@ -9,8 +9,6 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	const article = data.lmke_articles_by_id as IDirectusArticle;
 
-	console.log(article);
-
 	if (params.slug !== article.slug) {
 		return error(404);
 	}
