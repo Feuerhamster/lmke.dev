@@ -37,7 +37,7 @@
 	wallpaper={hasWallpaperImage ? getDirectusImageUrl(wallpaperId, { quality: 70 }) : undefined}
 	size={hasWallpaperImage ? "big" : undefined}
 >
-	<TitleFont style="font-size: 2rem">{article.title}</TitleFont>
+	<TitleFont style="font-size: 1.8rem">{article.title}</TitleFont>
 	<p>{article.description}</p>
 </Hero>
 
