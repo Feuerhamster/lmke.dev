@@ -1,5 +1,10 @@
 query GetFullBlogArticles($limit: Int!, $page: Int!) {
-	lmke_articles(limit: $limit, page: $page, sort: ["-date_published"]) {
+	lmke_articles(
+		limit: $limit
+		page: $page
+		sort: ["-date_published"]
+		filter: { private: { _eq: false } }
+	) {
 		id
 		slug
 		date_created

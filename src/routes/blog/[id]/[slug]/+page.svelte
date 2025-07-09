@@ -5,10 +5,9 @@
 	import Giscus from "@giscus/svelte";
 	import pageMeta from "$lib/pageMeta";
 
-	import { getDirectusImageUrl } from "$lib/utils";
+	import { formatToRelativeTime, getDirectusImageUrl } from "$lib/utils";
 	import { page } from "$app/state";
 	import Label from "$components/label.svelte";
-	import Duration from "duration-relativetimeformat";
 	import type { PageServerData } from "./$types";
 
 	export let data: PageServerData;
@@ -29,12 +28,9 @@
 		minute: "2-digit"
 	});
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
-	const relativeTime = new Duration("de", { numeric: "always" }).format(
-		new Date(article.date_published)
-	);
-	const relativeTimeUpdated = new Duration("de", { numeric: "always" }).format(
-		new Date(article.date_updated)
-	);
+
+	const relativeTime = formatToRelativeTime(article.date_published);
+	const relativeTimeUpdated = formatToRelativeTime(article.date_updated);
 </script>
 
 <Hero
@@ -72,7 +68,7 @@
 		<meta property="article:tag" content={topic.topic.name} />
 	{/each}
 
-	{#if article.noindex}
+	{#if article.noindex || article.private}
 		<meta name="robots" content="noindex" />
 	{/if}
 </svelte:head>
@@ -120,7 +116,7 @@
 	</div>
 
 	<div class="comment-box">
-		{#if !article.disable_comments}
+		{#if !article.disable_comments && !article.private}
 			<Giscus
 				id="comments"
 				repo="Feuerhamster/lmke.dev"

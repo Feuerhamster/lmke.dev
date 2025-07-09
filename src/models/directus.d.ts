@@ -62,6 +62,7 @@ export interface IDirectusArticle {
 	content: string;
 	disable_comments: boolean;
 	noindex?: boolean;
+	private: boolean;
 }
 
 export interface IDirectusArticleTopic {

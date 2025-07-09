@@ -30,5 +30,6 @@ query GetFullArticleById($id: ID!) {
 		content
 		disable_comments
 		noindex
+		private
 	}
 }

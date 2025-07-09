@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { getDirectusImageUrl } from "$lib/utils";
-	import Duration from "duration-relativetimeformat";
-
+	import { formatToRelativeTime, getDirectusImageUrl } from "$lib/utils";
 	import type { IDirectusArticle } from "$models/directus";
 	import Label from "./label.svelte";
 
@@ -14,9 +12,7 @@
 	});
 	$: formattedAuthor = article.user_created.first_name + " " + article.user_created.last_name;
 
-	const relativeTime = new Duration("de", { numeric: "always" }).format(
-		new Date(article.date_published)
-	);
+	const relativeTime = formatToRelativeTime(article.date_published);
 </script>
 
 <a class="article-item" href="/blog/{article.id}/{article.slug}">
