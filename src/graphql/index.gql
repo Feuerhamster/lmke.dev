@@ -36,7 +36,7 @@ query GetAllIndexPageData {
 		name
 	}
 
-	lmke_articles(limit: 1, sort: ["-date_published"]) {
+	lmke_articles(limit: 1, sort: ["-date_published"], filter: { private: { _eq: false } }) {
 		id
 		slug
 		date_created
