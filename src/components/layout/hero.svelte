@@ -4,7 +4,6 @@
 
 	export let wallpaper: string | undefined = undefined;
 	export let size: "big" | "small" | "" | undefined = undefined;
-	export let textSize: string = "";
 
 	$: selectedWallpaper = wallpaper ?? getDirectusImageUrl($currentWallpaper.id, { quality: 70 });
 </script>
@@ -17,7 +16,7 @@
 	@use "../../scss/mixins.scss" as *;
 
 	.hero {
-		padding: 10rem 2rem 8rem 2rem;
+		padding: 10rem 2rem 10rem 2rem;
 
 		&.big {
 			padding: 12rem 2rem 12rem 2rem;

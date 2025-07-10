@@ -23,3 +23,7 @@ export function stripHtml(html: string): string {
 export function formatToRelativeTime(date: string) {
 	return dayjs(date).locale("de").fromNow();
 }
+
+export function capitalizeFirstLetter(val: string) {
+	return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}

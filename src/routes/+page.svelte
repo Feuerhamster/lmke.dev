@@ -21,7 +21,9 @@
 		name: aboutMe.name,
 		subtitle: aboutMe.subtitle,
 		github_link: aboutMe.github_link,
-		email: aboutMe.email
+		email: aboutMe.email,
+		linkedin_link: aboutMe.linkedin_link,
+		mastodon_link: aboutMe.mastodon_link
 	};
 
 	const metaDescription = stripHtml(aboutMe.about_me);

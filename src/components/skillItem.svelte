@@ -10,6 +10,7 @@
 
 <style lang="scss">
 	@use "../scss/defaults" as *;
+	@use "sass:color";
 
 	.skill {
 		padding: 3px 18px;
@@ -17,7 +18,7 @@
 		border-radius: 32px;
 
 		border-color: $color-pink;
-		color: $color-pink;
+		color: color.change($color-pink, $whiteness: 82%);
 
 		/*&.level-1 {
 			border-color: $color-blue;
