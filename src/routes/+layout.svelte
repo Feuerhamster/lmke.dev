@@ -1,5 +1,5 @@
 <script lang="ts">
-	import "@fontsource/fira-sans/500.css";
+	import "@fontsource/fira-sans/400.css";
 	import "@fontsource/fira-sans/700.css";
 
 	import Navbar from "$components/layout/navbar.svelte";
@@ -77,7 +77,7 @@
 		font-family: "Fira Sans", sans-serif;
 		color: $color-text;
 		font-size: $default-font-size;
-		letter-spacing: 0.008rem;
+		letter-spacing: 0.012rem;
 
 		@include media-mobile() {
 			font-size: $default-font-size-mobile;
