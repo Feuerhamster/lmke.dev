@@ -1,5 +1,7 @@
 <script lang="ts">
-	import "@fontsource/atkinson-hyperlegible";
+	import "@fontsource/fira-sans/500.css";
+	import "@fontsource/fira-sans/700.css";
+
 	import Navbar from "$components/layout/navbar.svelte";
 	import { currentWallpaper } from "$lib/stores";
 	import Footer from "$components/layout/footer.svelte";
@@ -71,10 +73,11 @@
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
-		font-family: "Atkinson Hyperlegible", sans-serif;
+		// font-family: "Atkinson Hyperlegible", sans-serif;
+		font-family: "Fira Sans", sans-serif;
 		color: $color-text;
 		font-size: $default-font-size;
-		letter-spacing: 1px;
+		letter-spacing: 0.008rem;
 
 		@include media-mobile() {
 			font-size: $default-font-size-mobile;

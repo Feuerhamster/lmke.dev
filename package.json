@@ -27,7 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/atkinson-hyperlegible": "^5.0.3",
+		"@fontsource/fira-sans": "^5.2.6",
 		"@giscus/svelte": "^2.2.8",
 		"ackee-tracker": "^5.1.0",
 		"dayjs": "^1.11.13",
