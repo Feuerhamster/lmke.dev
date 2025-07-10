@@ -8,7 +8,7 @@
 	import Skills from "$components/skillsCollection.svelte";
 	import pageMeta from "$lib/pageMeta";
 	import { stripHtml } from "$lib/utils";
-	import { ExternalLink } from "lucide-svelte";
+	import { ExternalLink, FolderSymlink } from "lucide-svelte";
 
 	import type { PageServerData } from "./$types";
 
@@ -74,7 +74,7 @@
 		</h2>
 		<ProjectsCollection {projects} />
 		<BoxedLink href="/projects" light>
-			<ExternalLink />
+			<FolderSymlink />
 			Mehr Projekte und Details ansehen
 		</BoxedLink>
 	</section>
@@ -100,7 +100,7 @@
 			<ArticleItem article={newestArticle} />
 
 			<BoxedLink href="/blog" light>
-				<ExternalLink />
+				<FolderSymlink />
 				Mehr Blogartikel ansehen
 			</BoxedLink>
 		</section>
