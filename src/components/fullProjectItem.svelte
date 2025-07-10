@@ -2,6 +2,8 @@
 	import { getDirectusImageUrl } from "$lib/utils";
 
 	import type { IDirectusProject } from "$models/directus";
+	import { ExternalLink } from "lucide-svelte";
+	import BoxedLink from "./boxedLink.svelte";
 	import Label from "./label.svelte";
 
 	export let project: IDirectusProject;
@@ -15,18 +17,15 @@
 			height: 120,
 			fit: "cover"
 		})}
+		class="logo"
 		alt="logo"
 	/>
 
 	<div class="info">
-		<h3>{project.title}</h3>
-		<h4>{project.description}</h4>
-
-		<p class="gap">
-			{#each project.technologies as t}
-				<Label>{t.skill.name}</Label>
-			{/each}
-		</p>
+		<hgroup>
+			<h3>{project.title}</h3>
+			<h4>{project.description}</h4>
+		</hgroup>
 
 		{#if project.discontinued}
 			<p class="discontinued">
@@ -34,24 +33,30 @@
 			</p>
 		{/if}
 
-		{#if project.link}
-			<p>
-				Link: <a href={project.link} target="_blank" rel="noopener">
+		<div class="links">
+			{#if project.link}
+				<BoxedLink href={project.link} newTab noopener light>
+					<ExternalLink />
 					{new URL(project.link).hostname}
-				</a>
-			</p>
-		{/if}
+				</BoxedLink>
+			{/if}
 
-		{#if project.link_source}
-			<p>
-				GitHub: <a href={project.link_source} target="_blank" rel="noopener">
+			{#if project.link_source}
+				<BoxedLink href={project.link_source} newTab noopener light>
+					<img src="/images/github.svg" alt="GitHub" />
 					{new URL(project.link_source).pathname.substring(1)}
-				</a>
-			</p>
-		{/if}
+				</BoxedLink>
+			{/if}
+		</div>
 
 		<p>
 			{project.full_description}
+		</p>
+
+		<p class="gap">
+			{#each project.technologies as t}
+				<Label>{t.skill.name}</Label>
+			{/each}
 		</p>
 	</div>
 </article>
@@ -75,7 +80,7 @@
 				"info";
 		}
 
-		img {
+		img.logo {
 			grid-area: image;
 			border-radius: $default-image-border-radius;
 			margin-top: 0.4rem;
@@ -84,7 +89,7 @@
 		.info {
 			display: flex;
 			flex-direction: column;
-			gap: 6px;
+			gap: 8px;
 			grid-area: info;
 			font-size: 0.85rem;
 
@@ -93,12 +98,17 @@
 			}
 
 			h3 {
-				font-size: 1.4rem;
+				font-size: 1.6rem;
 			}
 
 			h4 {
-				font-size: 1.15rem;
+				font-size: 1.2rem;
 				font-weight: normal;
+			}
+
+			.links {
+				display: flex;
+				gap: 0.4rem;
 			}
 
 			p.gap {

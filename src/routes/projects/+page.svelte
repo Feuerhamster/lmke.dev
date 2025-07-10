@@ -49,7 +49,7 @@
 		@include limited-page;
 
 		section {
-			gap: 2.2rem;
+			gap: 3rem;
 
 			:global(.article-item) {
 				padding-left: 1.8rem;
