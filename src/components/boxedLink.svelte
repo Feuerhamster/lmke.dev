@@ -19,7 +19,7 @@
 		justify-content: center;
 		align-items: center;
 		gap: 10px;
-		color: $color-text;
+		color: inherit;
 		text-decoration: none;
 
 		background: $color-background-transparency;

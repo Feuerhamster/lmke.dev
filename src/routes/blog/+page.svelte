@@ -69,7 +69,7 @@
 	{/if}
 
 	<section class="rss">
-		<BoxedLink href={"/blog/rss.xml"} newTab>
+		<BoxedLink href={"/blog/rss.xml"} newTab light>
 			<Rss />
 			RSS Feed
 		</BoxedLink>
@@ -95,17 +95,8 @@
 				opacity: 0.3;
 			}
 
-			a.rss {
+			&.rss {
 				color: $color-orange;
-				display: flex;
-				align-items: center;
-				gap: 6px;
-				text-decoration: none;
-
-				:global(.lucide) {
-					height: 1rem;
-					width: 1rem;
-				}
 			}
 		}
 	}
