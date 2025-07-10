@@ -6,6 +6,7 @@
 	import { Rss } from "lucide-svelte";
 	import pageMeta from "$lib/pageMeta";
 	import type { PageServerData } from "./$types";
+	import BoxedLink from "$components/boxedLink.svelte";
 
 	export let data: PageServerData;
 
@@ -67,11 +68,11 @@
 		</section>
 	{/if}
 
-	<section>
-		<a href="/blog/rss.xml" target="_blank" class="rss">
+	<section class="rss">
+		<BoxedLink href={"/blog/rss.xml"} newTab>
 			<Rss />
-			<span>RSS Feed</span>
-		</a>
+			RSS Feed
+		</BoxedLink>
 	</section>
 </div>
 

@@ -53,6 +53,13 @@
 		text-decoration: none;
 		color: $color-text;
 
+		border: 1px solid $color-border;
+		border-radius: 6px;
+
+		padding: 10px;
+
+		background: $color-background-transparency-light;
+
 		&:hover {
 			h3 {
 				text-decoration: underline;

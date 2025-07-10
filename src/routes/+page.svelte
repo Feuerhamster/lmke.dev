@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ArticleItem from "$components/articleItem.svelte";
+	import BoxedLink from "$components/boxedLink.svelte";
 	import FriendsCollection from "$components/friendsCollection.svelte";
 	import Hero from "$components/layout/hero.svelte";
 	import PersonalCard from "$components/personalCard.svelte";
@@ -7,6 +8,7 @@
 	import Skills from "$components/skillsCollection.svelte";
 	import pageMeta from "$lib/pageMeta";
 	import { stripHtml } from "$lib/utils";
+	import { ExternalLink } from "lucide-svelte";
 
 	import type { PageServerData } from "./$types";
 
@@ -71,7 +73,10 @@
 			Meine Projekte
 		</h2>
 		<ProjectsCollection {projects} />
-		<a href="/projects" class="sublink">Mehr Projekte und Details ansehen</a>
+		<BoxedLink href="/projects" light>
+			<ExternalLink />
+			Mehr Projekte und Details ansehen
+		</BoxedLink>
 	</section>
 
 	<section>
@@ -94,7 +99,10 @@
 
 			<ArticleItem article={newestArticle} />
 
-			<a href="/blog" class="sublink">Mehr Blogartikel ansehen</a>
+			<BoxedLink href="/blog" light>
+				<ExternalLink />
+				Mehr Blogartikel ansehen
+			</BoxedLink>
 		</section>
 	{/if}
 </div>
@@ -135,11 +143,13 @@
 		}
 
 		section {
+			align-items: flex-start;
+
 			& > :global(*:not(h2):not(section)) {
-				padding-left: 1.9rem;
+				margin-left: 1.65rem;
 
 				@include media-mobile() {
-					padding-left: 0.2rem;
+					margin-left: 0.2rem;
 				}
 			}
 		}
@@ -152,10 +162,6 @@
 
 		:global(.spacer) {
 			opacity: 0.5;
-		}
-
-		a.sublink {
-			font-size: 1rem;
 		}
 
 		& > section {

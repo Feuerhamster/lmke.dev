@@ -2,15 +2,17 @@
 	export let href: string = "";
 	export let noopener: boolean = false;
 	export let newTab: boolean = false;
+	export let light: boolean = false;
 </script>
 
-<a {href} rel={noopener ? "noopener" : ""} target={newTab ? "_blank" : "_self"}>
+<a {href} rel={noopener ? "noopener" : ""} target={newTab ? "_blank" : ""} class:light>
 	<slot />
 </a>
 
 <style lang="scss">
 	@use "../scss/defaults" as *;
 	@use "../scss/mixins" as *;
+	@use "sass:color";
 
 	a {
 		display: flex;
@@ -34,6 +36,20 @@
 		:global(img) {
 			max-height: 1.2rem;
 			max-width: 1.2rem;
+		}
+
+		&.light {
+			background: $color-background-transparency-light;
+		}
+
+		transition: 0.2s background;
+
+		&.light:hover {
+			background: color.change($color-background-transparency-light, $alpha: 8%);
+		}
+
+		&:hover {
+			background: color.change($color-background-transparency, $alpha: 26%);
 		}
 	}
 </style>
