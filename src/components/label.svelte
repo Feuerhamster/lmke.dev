@@ -8,6 +8,7 @@
 	.label {
 		background-color: rgba($color-text, 0.1);
 		color: $color-text-accent-lighter;
+		border: 1px solid $color-border;
 		padding: 0px 12px;
 		border-radius: 32px;
 		display: inline-block;

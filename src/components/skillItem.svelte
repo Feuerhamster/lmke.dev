@@ -16,7 +16,7 @@
 		padding: 4px 16px;
 		border-radius: 32px;
 
-		color: $color-orange;
+		color: inherit;
 
 		border: 1px solid $color-border;
 

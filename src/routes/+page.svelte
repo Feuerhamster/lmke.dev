@@ -8,9 +8,10 @@
 	import Skills from "$components/skillsCollection.svelte";
 	import pageMeta from "$lib/pageMeta";
 	import { stripHtml } from "$lib/utils";
-	import { ExternalLink, FolderSymlink } from "lucide-svelte";
+	import { FolderSymlink } from "lucide-svelte";
 
 	import type { PageServerData } from "./$types";
+	import Label from "$components/label.svelte";
 
 	export let data: PageServerData;
 
@@ -63,7 +64,9 @@
 				<span class="orange">»</span>
 				Meine Skills
 			</h2>
-			<Skills {skills} />
+			<div class="skills">
+				<Skills {skills} />
+			</div>
 		</section>
 	</section>
 
@@ -82,7 +85,7 @@
 	<section>
 		<h2>
 			<span class="green">»</span>
-			Meine Freunde
+			Gute Freunde aus der Community
 		</h2>
 		<FriendsCollection {friends} />
 	</section>
@@ -91,10 +94,12 @@
 		<section>
 			<h2>
 				<span class="pink">»</span>
-				Mein persönlicher Blog
+				Der persönliche Blog von mir
 			</h2>
-			<p>
-				{@html formattedTopics.join(`<span class="spacer"> | </span>`)}
+			<p class="topics">
+				{#each formattedTopics as topic}
+					<Label>{topic}</Label>
+				{/each}
 			</p>
 
 			<ArticleItem article={newestArticle} />
@@ -158,6 +163,16 @@
 			display: flex;
 			flex-direction: column;
 			gap: 24px;
+		}
+
+		.skills {
+			color: $color-orange;
+		}
+
+		.topics {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.4rem;
 		}
 
 		:global(.spacer) {

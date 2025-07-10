@@ -41,12 +41,12 @@
 				{email}
 			</BoxedLink>
 
-			<BoxedLink href={linkedin_link}>
+			<BoxedLink href={linkedin_link} newTab>
 				<img src="/images/linkedin.svg" alt="LinkedIn" />
 				{linkedin_name}
 			</BoxedLink>
 
-			<BoxedLink href={mastodon_link}>
+			<BoxedLink href={mastodon_link} newTab>
 				<img src="/images/mastodon.svg" alt="Mastodon" />
 				{mastodon_name}
 			</BoxedLink>
@@ -101,13 +101,13 @@
 			div.links {
 				display: flex;
 				flex-wrap: wrap;
-				@include media-mobile() {
-					justify-content: center;
-				}
-
 				gap: 4px;
 				max-width: 500px;
 				font-size: 0.9rem;
+
+				@include media-mobile() {
+					justify-content: center;
+				}
 			}
 		}
 

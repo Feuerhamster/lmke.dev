@@ -23,8 +23,8 @@
 		justify-content: space-around;
 		gap: 12px;
 
-		background-color: rgba(0, 0, 0, 0.3);
-		padding: 12px;
+		background-color: rgba(0, 0, 0, 0.25);
+		padding: 16px;
 		color: $color-text-accent;
 		font-size: 0.85rem;
 		margin-top: auto;

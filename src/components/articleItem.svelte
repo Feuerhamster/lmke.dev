@@ -27,8 +27,10 @@
 	/>
 
 	<div class="info">
-		<h3>{article.title}</h3>
-		<p>{article.description}</p>
+		<hgroup>
+			<h3>{article.title}</h3>
+			<h4>{article.description}</h4>
+		</hgroup>
 		<p class="meta">
 			{#each article.topics as topic}
 				<Label>{topic.topic.name}</Label>
@@ -53,13 +55,6 @@
 		text-decoration: none;
 		color: $color-text;
 
-		border: 1px solid $color-border;
-		border-radius: 6px;
-
-		padding: 10px;
-
-		background: $color-background-transparency-light;
-
 		&:hover {
 			h3 {
 				text-decoration: underline;
@@ -80,6 +75,10 @@
 
 			h3 {
 				font-size: 1.2rem;
+			}
+
+			h4 {
+				font-weight: 500;
 			}
 
 			.meta {
