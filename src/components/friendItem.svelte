@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { IDirectusFriend } from "$models/directus";
-	import { ExternalLink } from "lucide-svelte";
+	import { Globe } from "lucide-svelte";
 	import BoxedLink from "./boxedLink.svelte";
 
 	export let friend: IDirectusFriend;
@@ -20,7 +20,7 @@
 	<div class="links">
 		{#if friend.link_web}
 			<BoxedLink href={friend.link_web} newTab noopener light>
-				<ExternalLink />
+				<Globe />
 			</BoxedLink>
 		{/if}
 
