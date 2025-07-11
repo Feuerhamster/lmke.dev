@@ -58,7 +58,7 @@
 
 	{#if page !== undefined && totalPages !== undefined}
 		<section>
-			<p>
+			<p class="paging">
 				<a href="?page={page - 1}" data-disabled={!(page > 1)}>Zurück</a>
 
 				<span>Seite <b> {page} </b> von <b> {totalPages} </b></span>
@@ -89,10 +89,16 @@
 		section {
 			width: initial;
 
+			.paging {
+				display: flex;
+				gap: 0.6rem;
+			}
+
 			a[data-disabled="true"] {
 				pointer-events: none;
 				color: $color-text;
-				opacity: 0.3;
+				opacity: 0.4;
+				cursor: not-allowed;
 			}
 
 			&.rss {

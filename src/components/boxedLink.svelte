@@ -45,11 +45,11 @@
 		transition: 0.2s background;
 
 		&.light:hover {
-			background: color.change($color-background-transparency-light, $alpha: 8%);
+			background: color.change($color-background-transparency-light, $alpha: 10%);
 		}
 
 		&:hover {
-			background: color.change($color-background-transparency, $alpha: 26%);
+			background: color.change($color-background-transparency, $alpha: 28%);
 		}
 	}
 </style>
