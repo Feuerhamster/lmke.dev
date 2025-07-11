@@ -7,6 +7,7 @@
 	import pageMeta from "$lib/pageMeta";
 	import type { PageServerData } from "./$types";
 	import BoxedLink from "$components/boxedLink.svelte";
+	import Label from "$components/label.svelte";
 
 	export let data: PageServerData;
 
@@ -41,7 +42,11 @@
 <Hero size="small">
 	<TitleFont>Mein persönlicher Blog</TitleFont>
 	<p class="topics">
-		{@html formattedTopics?.join(`<span class="spacer"> | </span>`)}
+		{#if topics}
+			{#each topics as topic}
+				<Label dark blur>{topic.name}</Label>
+			{/each}
+		{/if}
 	</p>
 </Hero>
 
@@ -110,6 +115,11 @@
 	:global(.hero) {
 		:global(.spacer) {
 			opacity: 0.5;
+		}
+
+		:global(.topics) {
+			display: flex;
+			gap: 0.2rem;
 		}
 	}
 </style>
