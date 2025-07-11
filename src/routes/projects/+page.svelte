@@ -2,7 +2,6 @@
 	import FullProjectItem from "$components/fullProjectItem.svelte";
 	import Hero from "$components/layout/hero.svelte";
 	import TitleFont from "$components/titleFont.svelte";
-	import type { IDirectusProject } from "$models/directus";
 	import pageMeta from "$lib/pageMeta";
 	import type { PageServerData } from "./$types";
 

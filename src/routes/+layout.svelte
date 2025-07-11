@@ -73,7 +73,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
-		// font-family: "Atkinson Hyperlegible", sans-serif;
 		font-family: "Fira Sans", sans-serif;
 		color: $color-text;
 		font-size: $default-font-size;

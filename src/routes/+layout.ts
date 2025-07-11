@@ -3,7 +3,7 @@ import { setOGImage } from "$lib/pageMeta";
 import { env } from "$env/dynamic/public";
 import type { IDirectusImage } from "$models/directus";
 
-export const load: LayoutLoad = async ({ url, fetch }) => {
+export const load: LayoutLoad = async ({ fetch }) => {
 	let res = await fetch("/wallpaper");
 	let data = await res.json();
 
