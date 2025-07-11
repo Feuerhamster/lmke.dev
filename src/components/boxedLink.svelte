@@ -5,7 +5,7 @@
 	export let light: boolean = false;
 </script>
 
-<a {href} rel={noopener ? "noopener" : ""} target={newTab ? "_blank" : ""} class:light>
+<a {href} rel={noopener ? "noopener" : ""} target={newTab ? "_blank" : ""} class:light {...$$props}>
 	<slot />
 </a>
 
