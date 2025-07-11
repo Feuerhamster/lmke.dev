@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getDirectusImageUrl } from "$lib/utils";
+	import { formatToSlug, getDirectusImageUrl } from "$lib/utils";
 
 	import type { IDirectusProject } from "$models/directus";
 	import { ExternalLink } from "lucide-svelte";
@@ -9,7 +9,7 @@
 	export let project: IDirectusProject;
 </script>
 
-<article class="full-project-item">
+<article class="full-project-item" id={formatToSlug(project.title)}>
 	<img
 		src={getDirectusImageUrl(project.logo.id, {
 			quality: 80,
@@ -72,6 +72,7 @@
 		gap: 24px;
 		text-decoration: none;
 		color: $color-text;
+		scroll-margin-top: 80px;
 
 		@include media-mobile() {
 			grid-template-columns: 1fr;

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { IDirectusFriend } from "$models/directus";
+	import { ExternalLink } from "lucide-svelte";
+	import BoxedLink from "./boxedLink.svelte";
 
 	export let friend: IDirectusFriend;
 </script>
@@ -17,13 +19,15 @@
 
 	<div class="links">
 		{#if friend.link_web}
-			<a href={friend.link_web} target="_blank" rel="noopener">
-				{new URL(friend.link_web).hostname}
-			</a>
+			<BoxedLink href={friend.link_web} newTab noopener light>
+				<ExternalLink />
+			</BoxedLink>
 		{/if}
 
 		{#if friend.link_gh}
-			<a href={friend.link_gh} target="_blank" rel="noopener">GitHub</a>
+			<BoxedLink href={friend.link_gh} newTab noopener light>
+				<img src="/images/github.svg" alt="GitHub" />
+			</BoxedLink>
 		{/if}
 	</div>
 </div>
@@ -60,7 +64,6 @@
 		}
 
 		p {
-			font-size: 0.85rem;
 			grid-area: activity;
 		}
 

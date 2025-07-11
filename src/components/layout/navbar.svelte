@@ -87,7 +87,7 @@
 			.absolute {
 				position: absolute;
 				display: flex;
-				gap: 8px;
+				gap: 2px;
 				left: 7rem;
 				top: 0;
 			}

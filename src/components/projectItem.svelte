@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { getDirectusImageUrl } from "$lib/utils";
+	import { formatToSlug, getDirectusImageUrl } from "$lib/utils";
 
 	import type { IDirectusProject } from "$models/directus";
 
 	export let project: IDirectusProject;
 </script>
 
-<div class="project-item">
+<a class="project-item" href={"/projects#" + formatToSlug(project.title)}>
 	<img
 		src={getDirectusImageUrl(project.logo.id, { quality: 90, height: 90, width: 90 })}
 		alt="logo"
@@ -21,25 +21,7 @@
 			{@html project.description}
 		</p>
 	</div>
-
-	<div class="links">
-		{#if project.link}
-			<a href={project.link} target="_blank" rel="noopener">
-				{new URL(project.link).hostname}
-			</a>
-		{/if}
-
-		{#if project.link_source}
-			<a href={project.link_source} target="_blank" rel="noopener">Quellcode</a>
-		{/if}
-
-		{#if project.discontinued}
-			<span class="discontinued" title="Dieses Projekt wird nicht mehr weitergeführt"
-				>[Stillgelegt]</span
-			>
-		{/if}
-	</div>
-</div>
+</a>
 
 <style lang="scss">
 	@use "../scss/defaults" as *;
@@ -55,6 +37,16 @@
 			"links links";
 		justify-items: stretch;
 		max-width: 370px;
+		text-decoration: none;
+		color: inherit;
+
+		&:hover {
+			.info {
+				h3 {
+					text-decoration: underline;
+				}
+			}
+		}
 
 		img {
 			border-radius: $default-image-border-radius;
