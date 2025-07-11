@@ -120,6 +120,8 @@
 		:global(.topics) {
 			display: flex;
 			gap: 0.2rem;
+			flex-wrap: wrap;
+			justify-content: center;
 		}
 	}
 </style>
