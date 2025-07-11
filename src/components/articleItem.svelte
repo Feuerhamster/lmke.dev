@@ -27,15 +27,17 @@
 	/>
 
 	<div class="info">
-		<h3>{article.title}</h3>
-		<p>{article.description}</p>
+		<hgroup>
+			<h3>{article.title}</h3>
+			<h4>{article.description}</h4>
+		</hgroup>
 		<p class="meta">
 			{#each article.topics as topic}
 				<Label>{topic.topic.name}</Label>
 			{/each}
 
-			<span>
-				{formattedDate} ({relativeTime}) von {formattedAuthor}
+			<span class="published">
+				<b>{formattedDate}</b> - {relativeTime}
 			</span>
 		</p>
 	</div>
@@ -75,11 +77,20 @@
 				font-size: 1.2rem;
 			}
 
+			h4 {
+				font-weight: 400;
+				font-size: 1rem;
+			}
+
 			.meta {
-				color: rgba($color-text, 0.5);
+				color: rgba($color-text, 0.8);
 				display: flex;
 				flex-wrap: wrap;
 				gap: 6px;
+
+				.published {
+					margin-left: 0.4rem;
+				}
 			}
 		}
 

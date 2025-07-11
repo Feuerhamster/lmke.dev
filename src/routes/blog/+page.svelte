@@ -6,6 +6,8 @@
 	import { Rss } from "lucide-svelte";
 	import pageMeta from "$lib/pageMeta";
 	import type { PageServerData } from "./$types";
+	import BoxedLink from "$components/boxedLink.svelte";
+	import Label from "$components/label.svelte";
 
 	export let data: PageServerData;
 
@@ -40,7 +42,11 @@
 <Hero size="small">
 	<TitleFont>Mein persönlicher Blog</TitleFont>
 	<p class="topics">
-		{@html formattedTopics?.join(`<span class="spacer"> | </span>`)}
+		{#if topics}
+			{#each topics as topic}
+				<Label dark blur>{topic.name}</Label>
+			{/each}
+		{/if}
 	</p>
 </Hero>
 
@@ -57,7 +63,7 @@
 
 	{#if page !== undefined && totalPages !== undefined}
 		<section>
-			<p>
+			<p class="paging">
 				<a href="?page={page - 1}" data-disabled={!(page > 1)}>Zurück</a>
 
 				<span>Seite <b> {page} </b> von <b> {totalPages} </b></span>
@@ -67,11 +73,11 @@
 		</section>
 	{/if}
 
-	<section>
-		<a href="/blog/rss.xml" target="_blank" class="rss">
+	<section class="rss">
+		<BoxedLink href={"/blog/rss.xml"} newTab light>
 			<Rss />
-			<span>RSS Feed</span>
-		</a>
+			RSS Feed
+		</BoxedLink>
 	</section>
 </div>
 
@@ -88,23 +94,20 @@
 		section {
 			width: initial;
 
+			.paging {
+				display: flex;
+				gap: 0.6rem;
+			}
+
 			a[data-disabled="true"] {
 				pointer-events: none;
 				color: $color-text;
-				opacity: 0.3;
+				opacity: 0.4;
+				cursor: not-allowed;
 			}
 
-			a.rss {
+			&.rss {
 				color: $color-orange;
-				display: flex;
-				align-items: center;
-				gap: 6px;
-				text-decoration: none;
-
-				:global(.lucide) {
-					height: 1rem;
-					width: 1rem;
-				}
 			}
 		}
 	}
@@ -112,6 +115,11 @@
 	:global(.hero) {
 		:global(.spacer) {
 			opacity: 0.5;
+		}
+
+		:global(.topics) {
+			display: flex;
+			gap: 0.2rem;
 		}
 	}
 </style>

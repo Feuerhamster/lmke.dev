@@ -10,14 +10,17 @@
 
 <style lang="scss">
 	@use "../scss/defaults" as *;
+	@use "sass:color";
 
 	.skill {
-		padding: 3px 18px;
-		border: 2px solid grey;
+		padding: 4px 16px;
 		border-radius: 32px;
 
-		border-color: $color-pink;
-		color: $color-pink;
+		color: inherit;
+
+		border: 1px solid $color-border;
+
+		background: linear-gradient(90deg, $color-background-transparency-light, #ffffff0d);
 
 		/*&.level-1 {
 			border-color: $color-blue;

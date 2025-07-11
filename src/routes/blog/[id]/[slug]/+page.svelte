@@ -81,7 +81,9 @@
 		/>
 		<p class="name">{formattedAuthor}</p>
 		<p class="meta">
-			<span> {formattedPublishedDate} ({relativeTime}) </span>
+			<span class="published">
+				<b>{formattedPublishedDate}</b> - {relativeTime}
+			</span>
 			{#each article.topics as topic}
 				<Label>{topic.topic.name}</Label>
 			{/each}
@@ -163,15 +165,20 @@
 
 			.name {
 				grid-area: name;
+				font-weight: bold;
 			}
 
 			.meta {
-				color: rgba($color-text, 0.5);
+				color: rgba($color-text, 0.8);
 				grid-area: meta;
 				display: flex;
 				flex-wrap: wrap;
 				align-items: flex-start;
 				gap: 6px;
+
+				.published {
+					margin-right: 0.4rem;
+				}
 			}
 		}
 

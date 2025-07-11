@@ -35,7 +35,7 @@
 		Div.navbar muss in mobile expanden wenn das menü aufgeklappt ist. Nav kein pos absolute und kein filter.
 		Wenn mobile: Von flex auf grid
 	-->
-	<nav on:click={toggleNav} class:expand on:keypress>
+	<nav on:click={toggleNav} class:expand>
 		<NavLink href="/">Über mich</NavLink>
 		<NavLink href="/projects">Projekte</NavLink>
 		<NavLink href="/blog">Blog</NavLink>
@@ -55,6 +55,10 @@
 		-webkit-backdrop-filter: blur(12px);
 		/* Force hardware acceleration */
 		transform: translate3d(0, 0, 0);
+
+		border-bottom: 1px solid $color-border;
+
+		box-shadow: 0px 1px 4px #00000010;
 
 		position: fixed;
 		top: 0;
@@ -83,7 +87,7 @@
 			.absolute {
 				position: absolute;
 				display: flex;
-				gap: 8px;
+				gap: 2px;
 				left: 7rem;
 				top: 0;
 			}

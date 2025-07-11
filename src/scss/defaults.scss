@@ -1,22 +1,25 @@
 @use "sass:color";
 
-$color-background: #1a1831;
+$color-background: #1a192d;
 $color-text: white;
+
+$color-border: #FFFFFF1a;
 
 $color-blue: #62a2e4;
 $color-pink: #e779b7;
 $color-green: #69b857;
 $color-orange: #e48553;
 
-$color-background-transparency: rgba(0, 0, 0, 0.15);
+$color-background-transparency: rgba(0, 0, 0, 0.18);
+$color-background-transparency-light: #ffffff0e;
 
 $default-text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
 
-$color-text-accent: color.change($color-text, $alpha: 0.65);
-$color-text-accent-lighter: color.change($color-text, $alpha: 0.8);
+$color-text-accent: color.change($color-text, $alpha: 0.7);
+$color-text-accent-lighter: color.change($color-text, $alpha: 0.85);
 
 $default-font-size: 21px;
 $default-font-size-mobile: 18px;
 
-$default-image-border-radius: 5px;
+$default-image-border-radius: 6px;
 $default-image-box-shadow: 0 3px 32px rgba(0, 0, 0, 0.2);
