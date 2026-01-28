@@ -73,7 +73,7 @@
 	{/if}
 </svelte:head>
 
-<div class="limited-page">
+<main class="limited-page">
 	<div class="user">
 		<img
 			src={getDirectusImageUrl(article.user_created.avatar.id, { quality: 70 })}
@@ -138,7 +138,7 @@
 			<p class="comments-disabled">[ Kommentare deaktiviert ]</p>
 		{/if}
 	</div>
-</div>
+</main>
 
 <style lang="scss">
 	@use "../../../../scss/mixins.scss" as *;

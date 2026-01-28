@@ -22,7 +22,11 @@
 </script>
 
 <div class="personal-card">
-	<img src={getDirectusImageUrl(image.id, { quality: 90, width: 280, height: 280 })} alt="myself" />
+	<img
+		src={getDirectusImageUrl(image.id, { quality: 90, width: 280, height: 280 })}
+		alt="myself"
+		fetchpriority="high"
+	/>
 	<div class="profile">
 		<h1>
 			<span>Hey, ich bin</span>

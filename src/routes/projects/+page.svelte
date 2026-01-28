@@ -31,13 +31,13 @@
 	<p>Websites, Apps, PWA's, Software und mehr</p>
 </Hero>
 
-<div class="limited-page">
+<main class="limited-page">
 	<section>
 		{#each projects as project}
 			<FullProjectItem {project} />
 		{/each}
 	</section>
-</div>
+</main>
 
 <style lang="scss">
 	@use "../../scss/defaults.scss" as *;

@@ -18,7 +18,7 @@
 	}
 </script>
 
-<div class="navbar">
+<header class="navbar">
 	<h1>
 		<a href="/">
 			<b>lmke</b>.dev
@@ -40,10 +40,10 @@
 		<NavLink href="/projects">Projekte</NavLink>
 		<NavLink href="/blog">Blog</NavLink>
 	</nav>
-	<button on:click={toggleNav}>
+	<button on:click={toggleNav} title="Navigationslinks">
 		<MenuIcon />
 	</button>
-</div>
+</header>
 
 <style lang="scss">
 	@use "../../scss/defaults" as *;

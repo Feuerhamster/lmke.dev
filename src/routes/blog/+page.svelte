@@ -50,7 +50,7 @@
 	</p>
 </Hero>
 
-<div class="limited-page">
+<main class="limited-page">
 	<section>
 		{#if !articles || articles.length < 1}
 			<h3>Keine Artikel vorhanden</h3>
@@ -79,7 +79,7 @@
 			RSS Feed
 		</BoxedLink>
 	</section>
-</div>
+</main>
 
 <style lang="scss">
 	@use "../../scss/defaults.scss" as *;

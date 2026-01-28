@@ -29,11 +29,11 @@
 	<p class="topics">Impressum und Datenschutz</p>
 </Hero>
 
-<div class="limited-page">
+<main class="limited-page">
 	<section>
 		{@html legal}
 	</section>
-</div>
+</main>
 
 <style lang="scss">
 	@use "../../scss/defaults.scss" as *;

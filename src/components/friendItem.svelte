@@ -19,13 +19,19 @@
 
 	<div class="links">
 		{#if friend.link_web}
-			<BoxedLink href={friend.link_web} newTab noopener light aria-label="Website Link">
+			<BoxedLink
+				href={friend.link_web}
+				newTab
+				noopener
+				light
+				aria-label="{friend.name} Website Link"
+			>
 				<Globe />
 			</BoxedLink>
 		{/if}
 
 		{#if friend.link_gh}
-			<BoxedLink href={friend.link_gh} newTab noopener light aria-label="GitHub Link">
+			<BoxedLink href={friend.link_gh} newTab noopener light aria-label="{friend.name} GitHub Link">
 				<img src="/images/github.svg" alt="GitHub" />
 			</BoxedLink>
 		{/if}

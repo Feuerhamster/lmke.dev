@@ -47,7 +47,7 @@
 	<PersonalCard {...personalCard} />
 </Hero>
 
-<div class="limited-page">
+<main class="limited-page">
 	<section class="row">
 		<section>
 			<h2>
@@ -110,7 +110,7 @@
 			</BoxedLink>
 		</section>
 	{/if}
-</div>
+</main>
 
 <style lang="scss">
 	@use "../scss/defaults.scss" as *;
